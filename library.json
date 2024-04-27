@@ -1,0 +1,31 @@
+{
+	"name": "RUI3-Arduino-Library",
+	"version": "1.0.0",
+	"keywords": [
+		"RUI3",
+		"RAKWireless",
+		"WisBlock",
+		"WisDuo"
+	],
+	"description": "RAKWireless library for communication over UART with RUI3 based WisDuo modules.",
+	"frameworks": [
+		"arduino"
+	],
+	"platforms": [
+		"*"
+	],
+	"license": "Apache-2.0",
+	"authors": [
+		{
+			"email": "bernd.giesecke@rakwireless.com",
+			"url": "https://rakwireless.com",
+			"maintainer": true,
+			"name": "Bernd"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RAKWireless/RUI3-Arduino-Library"
+	},
+	"homepage": "https://rakwireless.com"
+}

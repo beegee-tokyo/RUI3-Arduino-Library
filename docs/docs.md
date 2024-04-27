@@ -1,61 +1,3 @@
-| <img src="./assets/RAK-Whirls.png" alt="RAKWireless" width=500%> | <img src="./assets/RUI3.jpg" alt="RUI3" width=15%> | <img src="./assets/rakstar.jpg" alt="RAKstar" > |    
-| :-: | :-: | :-: |     
-
-# ⚠️ BETA! ⚠️
-This library is still in testing phase!
-
-# RUI3 AT command library for WisDuo modules
-
-This library is a helper for the AT command communication between a [RUI3](https://docs.rakwireless.com/RUI3/) based [RAKwireless WisDuo module](https://docs.rakwireless.com/Product-Categories/WisDuo/) and an Arduino based host MCU. 
-
-⚠️ This library works in Class A, B and C, however receiving downlinks in Class B and C are not yet supported. ⚠️    
-
-⚠️ The UART interface of the WisDuo modules is only 3.3V. If connecting to an Arduino Board or other MCU boards, make sure its voltage levels on RX and TX are 3.3V only and _**not**_ 5V ⚠️    
-
-----
-
-# Documentation
-
-* **[Library Repository](https://github.com/beegee-tokyo/RUI3-Arduino-Library)**
-* **[RUI3 AT command Documentation](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/)**
-
-----
-
-# Installation
-
-In Arduino IDE open Sketch->Include Library->Manage Libraries then search for RUI3-Arduino-Library.
-
-In PlatformIO open PlatformIO Home, switch to libraries and search for RUI3-Arduino-Library.
-Or install the library project dependencies by adding
-
-```log
-lib_deps =
-  beegee-tokyo/RUI3-Arduino-Library
-```
-
-into **`platformio.ini`**
-
-For manual installation download the archive, unzip it and place the RUI3-Arduino-Library folder into the library directory.
-In Arduino IDE this is usually <arduinosketchfolder>/libraries/
-In PlatformIO this is usually <user/.platformio/lib>
-
-----
-
-# Usage
-
-The library provides a RUI3 class, which allows communication with RUI3 based Wisduo modules over UART with AT commands.
-
-----
-
-# Example
-
-- [RAK3172-AT-ABP](./examples/RAK3172-AT-ABP) Example to use a RAK3172 with AT commands in LoRaWAN ABP mode. Setup, join network and send data
-- [RAK3172-AT-OTAA](./examples/RAK3172-AT-OTAA) Example to use a RAK3172 with AT commands in LoRaWAN OTAA mode. Setup, join network and send data
-
-----
-
-# This library provides the following methods:
-
 ## Construct a new RUI3 object    
 A simplified constructor taking only a Stream ({Software/Hardware}Serial) object.    
 The serial port should already be initialised when initialising this library.    
@@ -1011,11 +953,4 @@ else
 }
 ```
 	 
-----
-----
-
-# LoRa® is a registered trademark or service mark of Semtech Corporation or its affiliates. 
-
-----
-
-# LoRaWAN® is a licensed mark.
+ @brief Char array with the last response from the WisDuo module 

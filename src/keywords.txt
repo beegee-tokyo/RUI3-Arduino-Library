@@ -1,0 +1,87 @@
+#######################################
+# Syntax Coloring Map For D7S
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RUI3	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setLPM	KEYWORD2
+getLPM	KEYWORD2
+setLPMLevel	KEYWORD2
+getLPMLevel	KEYWORD2
+setWorkingMode	KEYWORD2
+getWorkingMode	KEYWORD2
+setDataRate	KEYWORD2
+getDataRate	KEYWORD2
+setClass	KEYWORD2
+getClass	KEYWORD2
+setRegion	KEYWORD2
+getRegion	KEYWORD2
+setJoinMode	KEYWORD2
+getJoinMode	KEYWORD2
+setConfirmed	KEYWORD2
+getConfirmed	KEYWORD2
+initOTAA	KEYWORD2
+getDevEUI	KEYWORD2
+getAppEUI	KEYWORD2
+getAppKey	KEYWORD2
+initABP	KEYWORD2
+getDevAddress	KEYWORD2
+getAppsKey	KEYWORD2
+getNwsKey	KEYWORD2
+joinLoRaNetwork	KEYWORD2
+getVersion	KEYWORD2
+getJoinStatus	KEYWORD2
+getChannelList	KEYWORD2
+sendData	KEYWORD2
+initP2P	KEYWORD2
+sendP2PData	KEYWORD2
+recvResponse	KEYWORD2
+recvRX	KEYWORD2
+flushRX	KEYWORD2
+sleep	KEYWORD2
+reset	KEYWORD2
+setFactory	KEYWORD2
+getFactory	KEYWORD2
+setUARTConfig	KEYWORD2
+sendRawCommand	KEYWORD2
+byteArrayToAscii	KEYWORD2
+asciiArrayToByte	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+CLASS_A	LITERAL1
+CLASS_B	LITERAL1
+CLASS_C	LITERAL1
+LoRaWAN	LITERAL1
+LoRaP2P	LITERAL1
+OTAA	LITERAL1
+ABP	LITERAL1
+EU433	LITERAL1
+CN470	LITERAL1
+RU864	LITERAL1
+IN865	LITERAL1
+EU868	LITERAL1
+US915	LITERAL1
+AU915	LITERAL1
+KR920	LITERAL1
+AS923	LITERAL1
+AS923_1	LITERAL1
+AS923_2	LITERAL1
+AS923_3	LITERAL1
+AS923_4	LITERAL1
+LA915	LITERAL1
+CONF	LITERAL1
+UNCONF	LITERAL1
+LPM_LVL_1	LITERAL1
+LPM_LVL_2	LITERAL1
+LPM_OFF	LITERAL1
+LPM_ON	LITERAL1
