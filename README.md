@@ -295,21 +295,21 @@ See [AT+BAND](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comman
 ```cpp
 bool setRegion(int region);
 ```     
-@param region
-	- EU433 0
-	- CN470 1
-	- RU864 2
-	- IN865 3
-	- EU868 4
-	- US915 5
-	- AU915 6
-	- KR920 7
-	- AS923 8
-	- AS923_1 8
-	- AS923_2 9
-	- AS923_3 10
-	- AS923_4 11
-	- LA915 12     
+@param region    
+	- EU433 0    
+	- CN470 1    
+	- RU864 2    
+	- IN865 3    
+	- EU868 4    
+	- US915 5    
+	- AU915 6    
+	- KR920 7    
+	- AS923 8    
+	- AS923_1 8    
+	- AS923_2 9    
+	- AS923_3 10    
+	- AS923_4 11    
+	- LA915 12         
 @return true Success     
 @return false No response or error response
 
