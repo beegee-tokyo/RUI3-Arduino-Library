@@ -72,7 +72,7 @@
 
 /**
  * @brief Class RUI3
- * 
+ *
  * @example RUI3-AT-ABP.ino
  * @example RUI3-AT-OTAA.ino
  */
@@ -472,8 +472,7 @@ public:
 	 * }
 	 * @endcode
 	 */
-	* /
-		uint8_t getConfirmed(void);
+	uint8_t getConfirmed(void);
 
 	/**
 	 * @brief Set LoRaWAN credentials for OTAA join mode
