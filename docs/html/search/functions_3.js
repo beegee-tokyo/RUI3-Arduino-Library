@@ -14,7 +14,9 @@ var searchData=
   ['getlpm_11',['getLPM',['../d2/ded/class_r_u_i3.html#a15c500001d8a861dcebdabd0cebf4d1a',1,'RUI3']]],
   ['getlpmlevel_12',['getLPMLevel',['../d2/ded/class_r_u_i3.html#a927396cb14f87032f7ed3e674d2b226b',1,'RUI3']]],
   ['getnwskey_13',['getNwsKey',['../d2/ded/class_r_u_i3.html#a68e37672215716ec784067836e18e8df',1,'RUI3']]],
-  ['getregion_14',['getRegion',['../d2/ded/class_r_u_i3.html#aaa775f087adefcb1dec7b5e59c3204e8',1,'RUI3']]],
-  ['getversion_15',['getVersion',['../d2/ded/class_r_u_i3.html#aaff5595e0cb63fd8cacefe1170497240',1,'RUI3']]],
-  ['getworkingmode_16',['getWorkingMode',['../d2/ded/class_r_u_i3.html#a33739851bbc3374cfd2670c0adea90e0',1,'RUI3']]]
+  ['getp2p_14',['getP2P',['../d2/ded/class_r_u_i3.html#a0fe5423de200e60b5c2f808b7711b753',1,'RUI3']]],
+  ['getp2pcad_15',['getP2PCAD',['../d2/ded/class_r_u_i3.html#a2f5ad0bf6e5821cc80f531b0d7854f3d',1,'RUI3']]],
+  ['getregion_16',['getRegion',['../d2/ded/class_r_u_i3.html#aaa775f087adefcb1dec7b5e59c3204e8',1,'RUI3']]],
+  ['getversion_17',['getVersion',['../d2/ded/class_r_u_i3.html#aaff5595e0cb63fd8cacefe1170497240',1,'RUI3']]],
+  ['getworkingmode_18',['getWorkingMode',['../d2/ded/class_r_u_i3.html#a33739851bbc3374cfd2670c0adea90e0',1,'RUI3']]]
 ];

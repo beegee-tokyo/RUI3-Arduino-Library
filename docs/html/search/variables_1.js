@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ret_0',['ret',['../d2/ded/class_r_u_i3.html#a226083cbf25f80400eb249d4659e0047',1,'RUI3']]]
+  ['bw_0',['bw',['../d9/db2/struct__p2p__settings.html#a14b253c46cd68f2677525f92858eaf94',1,'_p2p_settings']]]
 ];

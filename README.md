@@ -49,27 +49,28 @@ The library provides a RUI3 class, which allows communication with RUI3 based Wi
 
 # Example
 
-- [RAK3172-AT-ABP](./examples/RAK3172-AT-ABP) Example to use a RAK3172 with AT commands in LoRaWAN ABP mode. Setup, join network and send data
-- [RAK3172-AT-OTAA](./examples/RAK3172-AT-OTAA) Example to use a RAK3172 with AT commands in LoRaWAN OTAA mode. Setup, join network and send data
+- [RUI3-AT-ABP](./examples/RUI3-AT-ABP) Example to use a WisDuo RAK3172 with AT commands in LoRaWAN ABP mode. Setup, join network and send data
+- [RUI3-AT-OTAA](./examples/RUI3-AT-OTAA) Example to use a WisDuo RAK3172 with AT commands in LoRaWAN OTAA mode. Setup, join network and send data
+- [RUI3-AT-P2P](./examples/RUI3-AT-P2P) Example to use a WisDuo RAK3172 with AT commands in LoRa P2P mode. Setup, enable RX and send data
 
 ----
 
 # This library provides the following methods:
 
-## Construct a new RUI3 object    
-A simplified constructor taking only a Stream ({Software/Hardware}Serial) object.    
-The serial port should already be initialised when initialising this library.    
-   
-```cpp    
-RUI3(Stream &serial1, Stream &serial);    
-```         
-@param serial1 Serial for responses from RUI3 module: WisDuo ==> host MCU         
-@param serial Serial for communication with RUI3 module: host MCU ==> debug console    
-   
-### Example    
-```cpp    
-RUI3 wisduo(Serial1, Serial);    
+## Construct a new RUI3 object
+A simplified constructor taking only a Stream ({Software/Hardware}Serial) object.
+The serial port should already be initialised when initialising this library.
+
+```cpp
+RUI3(Stream &serial1, Stream &serial);
 ```    
+@param serial1 Serial for responses from RUI3 module: WisDuo ==> host MCU    
+@param serial Serial for communication with RUI3 module: host MCU ==> debug console
+
+### Usage:
+```cpp
+RUI3 wisduo(Serial1, Serial);
+```
 	 
 ----
 
@@ -78,17 +79,17 @@ See [AT+LPM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 bool setLPM(int mode);
-```     
-@param mode 0 = LPM off, 1 = LPM on     
-@return true Success     
+```    
+@param mode 0 = LPM off, 1 = LPM on    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
-if (!wisduo.setLPM(LPM_ON)) // set device LPM on     
-{      
-		Serial.println("Error setting LPM mode.");    
-}     
+if (!wisduo.setLPM(LPM_ON)) // set device LPM on
+{
+		Serial.println("Error setting LPM mode.");
+}
 ```
 	 
 ----
@@ -98,15 +99,15 @@ See [AT+LPM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 uint8_t getLPM(void);
-```     
+```    
 @return 0 - LPM off, 1 = LPM on, 255 no response from WisDuo
 
-### Example
+### Usage:
 ```cpp
-uint8_t q_result = wisduo.getLPM();     
-if (q_result != NO_RESPONSE)     
-{     
-		Serial.printf("LPM %d = %s\r\n", q_result, q_result == 0 ? "off" : "on");    
+uint8_t q_result = wisduo.getLPM();
+if (q_result != NO_RESPONSE)
+{
+		Serial.printf("LPM %d = %s\r\n", q_result, q_result == 0 ? "off" : "on");
 }
 else
 {
@@ -121,12 +122,12 @@ See [AT+LPMLVL](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comm
 
 ```cpp
 bool setLPMLevel(int mode);
-```     
-@param mode 1 = STOP1 mode, 2 = STOP2 mode (lowest power consumption)     
-@return true Success     
+```    
+@param mode 1 = STOP1 mode, 2 = STOP2 mode (lowest power consumption)    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.setLPMLevel(LPM_LVL_2)) // set device LPM level 2
 {
@@ -141,10 +142,10 @@ See [AT+LPMLVL](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comm
 
 ```cpp
 uint8_t getLPMLevel(void);
-```     
+```    
 @return uint8_t 1 = LPM level 1, 2 = LPM level 2, 255 no response from WisDuo
 
-### Example
+### Usage:
 ```cpp
 uint8_t q_result = wisduo.getLPMLevel();
 if (q_result != NO_RESPONSE)
@@ -165,12 +166,12 @@ When switching the device mode, the device will perform a reset
 
 ```cpp
 bool setWorkingMode(int mode);
-```     
-@param mode 0 = LoRa P2P, 1 = LoRaWAN mode     
-@return true Success     
+```    
+@param mode 0 = LoRa P2P, 1 = LoRaWAN mode    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.setWorkingMode(LoRaWAN)) // set WisNode work_mode to LoRaWAN.
 {
@@ -185,10 +186,10 @@ See [AT+NWM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 uint8_t getWorkingMode(void);
-```     
+```    
 @return uint8_t 0 = LoRa P2P, 1 = LoRaWAN mode 255 = no response from WisDuo
 
-### Example
+### Usage:
 ```cpp
 uint8_t q_result = wisduo.getWorkingMode();
 if (q_result != NO_RESPONSE)
@@ -208,12 +209,12 @@ See [AT+DR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-
 
 ```cpp
 bool setDataRate(int rate);
-```     
-@param rate datarate between 0 and 15 see [Data Rate by Region](https://docs.rakwireless.com/RUI3/Appendix/#data-rate-by-region) for available data rates per LoRaWAN region     
-@return true Success     
+```    
+@param rate datarate between 0 and 15 see [Data Rate by Region](https://docs.rakwireless.com/RUI3/Appendix/#data-rate-by-region) for available data rates per LoRaWAN region    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.setDataRate(3)) // set datarate 3
 {
@@ -228,10 +229,10 @@ See [AT+DR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-
 
 ```cpp
 int8_t getDataRate(void);
-```     
+```    
 @return uint8_t datarate 0 - 15, 255 = no response from WisDuo
 
-### Example
+### Usage:
 ```cpp
 uint8_t q_result = wisduo.getDataRate();
 if (q_result != NO_RESPONSE)
@@ -251,12 +252,12 @@ See [AT+CLASS](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comma
 
 ```cpp
 bool setClass(int classMode);
-```     
-@param classMode 0 -> Class A, 1 -> Class B, 2 -> Class C     
-@return true Success     
+```    
+@param classMode 0 -> Class A, 1 -> Class B, 2 -> Class C    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.setClass(CLASS_A)) // set Class A
 {
@@ -271,10 +272,10 @@ See [AT+CLASS](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comma
 
 ```cpp
 uint8_t getClass(void);
-```     
+```    
 @return uint8_t class 0 -> Class A, 1 -> Class B, 2 -> Class C, 255 = no response from WisDuo
 
-### Example
+### Usage:
 ```cpp
 uint8_t q_result = wisduo.getClass();
 if (q_result != NO_RESPONSE)
@@ -294,8 +295,8 @@ See [AT+BAND](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comman
 
 ```cpp
 bool setRegion(int region);
-```     
-@param region    
+```    
+@param region        
 	- EU433 0    
 	- CN470 1    
 	- RU864 2    
@@ -309,11 +310,11 @@ bool setRegion(int region);
 	- AS923_2 9    
 	- AS923_3 10    
 	- AS923_4 11    
-	- LA915 12         
-@return true Success     
+	- LA915 12        
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.setRegion(AS923_3)) // set region AS923 variant 3
 {
@@ -328,10 +329,10 @@ See [AT+BAND](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comman
 
 ```cpp
 uint8_t getRegion(void);
-```     
+```    
 @return uint8_t Region 0 to 12, 255 = no response from WisDuo
 
-### Example
+### Usage:
 ```cpp
 uint8_t q_result = wisduo.getRegion();
 if (q_result != NO_RESPONSE)
@@ -351,12 +352,12 @@ See [AT+NJM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 bool setJoinMode(int mode);
-```     
-@param mode 0: join a network using over the air activation, 1: join a network using personalization     
-@return true Success     
+```    
+@param mode 0: join a network using over the air activation, 1: join a network using personalization    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.setJoinMode(OTAA)) // set OTAA network join mode
 {
@@ -371,10 +372,10 @@ See [AT+NJM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 uint8_t getJoinMode(void);
-```     
+```    
 @return uint8_t mode 0: join a network using over the air activation, 1: join a network using personalization, 255 = no response from WisDuo
 
-### Example
+### Usage:
 ```cpp
 uint8_t q_result = wisduo.getJoinMode();
 if (q_result != NO_RESPONSE)
@@ -395,12 +396,12 @@ See [AT+CFM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 bool setConfirmed(int type);
-```     
-@param type 0->unconfirm, 1->confirm     
-@return true Success     
+```    
+@param type 0->unconfirm, 1->confirm    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.setConfirmed(CONF)) // set Confirmed transmission mode
 {
@@ -416,10 +417,10 @@ See [AT+CFM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 uint8_t getConfirmed(void);
-```     
+```    
 @return uint8_t type 0->unconfirm, 1->confirm
 
-### Example
+### Usage:
 ```cpp
 uint8_t q_result = wisduo.getConfirmed();
 if (q_result != NO_RESPONSE)
@@ -439,14 +440,14 @@ Before using this command, you must call setJoinMode(0)
 
 ```cpp
 bool initOTAA(String devEUI, String appEUI, String appKEY);
-```     
-@param devEUI device EUI as string see [AT+DEVEUI](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-deveui)     
-@param appEUI application EUI as string see [AT+APPEUI](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appeui)     
-@param appKEY application key as string see [AT+APPKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appkey)     
-@return true Success     
+```    
+@param devEUI device EUI as string see [AT+DEVEUI](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-deveui)    
+@param appEUI application EUI as string see [AT+APPEUI](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appeui)    
+@param appKEY application key as string see [AT+APPKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appkey)    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 String DevEUI = "AC1F09FFFE000000";
 String AppEUI = "AC1F09FFFE000000";
@@ -464,13 +465,13 @@ See [AT+DEVEUI](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comm
 
 ```cpp
 bool getDevEUI(char *eui, uint16_t array_len);
-```     
-@param eui byte array for DevEUI     
-@param array_len length of byte array (8 at least)     
-@return true if DevEUI could be obtained     
+```    
+@param eui byte array for DevEUI    
+@param array_len length of byte array (8 at least)    
+@return true if DevEUI could be obtained    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 char eui_key[34];
 if (wisduo.getDevEUI(eui_key, ARRAY_SIZE(eui_key)))
@@ -495,13 +496,13 @@ See [AT+APPEUI](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comm
 
 ```cpp
 bool getAppEUI(char *eui, uint16_t array_len);
-```     
-@param eui byte array for AppEUI     
-@param array_len length of byte array (8 at least)     
-@return true if AppEUI could be obtained     
+```    
+@param eui byte array for AppEUI    
+@param array_len length of byte array (8 at least)    
+@return true if AppEUI could be obtained    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 char eui_key[34];
 if (wisduo.getAppEUI(eui_key, ARRAY_SIZE(eui_key)))
@@ -526,13 +527,13 @@ See [AT+APPKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comm
 
 ```cpp
 bool getAppKey(char *key, uint16_t array_len);
-```     
-@param key byte array for AppKey     
-@param array_len length of byte array (16 at least)     
-@return true if AppKey could be obtained     
+```    
+@param key byte array for AppKey    
+@param array_len length of byte array (16 at least)    
+@return true if AppKey could be obtained    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 char eui_key[34];
 if (wisduo.getAppKey(eui_key, ARRAY_SIZE(eui_key)))
@@ -557,14 +558,14 @@ Before using this command, you must call setJoinMode(1)
 
 ```cpp
 bool initABP(String devADDR, String nwksKEY, String appsKEY);
-```     
-@param devADDR device address as HEX string see [AT+DEVADDR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-devaddr)     
-@param nwksKEY network Session Key as a HEX string see [AT+NWKSKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-nwkskey)     
-@param appsKEY application Session Key as a HEX string see [AT+APPSKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appskey)     
-@return true Success     
+```    
+@param devADDR device address as HEX string see [AT+DEVADDR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-devaddr)    
+@param nwksKEY network Session Key as a HEX string see [AT+NWKSKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-nwkskey)    
+@param appsKEY application Session Key as a HEX string see [AT+APPSKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appskey)    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 String DevAddr = "01360085";
 String AppSKey = "f55a71bcc94ec6498511007c64a06c02";
@@ -582,10 +583,10 @@ See [AT+DEVADDR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Com
 
 ```cpp
 uint32_t getDevAddress(void);
-```     
+```    
 @return uint32_t device address, NO_RESPONSE if device address could not be obtained
 
-### Example
+### Usage:
 ```cpp
 uint32_t dev_addr = wisduo.getDevAddress();
 {
@@ -604,13 +605,13 @@ See [AT+APPSKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Com
 
 ```cpp
 bool getAppsKey(char *key, uint16_t array_len);
-```     
-@param key byte array for AppsKey     
-@param array_len length of byte array (16 at least)     
-@return true if AppsKey could be obtained     
+```    
+@param key byte array for AppsKey    
+@param array_len length of byte array (16 at least)    
+@return true if AppsKey could be obtained    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 char eui_key[34];
 if (wisduo.getAppsKey(eui_key, ARRAY_SIZE(eui_key)))
@@ -635,13 +636,13 @@ See [AT+NWKSKEY](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Com
 
 ```cpp
 bool getNwsKey(char *key, uint16_t array_len);
-```     
-@param key byte array for AppsKey     
-@param array_len length of byte array (16 at least)     
-@return true if NwsKey could be obtained     
+```    
+@param key byte array for AppsKey    
+@param array_len length of byte array (16 at least)    
+@return true if NwsKey could be obtained    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 char eui_key[34];
 if (wisduo.getNwsKey(eui_key, ARRAY_SIZE(eui_key)))
@@ -666,12 +667,12 @@ See [AT+JOIN](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comman
 
 ```cpp
 bool joinLoRaNetwork(int timeout = 15);
-```     
-@param timeout in seconds     
-@return true Success     
+```    
+@param timeout in seconds    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.joinLoRaNetwork(60))
 {
@@ -690,11 +691,11 @@ See [AT+VER](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 bool getVersion(void);
-```     
-@return true Success     
+```    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 wisduo.getVersion(); // get RUI3 firmware version
 wisduo.recvResponse(5000);
@@ -716,11 +717,11 @@ See [AT+NJS](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command
 
 ```cpp
 bool getJoinStatus(void);
-```     
-@return true if device has joined LoRaWAN network     
+```    
+@return true if device has joined LoRaWAN network    
 @return false if device has not joined LoRaWAN network
 
-### Example
+### Usage:
 ```cpp
 if (!wisduo.getJoinStatus())
 {
@@ -735,15 +736,16 @@ else
 }
 ```
 	 
-    
-## Get the current channel list settings    
-This feature works only in Regions US915, AU915 or CN470    
-See [AT+MASK](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-mask)    
-   
-```cpp    
-String getChannelList(void);    
-```         
-@return String List of enabled channels    
+----
+
+## Get the current channel list settings
+This feature works only in Regions US915, AU915 or CN470
+See [AT+MASK](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-mask)
+
+```cpp
+String getChannelList(void);
+```    
+@return String List of enabled channels
 	 
 ----
 
@@ -752,13 +754,13 @@ See [AT+SEND](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Comman
 
 ```cpp
 bool sendData(int port, char *datahex);
-```     
-@param port fPort number.(1-223)     
-@param datahex payload in byte array     
-@return true Success     
+```    
+@param port fPort number.(1-223)    
+@param datahex payload in byte array    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 char buffer[] = "0174016e06688c0767011a087327560902fd98";
 if (wisduo.sendData(1, buffer))
@@ -779,32 +781,114 @@ else
 }
 ```
 	 
-    
-## Initialize LoRa P2P mode    
-See [AT+P2P](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p)    
-   
-```cpp    
-bool initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR);    
-```         
-@param FREQ frequency, default 860000000 range: (860000000 ~1020000000) see [AT+PFREQ](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pfreq)         
-@param SF spreading factor, default 7 ( 6-10) see [AT+PSF](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psf)         
-@param BW band-with, default 0 ( 0:125KHz, 1:250KHz, 2:500KHz) see [AT+PBW](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pbw)         
-@param CR coding Rate, default 1 (1:4/5, 2:4/6, 3:4/7, 4:4/8) see [AT+PCR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pcr)         
-@param PRlen Preamble lenght, default 8 (8-65535) see [AT+PPL](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ppl         
-@param PWR Tx power, default 14 (5-20) see [AT+PTP](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ptp)         
-@return true Success         
-@return false No response or error response    
+----
+
+## Initialize LoRa P2P mode
+See [AT+P2P](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p)
+
+```cpp
+bool initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR);
+```    
+@param FREQ frequency, default 860000000 range: (860000000 ~1020000000) see [AT+PFREQ](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pfreq)    
+@param SF spreading factor, default 7 ( 6-10) see [AT+PSF](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psf)    
+@param BW band-with, default 0 ( 0:125KHz, 1:250KHz, 2:500KHz) see [AT+PBW](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pbw)    
+@param CR coding Rate, default 1 (1:4/5, 2:4/6, 3:4/7, 4:4/8) see [AT+PCR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pcr)    
+@param PRlen Preamble lenght, default 8 (8-65535) see [AT+PPL](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ppl    
+@param PWR Tx power, default 14 (5-20) see [AT+PTP](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ptp)    
+@return true Success    
+@return false No response or error response
+
+### Usage:
+```cpp
+#define P2P_FREQ 916100000
+#define P2P_SF 7
+#define P2P_BW 0
+#define P2P_CR 1
+#define P2P_PRLEN 8
+#define P2P_PWR 22
+
+if (!wisduo.initP2P(P2P_FREQ, P2P_SF, P2P_BW, P2P_CR, P2P_PRLEN, P2P_PWR))
+{
+	Serial.printf("Response: %d\r\n", wisduo.ret);
+
+}
+else
+{
+	Serial.printf("P2P setup done\r\n");
+}
+```
 	 
+----
+
+## Get current P2P settings
+See [AT+P2P](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p)
+
+P2P configuration is returned in structure:
+```cpp
+typedef struct _p2p_settings
+{
+uint32_t freq;
+uint16_t sf;
+uint16_t bw;
+uint16_t cr;
+uint16_t ppl;
+uint16_t txp;
+} p2p_settings;
+```    
+@param p2p_settings pointer to settings for P2P configuration    
+@return true Success    
+@return false No response or error response
+
+### Usage:
+```cpp
+p2p_settings p2p_sett;
+if (wisduo.getP2P(&p2p_sett))
+{
+	Serial.printf("Freq: %d\r\n", p2p_sett.freq);
+	Serial.printf("SF:   %d\r\n", p2p_sett.sf);
+	Serial.printf("BW:   %d\r\n", p2p_sett.bw);
+	Serial.printf("CR:   %d\r\n", p2p_sett.cr);
+	Serial.printf("PPL:  %d\r\n", p2p_sett.ppl);
+	Serial.printf("TXP:  %d\r\n", p2p_sett.txp);
+	}
+	else
+	{
+		Serial.printf("Response: %d\r\n", wisduo.ret);
+	}
+}
+else
+{
+	Serial.println("Error while trying to send a packet");
+}
+```
+	 
+----
+
+## Send a data packet over LoRa P2P
+See [AT+PSEND](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psend)
+
+```cpp
+bool sendP2PData(char *datahex);
+```    
+@param datahex payload in byte array    
+@return true Success    
+@return false No response or error response
+	 
+----
+
+## Enable or disable P2P Channel Activitity Detection
+See [AT+CAD](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cad)
     
-## Send a data packet over LoRa P2P    
-See [AT+PSEND](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psend)    
-   
-```cpp    
-bool sendP2PData(char *datahex);    
-```         
-@param datahex payload in byte array         
-@return true Success         
-@return false No response or error response    
+@param enable true = CAD enabled, false = CAD disabled    
+@return true Success    
+@return false No response or error response
+	 
+----
+
+## Get CAD status (enabled/disabled)
+    
+@return true CAD enabled    
+@return false CAD disabled
 	 
 ----
 
@@ -813,12 +897,12 @@ The last response to an AT command is stored in _**`RUI3::ret`**_ for further pa
 
 ```cpp
 bool recvResponse(uint32_t timeout = 10000);
-```     
-@param timeout time to wait for a response     
-@return true Success     
+```    
+@param timeout time to wait for a response    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 wisduo.getVersion(); // get RUI3 firmware version
 wisduo.recvResponse(5000);
@@ -836,33 +920,35 @@ else
 ----
 
 ## Get RX packet after LoRaWAN TX or LoRa P2P receive command
-The last received RX packet is stored in _**`RUI3::ret`**_ for further parsing. See the example codes for detailed usage.    
+The last received RX packet is stored in _**`RUI3::ret`**_ for further parsing. See the example codes for detailed usage.
 
 ```cpp
 void recvRX(uint32_t timeout);
-```     
+```    
 @param timeout max wait time for the RX packet
 	 
-    
-## Flush the RX buffer in case there is something left    
-   
-```cpp    
-void flushRX(uint32_t timeout = 5000);    
-```         
-@param timeout time to wait for a response    
-	 
-    
-## Set the module in sleep mode. not required if low power mode is enabled)    
-When the module is in sleep mode, the host can send any character to wake it up.    
-When the module is awakened, the event response will automatically return through the serial information.    
-See [AT+SLEEP](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-sleep)    
-   
-```cpp    
-void sleep(int mode);    
-```         
-@param mode 0 == sleep until new commands is received, > 1 sleep time in milliseconds    
+----
 
-### Example
+## Flush the RX buffer in case there is something left
+
+```cpp
+void flushRX(uint32_t timeout = 5000);
+```    
+@param timeout time to wait for a response
+	 
+----
+
+## Set the module in sleep mode. not required if low power mode is enabled)
+When the module is in sleep mode, the host can send any character to wake it up.
+When the module is awakened, the event response will automatically return through the serial information.
+See [AT+SLEEP](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-sleep)
+
+```cpp
+void sleep(int mode);
+```    
+@param mode 0 == sleep until new commands is received, > 1 sleep time in milliseconds
+
+### Usage:
 ```cpp
 wisduo.sleep(60000); // force sleep mode for 1 minute
 ```
@@ -878,7 +964,7 @@ void reset(void);
 ```
 
 
-### Example
+### Usage:
 ```cpp
 bool wait_for_response(uint32_t timeout)
 {
@@ -911,16 +997,17 @@ else
 }
 ```
 	 
-    
-## Change RUI3 communication baud rate    
-See [AT+BAUD](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-baud)    
-   
-```cpp    
-bool setUARTConfig(int Baud);    
-```         
-@param Baud Serial baud rate.Supports baud rate: 9600  19200  38400  57600  115200  230400  460800  921600.         
-@return true Success         
-@return false No response or error response    
+----
+
+## Change RUI3 communication baud rate
+See [AT+BAUD](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-baud)
+
+```cpp
+bool setUARTConfig(int Baud);
+```    
+@param Baud Serial baud rate.Supports baud rate: 9600  19200  38400  57600  115200  230400  460800  921600.    
+@return true Success    
+@return false No response or error response
 	 
 ----
 
@@ -929,12 +1016,12 @@ See [RUI3 AT command manual](https://docs.rakwireless.com/RUI3/Serial-Operating-
 
 ```cpp
 bool sendRawCommand(char *command);
-```     
-@param command char array with any of the RUI3 AT commands     
-@return true Success     
+```    
+@param command char array with any of the RUI3 AT commands    
+@return true Success    
 @return false No response or error response
 
-### Example
+### Usage:
 ```cpp
 char buffer[128] = ;
 sprintf(buffer, "AT\r\n"); // Want to send AT command
@@ -956,15 +1043,15 @@ else
 
 ```cpp
 bool byteArrayToAscii(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len);
-```     
-@param b_array byte array to be converted     
-@param a_array char array to be filled with the ASCII HEX values, MUST BE DOUBLE SIZE OF THE BYTE ARRAY     
-@param b_array_len length of the byte array     
-@param a_array_len length of the char array     
-@return true if buffer sizes do match     
+```    
+@param b_array byte array to be converted    
+@param a_array char array to be filled with the ASCII HEX values, MUST BE DOUBLE SIZE OF THE BYTE ARRAY    
+@param b_array_len length of the byte array    
+@param a_array_len length of the char array    
+@return true if buffer sizes do match    
 @return false if buffer sizes do not match
 
-### Example
+### Usage:
 ```cpp
 uint8_t b_array[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 char a_array[34];
@@ -984,15 +1071,15 @@ if (wisduo.byteArrayToAscii((char *)b_array, a_array, ARRAY_SIZE(b_array), ARRAY
 
 ```cpp
 bool asciiArrayToByte(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len);
-```     
-@param b_array byte array to be filled with values     
-@param a_array char array to be converted     
-@param b_array_len length of the byte array     
-@param a_array_len length of char array     
-@return true if length of char array is even     
+```    
+@param b_array byte array to be filled with values    
+@param a_array char array to be converted    
+@param b_array_len length of the byte array    
+@param a_array_len length of char array    
+@return true if length of char array is even    
 @return false if length of char array is odd or the buffer sizes do not match
 
-### Example
+### Usage:
 ```cpp
 uint8_t c_array[16];
 char d_array[34] = "000102030405060708090A0B0C0D0E0F";

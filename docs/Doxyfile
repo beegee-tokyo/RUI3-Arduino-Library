@@ -1078,7 +1078,8 @@ EXCLUDE_SYMBOLS        =
 # command).
 
 EXAMPLE_PATH           = "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-ABP" \
-                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-OTAA"
+                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-OTAA" \
+                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-P2P"
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and

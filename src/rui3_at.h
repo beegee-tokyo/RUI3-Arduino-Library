@@ -3,7 +3,7 @@
  * @author Bernd Giesecke (bernd@giesecke.tk)
  * @brief A library for controlling RUI3 based RAKwireless modules with AT commands over UART from a host MCU
  * @version 0.1
- * @date 2024-04-27
+ * @date 2024-04-28
  *
  * @copyright Copyright (c) 2024
  *
@@ -68,6 +68,27 @@
 /** LPM level 1 */
 #define LPM_ON 1
 
+#define MAX_CMD_LEN (32)
+#define MAX_ARGUMENT 25
+
+/** Structure for parsed received string */
+typedef struct _stParam
+{
+	char *argv[MAX_ARGUMENT];
+	int argc;
+} stParam;
+
+/** Structure for P2P settings */
+typedef struct _p2p_settings
+{
+	uint32_t freq; // Frequency in Hz, 150000000-960000000 Hz
+	uint16_t sf;   // Spreading factor 6 - 12
+	uint16_t bw;   // Bandwidth 0=125kHz, 1=250kHz, 2=500kHz, 3=7.8kHz, 4=10.4kHz, 5=15.63kHz, 6=20.83kHz, 7=31.25kHz, 8=41.67kHz, 9=62.5kHz
+	uint16_t cr;   // Coding Rate 0 = 4/5, 1 = 4/6, 2 = 4/7, 3 = 4/8
+	uint16_t ppl;  // Preamble length 2-65535
+	uint16_t txp;  // TX power 5 - 22
+} p2p_settings;
+
 // #define DEBUG_MODE
 
 /**
@@ -75,6 +96,7 @@
  *
  * @example RUI3-AT-ABP.ino
  * @example RUI3-AT-OTAA.ino
+ * @example RUI3-AT-P2P.ino
  */
 class RUI3
 {
@@ -839,19 +861,90 @@ public:
 	 * @brief Initialize LoRa P2P mode
 	 * See [AT+P2P](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p)
 	 *
+	 * P2P configuration is set in a structure:
+	 * @code
+	 * typedef struct _p2p_settings
+	 * {
+	 * 	uint32_t freq; // Frequency in Hz, 150000000-960000000 Hz
+	 * 	uint16_t sf;   // Spreading factor 6 - 12
+	 * 	uint16_t bw;   // Bandwidth 0=125kHz, 1=250kHz, 2=500kHz, 3=7.8kHz, 4=10.4kHz, 5=15.63kHz, 6=20.83kHz, 7=31.25kHz, 8=41.67kHz, 9=62.5kHz
+	 * 	uint16_t cr;   // Coding Rate 0 = 4/5, 1 = 4/6, 2 = 4/7, 3 = 4/8
+	 * 	uint16_t ppl;  // Preamble length 2-65535
+	 * 	uint16_t txp;  // TX power 5 - 22
+	 * } p2p_settings;
+	 * @endcode
 	 * ```cpp
-	 * bool initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR);
+	 * bool initP2P(p2p_settings *p2p_settings);
 	 * ```
-	 * @param FREQ frequency, default 860000000 range: (860000000 ~1020000000) see [AT+PFREQ](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pfreq)
-	 * @param SF spreading factor, default 7 ( 6-10) see [AT+PSF](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psf)
-	 * @param BW band-with, default 0 ( 0:125KHz, 1:250KHz, 2:500KHz) see [AT+PBW](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pbw)
-	 * @param CR coding Rate, default 1 (1:4/5, 2:4/6, 3:4/7, 4:4/8) see [AT+PCR](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pcr)
-	 * @param PRlen Preamble lenght, default 8 (8-65535) see [AT+PPL](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ppl
-	 * @param PWR Tx power, default 14 (5-20) see [AT+PTP](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ptp)
+	 * @param p2p_settings Pointer to the structure with the P2P settings
 	 * @return true Success
 	 * @return false No response or error response
+	 *
+	 * Usage:
+	 * @code
+	 * p2p_settings p2p_sett;
+	 * p2p_sett.freq = 916100000;	// Frequency 916100000 MHz
+	 * p2p_sett.sf = 7;				// Spreading factor 7
+	 * p2p_sett.bw = 0;				// Bandwidth 125kHz
+	 * p2p_sett.cr = 1;				// Coding rate 4/5
+	 * p2p_sett.ppl = 8;			// Preamble length 8
+	 * p2p_sett.txp = 22;			// TX power 22 dBi
+	 * if (!wisduo.initP2P(&p2p_sett))
+	 * {
+	 * 	Serial.printf("Response: %d\r\n", wisduo.ret);
+	 * }
+	 * else
+	 * {
+	 * 	Serial.printf("P2P setup done\r\n");
+	 * }
+	 * @endcode
 	 */
-	bool initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR);
+	bool initP2P(p2p_settings *p2p_settings);
+
+	/**
+	 * @brief Get current P2P settings
+	 * See [AT+P2P](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p)
+	 *
+	 * P2P configuration is returned in structure:
+	 * @code
+	 * typedef struct _p2p_settings
+	 * {
+	 * 	uint32_t freq; // Frequency in Hz, 150000000-960000000 Hz
+	 * 	uint16_t sf;   // Spreading factor 6 - 12
+	 * 	uint16_t bw;   // Bandwidth 0=125kHz, 1=250kHz, 2=500kHz, 3=7.8kHz, 4=10.4kHz, 5=15.63kHz, 6=20.83kHz, 7=31.25kHz, 8=41.67kHz, 9=62.5kHz
+	 * 	uint16_t cr;   // Coding Rate 0 = 4/5, 1 = 4/6, 2 = 4/7, 3 = 4/8
+	 * 	uint16_t ppl;  // Preamble length 2-65535
+	 * 	uint16_t txp;  // TX power 5 - 22
+	 * } p2p_settings;
+	 * @endcode
+	 * @param p2p_settings pointer to settings for P2P configuration
+	 * @return true Success
+	 * @return false No response or error response
+	 *
+	 * Usage:
+	 * @code
+	 * p2p_settings p2p_sett;
+	 * if (wisduo.getP2P(&p2p_sett))
+	 * {
+	 * 	Serial.printf("Freq: %d\r\n", p2p_sett.freq);
+	 * 	Serial.printf("SF:   %d\r\n", p2p_sett.sf);
+	 * 	Serial.printf("BW:   %d\r\n", p2p_sett.bw);
+	 * 	Serial.printf("CR:   %d\r\n", p2p_sett.cr);
+	 * 	Serial.printf("PPL:  %d\r\n", p2p_sett.ppl);
+	 * 	Serial.printf("TXP:  %d\r\n", p2p_sett.txp);
+	 * 	}
+	 * 	else
+	 * 	{
+	 * 		Serial.printf("Response: %d\r\n", wisduo.ret);
+	 * 	}
+	 * }
+	 * else
+	 * {
+	 * 	Serial.println("Error while trying to send a packet");
+	 * }
+	 * @endcode
+	 */
+	bool getP2P(p2p_settings *p2p_settings);
 
 	/**
 	 * @brief Send a data packet over LoRa P2P
@@ -865,6 +958,24 @@ public:
 	 * @return false No response or error response
 	 */
 	bool sendP2PData(char *datahex);
+
+	/**
+	 * @brief Enable or disable P2P Channel Activitity Detection
+	 * See [AT+CAD](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cad)
+	 *
+	 * @param enable true = CAD enabled, false = CAD disabled
+	 * @return true Success
+	 * @return false No response or error response
+	 */
+	bool setP2PCAD(bool enable);
+
+	/**
+	 * @brief Get CAD status (enabled/disabled)
+	 *
+	 * @return true CAD enabled
+	 * @return false CAD disabled
+	 */
+	bool getP2PCAD(void);
 
 	/**
 	 * @brief Get response to an AT command from the device
@@ -1085,6 +1196,8 @@ public:
 
 	/** @brief Char array with the last response from the WisDuo module */
 	char ret[1024] = {0};
+
+	stParam param;
 
 private:
 	Stream &_serial;

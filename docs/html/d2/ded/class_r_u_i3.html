@@ -24,7 +24,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="../../RAK-Whirls.png"/></td>
   <td id="projectalign">
    <div id="projectname">RUI3-Arduino-Library<span id="projectnumber">&#160;V1.0</span>
    </div>
@@ -151,7 +150,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3ed62baf954bd13c863c7f638e346998" id="r_a3ed62baf954bd13c863c7f638e346998"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a3ed62baf954bd13c863c7f638e346998">setConfirmed</a> (int type)</td></tr>
 <tr class="memdesc:a3ed62baf954bd13c863c7f638e346998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set package transmission mode In confirmed mode, the LNS will acknowledge the packet, in unconfirmed mode is no acknowledgement See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cfm">AT+CFM</a>  <br /></td></tr>
 <tr class="separator:a3ed62baf954bd13c863c7f638e346998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad981bc2048fa8b0098690604c547250a" id="r_ad981bc2048fa8b0098690604c547250a"><td class="memItemLeft" align="right" valign="top">*uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">getConfirmed</a> (void)</td></tr>
+<tr class="memitem:ad981bc2048fa8b0098690604c547250a" id="r_ad981bc2048fa8b0098690604c547250a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">getConfirmed</a> (void)</td></tr>
 <tr class="memdesc:ad981bc2048fa8b0098690604c547250a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Confirmed/Unconfirmed packet status In confirmed mode, the LNS will acknowledge the packet, in unconfirmed mode is no acknowledgement See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cfm">AT+CFM</a>  <br /></td></tr>
 <tr class="separator:ad981bc2048fa8b0098690604c547250a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d6925f150158dce908ebf6040a35fd" id="r_a15d6925f150158dce908ebf6040a35fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a15d6925f150158dce908ebf6040a35fd">initOTAA</a> (String devEUI, String appEUI, String appKEY)</td></tr>
@@ -193,12 +192,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5fe9203acd1a182c4984ae8af92dc84d" id="r_a5fe9203acd1a182c4984ae8af92dc84d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a5fe9203acd1a182c4984ae8af92dc84d">sendData</a> (int port, char *datahex)</td></tr>
 <tr class="memdesc:a5fe9203acd1a182c4984ae8af92dc84d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data in LoRaWAN mode See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-send">AT+SEND</a>  <br /></td></tr>
 <tr class="separator:a5fe9203acd1a182c4984ae8af92dc84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a341914b651ad57d5fd3f5be1ac3c873c" id="r_a341914b651ad57d5fd3f5be1ac3c873c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a341914b651ad57d5fd3f5be1ac3c873c">initP2P</a> (String FREQ, int SF, int BW, int CR, int PRlen, int PWR)</td></tr>
-<tr class="memdesc:a341914b651ad57d5fd3f5be1ac3c873c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize LoRa P2P mode See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p">AT+P2P</a>  <br /></td></tr>
-<tr class="separator:a341914b651ad57d5fd3f5be1ac3c873c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8fb2364278d16fa99dd265589aa8e95" id="r_aa8fb2364278d16fa99dd265589aa8e95"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#aa8fb2364278d16fa99dd265589aa8e95">initP2P</a> (<a class="el" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a> *<a class="el" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a>)</td></tr>
+<tr class="memdesc:aa8fb2364278d16fa99dd265589aa8e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize LoRa P2P mode See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p">AT+P2P</a>  <br /></td></tr>
+<tr class="separator:aa8fb2364278d16fa99dd265589aa8e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe5423de200e60b5c2f808b7711b753" id="r_a0fe5423de200e60b5c2f808b7711b753"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a0fe5423de200e60b5c2f808b7711b753">getP2P</a> (<a class="el" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a> *<a class="el" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a>)</td></tr>
+<tr class="memdesc:a0fe5423de200e60b5c2f808b7711b753"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current P2P settings See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p">AT+P2P</a>  <br /></td></tr>
+<tr class="separator:a0fe5423de200e60b5c2f808b7711b753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a50d76028e6b2e204b8edba817c317a" id="r_a8a50d76028e6b2e204b8edba817c317a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a8a50d76028e6b2e204b8edba817c317a">sendP2PData</a> (char *datahex)</td></tr>
 <tr class="memdesc:a8a50d76028e6b2e204b8edba817c317a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a data packet over LoRa P2P See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psend">AT+PSEND</a>  <br /></td></tr>
 <tr class="separator:a8a50d76028e6b2e204b8edba817c317a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10441c2001f38f573e62a33b45bcaee0" id="r_a10441c2001f38f573e62a33b45bcaee0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a10441c2001f38f573e62a33b45bcaee0">setP2PCAD</a> (bool enable)</td></tr>
+<tr class="memdesc:a10441c2001f38f573e62a33b45bcaee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable P2P Channel Activitity Detection See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cad">AT+CAD</a>  <br /></td></tr>
+<tr class="separator:a10441c2001f38f573e62a33b45bcaee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f5ad0bf6e5821cc80f531b0d7854f3d" id="r_a2f5ad0bf6e5821cc80f531b0d7854f3d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a2f5ad0bf6e5821cc80f531b0d7854f3d">getP2PCAD</a> (void)</td></tr>
+<tr class="memdesc:a2f5ad0bf6e5821cc80f531b0d7854f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get CAD status (enabled/disabled)  <br /></td></tr>
+<tr class="separator:a2f5ad0bf6e5821cc80f531b0d7854f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56d8ee53f5f1237433a6a2f442b1b447" id="r_a56d8ee53f5f1237433a6a2f442b1b447"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a56d8ee53f5f1237433a6a2f442b1b447">recvResponse</a> (uint32_t timeout=10000)</td></tr>
 <tr class="memdesc:a56d8ee53f5f1237433a6a2f442b1b447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get response to an AT command from the device The last response to an AT command is stored in <em>**<code><a class="el" href="../../d2/ded/class_r_u_i3.html#a226083cbf25f80400eb249d4659e0047" title="Char array with the last response from the WisDuo module.">RUI3::ret</a></code>**</em> for further parsing. See the example codes for detailed usage.  <br /></td></tr>
 <tr class="separator:a56d8ee53f5f1237433a6a2f442b1b447"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -232,6 +240,8 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a226083cbf25f80400eb249d4659e0047" id="r_a226083cbf25f80400eb249d4659e0047"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#a226083cbf25f80400eb249d4659e0047">ret</a> [1024] = {0}</td></tr>
 <tr class="memdesc:a226083cbf25f80400eb249d4659e0047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Char array with the last response from the WisDuo module.  <br /></td></tr>
 <tr class="separator:a226083cbf25f80400eb249d4659e0047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6f465a95ecfed10fc719928cd29a128" id="r_ab6f465a95ecfed10fc719928cd29a128"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/dd0/rui3__at_8h.html#aa581028d3a930b08bfad9f01581799e8">stParam</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ded/class_r_u_i3.html#ab6f465a95ecfed10fc719928cd29a128">param</a></td></tr>
+<tr class="separator:ab6f465a95ecfed10fc719928cd29a128"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4f62f64d335005699f9134fce8da8e56" name="a4f62f64d335005699f9134fce8da8e56"></a>
@@ -262,7 +272,7 @@ Public Attributes</h2></td></tr>
 
 <p>Construct a new <a class="el" href="../../d2/ded/class_r_u_i3.html">RUI3</a> object A simplified constructor taking only a Stream ({Software/Hardware}Serial) object. The serial port should already be initialised when initialising this library. </p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="../../d2/ded/class_r_u_i3.html">RUI3</a>(Stream &amp;serial1, Stream &amp;serial);</div>
-<div class="ttc" id="aclass_r_u_i3_html"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html">RUI3</a></div><div class="ttdef"><b>Definition</b> rui3_at.h:80</div></div>
+<div class="ttc" id="aclass_r_u_i3_html"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html">RUI3</a></div><div class="ttdef"><b>Definition</b> rui3_at.h:102</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serial1</td><td>Serial for responses from <a class="el" href="../../d2/ded/class_r_u_i3.html">RUI3</a> module: WisDuo ==&gt; host MCU </td></tr>
@@ -316,7 +326,7 @@ Public Attributes</h2></td></tr>
 
 <p>Convert a ASCII HEX string array into a byte array. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a161b11bb9910f588e570b1a7ba973a8a">asciiArrayToByte</a>(<span class="keywordtype">char</span> *b_array, <span class="keywordtype">char</span> *a_array, uint16_t b_array_len, uint16_t a_array_len);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a161b11bb9910f588e570b1a7ba973a8a"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a161b11bb9910f588e570b1a7ba973a8a">RUI3::asciiArrayToByte</a></div><div class="ttdeci">bool asciiArrayToByte(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a ASCII HEX string array into a byte array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1022</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a161b11bb9910f588e570b1a7ba973a8a"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a161b11bb9910f588e570b1a7ba973a8a">RUI3::asciiArrayToByte</a></div><div class="ttdeci">bool asciiArrayToByte(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a ASCII HEX string array into a byte array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1137</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">b_array</td><td>byte array to be filled with values </td></tr>
@@ -388,7 +398,7 @@ false if length of char array is odd or the buffer sizes do not match</dd></dl>
 
 <p>Convert a byte array into a ASCII HEX string array. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a5083c1edd195d1d31ba7e70813d4180c">byteArrayToAscii</a>(<span class="keywordtype">char</span> *b_array, <span class="keywordtype">char</span> *a_array, uint16_t b_array_len, uint16_t a_array_len);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a5083c1edd195d1d31ba7e70813d4180c"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a5083c1edd195d1d31ba7e70813d4180c">RUI3::byteArrayToAscii</a></div><div class="ttdeci">bool byteArrayToAscii(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a byte array into a ASCII HEX string array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1008</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a5083c1edd195d1d31ba7e70813d4180c"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a5083c1edd195d1d31ba7e70813d4180c">RUI3::byteArrayToAscii</a></div><div class="ttdeci">bool byteArrayToAscii(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a byte array into a ASCII HEX string array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1123</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">b_array</td><td>byte array to be converted </td></tr>
@@ -432,7 +442,7 @@ false if buffer sizes do not match</dd></dl>
 
 <p>Flush the RX buffer in case there is something left. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba">flushRX</a>(uint32_t timeout = 5000);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a8462fda0a7618a74da3504652820e1ba"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba">RUI3::flushRX</a></div><div class="ttdeci">void flushRX(uint32_t timeout=5000)</div><div class="ttdoc">Flush the RX buffer in case there is something left.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:920</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a8462fda0a7618a74da3504652820e1ba"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba">RUI3::flushRX</a></div><div class="ttdeci">void flushRX(uint32_t timeout=5000)</div><div class="ttdoc">Flush the RX buffer in case there is something left.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:924</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout</td><td>time to wait for a response </td></tr>
@@ -684,7 +694,7 @@ false No response or error response</dd></dl>
 
 <p>Get the Confirmed/Unconfirmed packet status In confirmed mode, the LNS will acknowledge the packet, in unconfirmed mode is no acknowledgement See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cfm">AT+CFM</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">getConfirmed</a>(<span class="keywordtype">void</span>);</div>
-<div class="ttc" id="aclass_r_u_i3_html_ad981bc2048fa8b0098690604c547250a"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">RUI3::getConfirmed</a></div><div class="ttdeci">*uint8_t getConfirmed(void)</div><div class="ttdoc">Get the Confirmed/Unconfirmed packet status In confirmed mode, the LNS will acknowledge the packet,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:744</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_ad981bc2048fa8b0098690604c547250a"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">RUI3::getConfirmed</a></div><div class="ttdeci">uint8_t getConfirmed(void)</div><div class="ttdoc">Get the Confirmed/Unconfirmed packet status In confirmed mode, the LNS will acknowledge the packet,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:744</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t type 0-&gt;unconfirm, 1-&gt;confirm</dd></dl>
 <p>Usage: </p><div class="fragment"><div class="line">uint8_t q_result = wisduo.getConfirmed();</div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="../../d0/dd0/rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)</div>
@@ -1007,6 +1017,94 @@ false No response or error response</dd></dl>
 </div><!-- fragment --> 
 </div>
 </div>
+<a id="a0fe5423de200e60b5c2f808b7711b753" name="a0fe5423de200e60b5c2f808b7711b753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe5423de200e60b5c2f808b7711b753">&#9670;&#160;</a></span>getP2P()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RUI3::getP2P </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a> *&#160;</td>
+          <td class="paramname"><em>p2p_settings</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current P2P settings See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p">AT+P2P</a> </p>
+<p>P2P configuration is returned in structure: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="../../d9/db2/struct__p2p__settings.html">_p2p_settings</a></div>
+<div class="line">{</div>
+<div class="line">    uint32_t freq; <span class="comment">// Frequency in Hz, 150000000-960000000 Hz</span></div>
+<div class="line">    uint16_t sf;   <span class="comment">// Spreading factor 6 - 12</span></div>
+<div class="line">    uint16_t bw;   <span class="comment">// Bandwidth 0=125kHz, 1=250kHz, 2=500kHz, 3=7.8kHz, 4=10.4kHz, 5=15.63kHz, 6=20.83kHz, 7=31.25kHz, 8=41.67kHz, 9=62.5kHz</span></div>
+<div class="line">    uint16_t cr;   <span class="comment">// Coding Rate 0 = 4/5, 1 = 4/6, 2 = 4/7, 3 = 4/8</span></div>
+<div class="line">    uint16_t ppl;  <span class="comment">// Preamble length 2-65535</span></div>
+<div class="line">    uint16_t txp;  <span class="comment">// TX power 5 - 22</span></div>
+<div class="line">} <a class="code hl_typedef" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a>;</div>
+<div class="ttc" id="arui3__at_8h_html_a2db711d8bb7f9ecffd3f641421729412"><div class="ttname"><a href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a></div><div class="ttdeci">struct _p2p_settings p2p_settings</div></div>
+<div class="ttc" id="astruct__p2p__settings_html"><div class="ttname"><a href="../../d9/db2/struct__p2p__settings.html">_p2p_settings</a></div><div class="ttdef"><b>Definition</b> rui3_at.h:83</div></div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p2p_settings</td><td>pointer to settings for P2P configuration </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true Success </dd>
+<dd>
+false No response or error response</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="../../d9/db2/struct__p2p__settings.html">p2p_settings</a> p2p_sett;</div>
+<div class="line"><span class="keywordflow">if</span> (wisduo.getP2P(&amp;p2p_sett))</div>
+<div class="line">{</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;Freq: %d\r\n&quot;</span>, p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#af48c6a469e6de58d4234fca1397469b7">freq</a>);</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;SF:   %d\r\n&quot;</span>, p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#af13284de3f688b86ceafd66b9aca9076">sf</a>);</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;BW:   %d\r\n&quot;</span>, p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a14b253c46cd68f2677525f92858eaf94">bw</a>);</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;CR:   %d\r\n&quot;</span>, p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a239a9eff6291cb5ef6129606416b8d32">cr</a>);</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;PPL:  %d\r\n&quot;</span>, p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a79dd6af4e11770a443aa1701b15e1e8e">ppl</a>);</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;TXP:  %d\r\n&quot;</span>, p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a695533a80407b8fa8b5b34285f64094e">txp</a>);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.printf(<span class="stringliteral">&quot;Response: %d\r\n&quot;</span>, wisduo.ret);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordflow">else</span></div>
+<div class="line">{</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;Error while trying to send a packet&quot;</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="astruct__p2p__settings_html_a14b253c46cd68f2677525f92858eaf94"><div class="ttname"><a href="../../d9/db2/struct__p2p__settings.html#a14b253c46cd68f2677525f92858eaf94">_p2p_settings::bw</a></div><div class="ttdeci">uint16_t bw</div><div class="ttdef"><b>Definition</b> rui3_at.h:86</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_a239a9eff6291cb5ef6129606416b8d32"><div class="ttname"><a href="../../d9/db2/struct__p2p__settings.html#a239a9eff6291cb5ef6129606416b8d32">_p2p_settings::cr</a></div><div class="ttdeci">uint16_t cr</div><div class="ttdef"><b>Definition</b> rui3_at.h:87</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_a695533a80407b8fa8b5b34285f64094e"><div class="ttname"><a href="../../d9/db2/struct__p2p__settings.html#a695533a80407b8fa8b5b34285f64094e">_p2p_settings::txp</a></div><div class="ttdeci">uint16_t txp</div><div class="ttdef"><b>Definition</b> rui3_at.h:89</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_a79dd6af4e11770a443aa1701b15e1e8e"><div class="ttname"><a href="../../d9/db2/struct__p2p__settings.html#a79dd6af4e11770a443aa1701b15e1e8e">_p2p_settings::ppl</a></div><div class="ttdeci">uint16_t ppl</div><div class="ttdef"><b>Definition</b> rui3_at.h:88</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_af13284de3f688b86ceafd66b9aca9076"><div class="ttname"><a href="../../d9/db2/struct__p2p__settings.html#af13284de3f688b86ceafd66b9aca9076">_p2p_settings::sf</a></div><div class="ttdeci">uint16_t sf</div><div class="ttdef"><b>Definition</b> rui3_at.h:85</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_af48c6a469e6de58d4234fca1397469b7"><div class="ttname"><a href="../../d9/db2/struct__p2p__settings.html#af48c6a469e6de58d4234fca1397469b7">_p2p_settings::freq</a></div><div class="ttdeci">uint32_t freq</div><div class="ttdef"><b>Definition</b> rui3_at.h:84</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a id="a2f5ad0bf6e5821cc80f531b0d7854f3d" name="a2f5ad0bf6e5821cc80f531b0d7854f3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f5ad0bf6e5821cc80f531b0d7854f3d">&#9670;&#160;</a></span>getP2PCAD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RUI3::getP2PCAD </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get CAD status (enabled/disabled) </p>
+<dl class="section return"><dt>Returns</dt><dd>true CAD enabled </dd>
+<dd>
+false CAD disabled </dd></dl>
+
+</div>
+</div>
 <a id="aaa775f087adefcb1dec7b5e59c3204e8" name="aaa775f087adefcb1dec7b5e59c3204e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa775f087adefcb1dec7b5e59c3204e8">&#9670;&#160;</a></span>getRegion()</h2>
 
@@ -1219,8 +1317,8 @@ false No response or error response</dd></dl>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="a341914b651ad57d5fd3f5be1ac3c873c" name="a341914b651ad57d5fd3f5be1ac3c873c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a341914b651ad57d5fd3f5be1ac3c873c">&#9670;&#160;</a></span>initP2P()</h2>
+<a id="aa8fb2364278d16fa99dd265589aa8e95" name="aa8fb2364278d16fa99dd265589aa8e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8fb2364278d16fa99dd265589aa8e95">&#9670;&#160;</a></span>initP2P()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1228,65 +1326,50 @@ false No response or error response</dd></dl>
         <tr>
           <td class="memname">bool RUI3::initP2P </td>
           <td>(</td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>FREQ</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a> *&#160;</td>
+          <td class="paramname"><em>p2p_settings</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>SF</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>BW</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>CR</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>PRlen</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>PWR</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Initialize LoRa P2P mode See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-p2p">AT+P2P</a> </p>
-<div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a341914b651ad57d5fd3f5be1ac3c873c">initP2P</a>(String FREQ, <span class="keywordtype">int</span> SF, <span class="keywordtype">int</span> BW, <span class="keywordtype">int</span> CR, <span class="keywordtype">int</span> PRlen, <span class="keywordtype">int</span> PWR);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a341914b651ad57d5fd3f5be1ac3c873c"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a341914b651ad57d5fd3f5be1ac3c873c">RUI3::initP2P</a></div><div class="ttdeci">bool initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR)</div><div class="ttdoc">Initialize LoRa P2P mode See AT+P2P</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:955</div></div>
+<p>P2P configuration is set in a structure: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="../../d9/db2/struct__p2p__settings.html">_p2p_settings</a></div>
+<div class="line">{</div>
+<div class="line">    uint32_t freq; <span class="comment">// Frequency in Hz, 150000000-960000000 Hz</span></div>
+<div class="line">    uint16_t sf;   <span class="comment">// Spreading factor 6 - 12</span></div>
+<div class="line">    uint16_t bw;   <span class="comment">// Bandwidth 0=125kHz, 1=250kHz, 2=500kHz, 3=7.8kHz, 4=10.4kHz, 5=15.63kHz, 6=20.83kHz, 7=31.25kHz, 8=41.67kHz, 9=62.5kHz</span></div>
+<div class="line">    uint16_t cr;   <span class="comment">// Coding Rate 0 = 4/5, 1 = 4/6, 2 = 4/7, 3 = 4/8</span></div>
+<div class="line">    uint16_t ppl;  <span class="comment">// Preamble length 2-65535</span></div>
+<div class="line">    uint16_t txp;  <span class="comment">// TX power 5 - 22</span></div>
+<div class="line">} <a class="code hl_typedef" href="../../d0/dd0/rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a>;</div>
+</div><!-- fragment --> <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#aa8fb2364278d16fa99dd265589aa8e95">initP2P</a>(<a class="code hl_struct" href="../../d9/db2/struct__p2p__settings.html">p2p_settings</a> *<a class="code hl_struct" href="../../d9/db2/struct__p2p__settings.html">p2p_settings</a>);</div>
+<div class="ttc" id="aclass_r_u_i3_html_aa8fb2364278d16fa99dd265589aa8e95"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#aa8fb2364278d16fa99dd265589aa8e95">RUI3::initP2P</a></div><div class="ttdeci">bool initP2P(p2p_settings *p2p_settings)</div><div class="ttdoc">Initialize LoRa P2P mode See AT+P2P</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:959</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">FREQ</td><td>frequency, default 860000000 range: (860000000 ~1020000000) see <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pfreq">AT+PFREQ</a> </td></tr>
-    <tr><td class="paramname">SF</td><td>spreading factor, default 7 ( 6-10) see <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psf">AT+PSF</a> </td></tr>
-    <tr><td class="paramname">BW</td><td>band-with, default 0 ( 0:125KHz, 1:250KHz, 2:500KHz) see <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pbw">AT+PBW</a> </td></tr>
-    <tr><td class="paramname">CR</td><td>coding Rate, default 1 (1:4/5, 2:4/6, 3:4/7, 4:4/8) see <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-pcr">AT+PCR</a> </td></tr>
-    <tr><td class="paramname">PRlen</td><td>Preamble lenght, default 8 (8-65535) see [AT+PPL](<a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ppl">https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ppl</a> </td></tr>
-    <tr><td class="paramname">PWR</td><td>Tx power, default 14 (5-20) see <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-ptp">AT+PTP</a> </td></tr>
+    <tr><td class="paramname">p2p_settings</td><td>Pointer to the structure with the P2P settings </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true Success </dd>
 <dd>
-false No response or error response </dd></dl>
-
+false No response or error response</dd></dl>
+<p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="../../d9/db2/struct__p2p__settings.html">p2p_settings</a> p2p_sett;</div>
+<div class="line">p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#af48c6a469e6de58d4234fca1397469b7">freq</a> = 916100000;  <span class="comment">// Frequency 916100000 MHz</span></div>
+<div class="line">p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#af13284de3f688b86ceafd66b9aca9076">sf</a> = 7;                <span class="comment">// Spreading factor 7</span></div>
+<div class="line">p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a14b253c46cd68f2677525f92858eaf94">bw</a> = 0;                <span class="comment">// Bandwidth 125kHz</span></div>
+<div class="line">p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a239a9eff6291cb5ef6129606416b8d32">cr</a> = 1;                <span class="comment">// Coding rate 4/5</span></div>
+<div class="line">p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a79dd6af4e11770a443aa1701b15e1e8e">ppl</a> = 8;           <span class="comment">// Preamble length 8</span></div>
+<div class="line">p2p_sett.<a class="code hl_variable" href="../../d9/db2/struct__p2p__settings.html#a695533a80407b8fa8b5b34285f64094e">txp</a> = 22;          <span class="comment">// TX power 22 dBi</span></div>
+<div class="line"><span class="keywordflow">if</span> (!wisduo.initP2P(&amp;p2p_sett))</div>
+<div class="line">{</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;Response: %d\r\n&quot;</span>, wisduo.ret);</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordflow">else</span></div>
+<div class="line">{</div>
+<div class="line">    Serial.printf(<span class="stringliteral">&quot;P2P setup done\r\n&quot;</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a id="a7f839a1e56f928020ff28f3709973fb7" name="a7f839a1e56f928020ff28f3709973fb7"></a>
@@ -1388,7 +1471,7 @@ false No response or error response</dd></dl>
 
 <p>Get RX packet after LoRaWAN TX or LoRa P2P receive command The last received RX packet is stored in <em>**<code><a class="el" href="../../d2/ded/class_r_u_i3.html#a226083cbf25f80400eb249d4659e0047" title="Char array with the last response from the WisDuo module.">RUI3::ret</a></code>**</em> for further parsing. See the example codes for detailed usage. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a83d31f74530834ddd798c98788c67338">recvRX</a>(uint32_t timeout);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a83d31f74530834ddd798c98788c67338"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a83d31f74530834ddd798c98788c67338">RUI3::recvRX</a></div><div class="ttdeci">void recvRX(uint32_t timeout)</div><div class="ttdoc">Get RX packet after LoRaWAN TX or LoRa P2P receive command The last received RX packet is stored in *...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:826</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a83d31f74530834ddd798c98788c67338"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a83d31f74530834ddd798c98788c67338">RUI3::recvRX</a></div><div class="ttdeci">void recvRX(uint32_t timeout)</div><div class="ttdoc">Get RX packet after LoRaWAN TX or LoRa P2P receive command The last received RX packet is stored in *...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:830</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout</td><td>max wait time for the RX packet </td></tr>
@@ -1526,7 +1609,7 @@ false No response or error response</dd></dl>
 
 <p>Send a data packet over LoRa P2P See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psend">AT+PSEND</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a8a50d76028e6b2e204b8edba817c317a">sendP2PData</a>(<span class="keywordtype">char</span> *datahex);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a8a50d76028e6b2e204b8edba817c317a"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a8a50d76028e6b2e204b8edba817c317a">RUI3::sendP2PData</a></div><div class="ttdeci">bool sendP2PData(char *datahex)</div><div class="ttdoc">Send a data packet over LoRa P2P See AT+PSEND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:970</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a8a50d76028e6b2e204b8edba817c317a"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a8a50d76028e6b2e204b8edba817c317a">RUI3::sendP2PData</a></div><div class="ttdeci">bool sendP2PData(char *datahex)</div><div class="ttdoc">Send a data packet over LoRa P2P See AT+PSEND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1039</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">datahex</td><td>payload in byte array </td></tr>
@@ -1557,7 +1640,7 @@ false No response or error response </dd></dl>
 
 <p>Send a raw command to the <a class="el" href="../../d2/ded/class_r_u_i3.html">RUI3</a> module. See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual">RUI3 AT command manual</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a7ea0a4afc56d0e25ede7e748b2c68995">sendRawCommand</a>(<span class="keywordtype">char</span> *<a class="code hl_variable" href="../../de/d6d/rui3__at_8cpp.html#a09b945691015281174f3851d8470ec7f">command</a>);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a7ea0a4afc56d0e25ede7e748b2c68995"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a7ea0a4afc56d0e25ede7e748b2c68995">RUI3::sendRawCommand</a></div><div class="ttdeci">bool sendRawCommand(char *command)</div><div class="ttdoc">Send a raw command to the RUI3 module. See RUI3 AT command manual</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:993</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a7ea0a4afc56d0e25ede7e748b2c68995"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a7ea0a4afc56d0e25ede7e748b2c68995">RUI3::sendRawCommand</a></div><div class="ttdeci">bool sendRawCommand(char *command)</div><div class="ttdoc">Send a raw command to the RUI3 module. See RUI3 AT command manual</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1108</div></div>
 <div class="ttc" id="arui3__at_8cpp_html_a09b945691015281174f3851d8470ec7f"><div class="ttname"><a href="../../de/d6d/rui3__at_8cpp.html#a09b945691015281174f3851d8470ec7f">command</a></div><div class="ttdeci">char command[1024]</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:20</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1796,6 +1879,35 @@ false No response or error response</dd></dl>
 </div><!-- fragment --> 
 </div>
 </div>
+<a id="a10441c2001f38f573e62a33b45bcaee0" name="a10441c2001f38f573e62a33b45bcaee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10441c2001f38f573e62a33b45bcaee0">&#9670;&#160;</a></span>setP2PCAD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RUI3::setP2PCAD </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable or disable P2P Channel Activitity Detection See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cad">AT+CAD</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>true = CAD enabled, false = CAD disabled </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true Success </dd>
+<dd>
+false No response or error response </dd></dl>
+
+</div>
+</div>
 <a id="a073fb5f2e8adc83de8b806e8dfda6fb5" name="a073fb5f2e8adc83de8b806e8dfda6fb5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a073fb5f2e8adc83de8b806e8dfda6fb5">&#9670;&#160;</a></span>setRegion()</h2>
 
@@ -1866,7 +1978,7 @@ false No response or error response</dd></dl>
 
 <p>Change <a class="el" href="../../d2/ded/class_r_u_i3.html">RUI3</a> communication baud rate See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-baud">AT+BAUD</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d2/ded/class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657">setUARTConfig</a>(<span class="keywordtype">int</span> Baud);</div>
-<div class="ttc" id="aclass_r_u_i3_html_a68de628dd5ac6b2938c93e23710e1657"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657">RUI3::setUARTConfig</a></div><div class="ttdeci">bool setUARTConfig(int Baud)</div><div class="ttdoc">Change RUI3 communication baud rate See AT+BAUD</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:985</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a68de628dd5ac6b2938c93e23710e1657"><div class="ttname"><a href="../../d2/ded/class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657">RUI3::setUARTConfig</a></div><div class="ttdeci">bool setUARTConfig(int Baud)</div><div class="ttdoc">Change RUI3 communication baud rate See AT+BAUD</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1100</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Baud</td><td>Serial baud rate.Supports baud rate: 9600 19200 38400 57600 115200 230400 460800 921600. </td></tr>
@@ -1945,6 +2057,20 @@ false No response or error response</dd></dl>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab6f465a95ecfed10fc719928cd29a128" name="ab6f465a95ecfed10fc719928cd29a128"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6f465a95ecfed10fc719928cd29a128">&#9670;&#160;</a></span>param</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/dd0/rui3__at_8h.html#aa581028d3a930b08bfad9f01581799e8">stParam</a> RUI3::param</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a226083cbf25f80400eb249d4659e0047" name="a226083cbf25f80400eb249d4659e0047"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a226083cbf25f80400eb249d4659e0047">&#9670;&#160;</a></span>ret</h2>
 

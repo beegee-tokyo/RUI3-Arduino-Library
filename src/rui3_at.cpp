@@ -3,7 +3,7 @@
  * @author Bernd Giesecke (bernd@giesecke.tk)
  * @brief Commands for LoRa P2P and LoRaWAN
  * @version 0.1
- * @date 2024-04-27
+ * @date 2024-04-28
  *
  * @copyright Copyright (c) 2024
  *
@@ -800,6 +800,10 @@ bool RUI3::recvResponse(uint32_t timeout)
 			recvRX(5000);
 			return true;
 		}
+		if (strstr(ret, "+EVT:TXP2P DONE") != NULL)
+		{
+			return true;
+		}
 		if ((strstr(ret, "OK") != NULL))
 		{
 			return true;
@@ -952,11 +956,17 @@ void RUI3::flushRX(uint32_t timeout)
 	return;
 }
 
-bool RUI3::initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR)
+bool RUI3::initP2P(p2p_settings *p2p_settings)
 {
-	snprintf(command, 1024, "at+p2p=%s:%d:%d:%d:%d:%d\r\n", FREQ.c_str(), SF, BW, CR, PRlen, PWR);
+	snprintf(command, 1024, "at+p2p=%ld:%d:%d:%d:%d:%d\r\n", p2p_settings->freq, p2p_settings->sf, p2p_settings->bw, p2p_settings->cr, p2p_settings->ppl, p2p_settings->txp);
+#ifdef DEBUG_MODE
+	_serial.printf(">> %s\r\n", command);
+#endif
 	sendRawCommand(command);
 	recvResponse();
+#ifdef DEBUG_MODE
+	_serial.printf(">> %s\r\n", ret);
+#endif
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -967,11 +977,76 @@ bool RUI3::initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR)
 	}
 }
 
+bool RUI3::getP2P(p2p_settings *p2p_settings)
+{
+	// AT+P2P=916100000:7:0:1:8:22
+
+	snprintf(command, 1024, "at+p2p=?\r\n");
+	sendRawCommand(command);
+	recvResponse();
+#ifdef DEBUG_MODE
+	_serial.printf(">> %s\r\n", ret);
+#endif
+	char *data_buff = strstr(ret, "AT+P2P=");
+	if (data_buff != NULL)
+	{
+		char *param;
+		param = strtok(ret + 7, ":");
+
+		if (param != NULL)
+		{
+			/* check frequency */
+			p2p_settings->freq = strtol(param, NULL, 0);
+			/* check SF */
+			param = strtok(NULL, ":");
+			if (param != NULL)
+			{
+				p2p_settings->sf = strtol(param, NULL, 0);
+				// Check Bandwidth
+				param = strtok(NULL, ":");
+				if (param != NULL)
+				{
+					p2p_settings->bw = strtol(param, NULL, 0);
+					// Check CR
+					param = strtok(NULL, ":");
+					if (param != NULL)
+					{
+						p2p_settings->cr = strtol(param, NULL, 0);
+						// Check Preamble length
+						param = strtok(NULL, ":");
+						if (param != NULL)
+						{
+							p2p_settings->ppl = strtol(param, NULL, 0);
+							// Check TX power
+							param = strtok(NULL, ":");
+							if (param != NULL)
+							{
+								p2p_settings->txp = strtol(param, NULL, 0);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		return false;
+	}
+	return true;
+}
+
 bool RUI3::sendP2PData(char *datahex)
 {
 	snprintf(command, 1024, "at+psend=%s\r\n", datahex);
+	// #ifdef DEBUG_MODE
+	_serial.printf(">> %s\r\n", command);
+	// #endif
 	sendRawCommand(command);
 	recvResponse();
+	// #ifdef DEBUG_MODE
+	_serial.printf(">> %s\r\n", ret);
+	// #endif
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -980,6 +1055,46 @@ bool RUI3::sendP2PData(char *datahex)
 	{
 		return false;
 	}
+}
+
+bool RUI3::setP2PCAD(bool enable)
+{
+	if (enable)
+	{
+		snprintf(command, 1024, "at+cad=1\r\n");
+	}
+	else
+	{
+		snprintf(command, 1024, "at+cad=0\r\n");
+	}
+	sendRawCommand(command);
+	recvResponse();
+#if defined DEBUG_MODE
+	_serial.printf(">> %s\r\n", ret);
+#endif
+	if (strstr(ret, "OK") != NULL)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool RUI3::getP2PCAD(void)
+{
+	snprintf(command, 1024, "at+cad=?\r\n");
+	sendRawCommand(command);
+	recvResponse();
+#if defined DEBUG_MODE
+	_serial.printf(">> %s\r\n", ret);
+#endif
+	if (strstr(ret, "AT+CAD=1") != NULL)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool RUI3::setUARTConfig(int Baud)
