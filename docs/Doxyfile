@@ -1079,7 +1079,10 @@ EXCLUDE_SYMBOLS        =
 
 EXAMPLE_PATH           = "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-ABP" \
                          "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-OTAA" \
-                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-P2P"
+                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-P2P" \
+                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-ABP-PIO" \
+                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-OTAA-PIO" \
+                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-P2P-PIO"
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -1087,7 +1090,8 @@ EXAMPLE_PATH           = "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI
 # files are included.
 
 EXAMPLE_PATTERNS       = * \
-                         *.ino
+                         *.ino \
+                         *.cpp
 
 # If the EXAMPLE_RECURSIVE tag is set to YES then subdirectories will be
 # searched for input files to be used with the \include or \dontinclude commands
