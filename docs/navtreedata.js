@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "RUI3-Arduino-Library", "index.html", [
-    [ "Todo List", "dd/da0/todo.html", null ],
+    [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -50,7 +50,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"_r_u_i3-_a_t-_a_b_p_8ino-example.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
