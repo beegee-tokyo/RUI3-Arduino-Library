@@ -1,8 +1,8 @@
 var NAVTREEINDEX0 =
 {
-"_r_u_i3-_a_t-_a_b_p_8ino-example.html":[3,0],
-"_r_u_i3-_a_t-_o_t_a_a_8ino-example.html":[3,1],
-"_r_u_i3-_a_t-_p2_p_8ino-example.html":[3,2],
+"r_u_i3-_a_t-_a_b_p_8ino-example.html":[3,0],
+"r_u_i3-_a_t-_o_t_a_a_8ino-example.html":[3,1],
+"r_u_i3-_a_t-_p2_p_8ino-example.html":[3,2],
 "annotated.html":[1,0],
 "class_r_u_i3.html":[1,0,2],
 "class_r_u_i3.html#a073fb5f2e8adc83de8b806e8dfda6fb5":[1,0,2,40],

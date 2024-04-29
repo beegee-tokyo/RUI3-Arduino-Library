@@ -50,7 +50,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_r_u_i3-_a_t-_a_b_p_8ino-example.html"
+"r_u_i3-_a_t-_a_b_p_8ino-example.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

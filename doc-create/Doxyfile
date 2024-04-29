@@ -79,7 +79,7 @@ OUTPUT_DIRECTORY       = "D:/#Github/Libraries/RUI3-Arduino-Library/docs"
 # control the number of sub-directories.
 # The default value is: NO.
 
-CREATE_SUBDIRS         = YES
+CREATE_SUBDIRS         = NO
 
 # Controls the number of sub-directories that will be created when
 # CREATE_SUBDIRS tag is set to YES. Level 0 represents 16 directories, and every
@@ -1079,10 +1079,7 @@ EXCLUDE_SYMBOLS        =
 
 EXAMPLE_PATH           = "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-ABP" \
                          "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-OTAA" \
-                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-P2P" \
-                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-ABP-PIO" \
-                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-OTAA-PIO" \
-                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-P2P-PIO"
+                         "D:\#Github\Libraries\RUI3-Arduino-Library\examples\RUI3-AT-P2P"
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -1337,7 +1334,7 @@ GENERATE_HTML          = YES
 # The default directory is: html.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_OUTPUT            = html
+HTML_OUTPUT            = ../docs
 
 # The HTML_FILE_EXTENSION tag can be used to specify the file extension for each
 # generated HTML page (for example: .htm, .php, .asp).
