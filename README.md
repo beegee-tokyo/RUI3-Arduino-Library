@@ -16,7 +16,7 @@ This library is a helper for the AT command communication between a [RUI3](https
 
 # Documentation
 
-* **[Library Repository](https://github.com/beegee-tokyo/RUI3-Arduino-Library)**
+* **[RUI3-Arduino-Library Class Documentation](https://beegee-tokyo.github.io/RUI3-Arduino-Library/)**
 * **[RUI3 AT command Documentation](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/)**
 
 ----
