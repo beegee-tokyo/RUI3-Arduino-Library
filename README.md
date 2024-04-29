@@ -49,9 +49,12 @@ The library provides a RUI3 class, which allows communication with RUI3 based Wi
 
 # Example
 
-- [RUI3-AT-ABP](./examples/RUI3-AT-ABP) Example to use a WisDuo RAK3172 with AT commands in LoRaWAN ABP mode. Setup, join network and send data
-- [RUI3-AT-OTAA](./examples/RUI3-AT-OTAA) Example to use a WisDuo RAK3172 with AT commands in LoRaWAN OTAA mode. Setup, join network and send data
-- [RUI3-AT-P2P](./examples/RUI3-AT-P2P) Example to use a WisDuo RAK3172 with AT commands in LoRa P2P mode. Setup, enable RX and send data
+- [RUI3-AT-ABP](./examples/RUI3-AT-ABP) ArduinoIDE example to use a WisDuo RAK3172 with AT commands in LoRaWAN ABP mode. Setup, join network and send data
+- [RUI3-AT-OTAA](./examples/RUI3-AT-OTAA) ArduinoIDE example to use a WisDuo RAK3172 with AT commands in LoRaWAN OTAA mode. Setup, join network and send data
+- [RUI3-AT-P2P](./examples/RUI3-AT-P2P) ArduinoIDE example to use a WisDuo RAK3172 with AT commands in LoRa P2P mode. Setup, enable RX and send data
+- [RUI3-AT-ABP-PIO](./examples/RUI3-AT-ABP-PIO) PlatformIO example to use a WisDuo RAK3172 with AT commands in LoRaWAN ABP mode. Setup, join network and send data
+- [RUI3-AT-OTAA-PIO](./examples/RUI3-AT-OTAA-PIO) PlatformIO example to use a WisDuo RAK3172 with AT commands in LoRaWAN OTAA mode. Setup, join network and send data
+- [RUI3-AT-P2P-PIO](./examples/RUI3-AT-P2P-PIO) PlatformIO example to use a WisDuo RAK3172 with AT commands in LoRa P2P mode. Setup, enable RX and send data
 
 ----
 
