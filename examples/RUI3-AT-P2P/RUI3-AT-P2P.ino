@@ -260,7 +260,7 @@ void loop()
 
 		// Set to permanent RX with TX enabled
 		Serial.println("===========================================");
-		Serial.println("Enable continuous RX wit TX enabled");
+		Serial.println("Enable continuous RX with TX enabled");
 		sprintf(com_buff, "AT+PRECV=65533\r\n"); // Want to send AT command
 		wisduo.sendRawCommand(com_buff);
 		wisduo.recvResponse(5000);

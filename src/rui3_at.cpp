@@ -849,7 +849,6 @@ void RUI3::recvRX(uint32_t timeout)
 				if ((ret[ret_index] == '\r') || (ret[ret_index] == '\n'))
 				{
 					// EOL found, break reception
-					digitalWrite(LED_GREEN, LOW);
 					ret_index++;
 					ret[ret_index] = 0x00;
 					cont_while = false;
@@ -873,7 +872,6 @@ void RUI3::recvRX(uint32_t timeout)
 #ifdef DEBUG_MODE
 				_serial.printf("RX found\r\n");
 #endif
-				digitalWrite(LED_GREEN, HIGH);
 				wait_eol = true;
 			}
 
@@ -883,7 +881,6 @@ void RUI3::recvRX(uint32_t timeout)
 #ifdef DEBUG_MODE
 				_serial.printf("P2P RX timeout\r\n");
 #endif
-				digitalWrite(LED_GREEN, LOW);
 				cont_while = false;
 			}
 			delay(20);

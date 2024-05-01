@@ -1,5 +1,8 @@
 # Release Notes
 
+## V0.0.4 remove references to RAKwireless WisBlock modules
+- Remove LED control
+
 ## V0.0.3 optimizations
 - Make initP2P simpler to use
 - Add P2P setter/getter functions
