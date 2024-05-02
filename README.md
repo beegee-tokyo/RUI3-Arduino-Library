@@ -68,8 +68,8 @@ The serial port should already be initialised when initialising this library.
 RUI3(Stream &serial1, Stream &serial);     
 ```     
 ### Parameters:
-@param serial1 Serial for responses from RUI3 module: WisDuo ==> host MCU     
-@param serial Serial for communication with RUI3 module: host MCU ==> debug console
+@param serial1 Serial for communication with RUI3 module: WisDuo <==> host MCU     
+@param serial Serial for debug: host MCU <==> debug console
     
 ### Usage:     
 ```cpp     

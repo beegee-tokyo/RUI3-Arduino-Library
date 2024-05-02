@@ -101,20 +101,20 @@ typedef struct _p2p_settings
 class RUI3
 {
 public:
-	/**    
-	 * @brief Construct a new RUI3 object    
-	 * A simplified constructor taking only a Stream ({Software/Hardware}Serial) object.    
+	/**
+	 * @brief Construct a new RUI3 object
+	 * A simplified constructor taking only a Stream ({Software/Hardware}Serial) object.
 	 * The serial port should already be initialised when initialising this library.
-	 *    
-	 * ```cpp    
-	 * RUI3(Stream &serial1, Stream &serial);    
-	 * ```    
-	 * @param serial1 Serial for responses from RUI3 module: WisDuo ==> host MCU    
-	 * @param serial Serial for communication with RUI3 module: host MCU ==> debug console
-	 *    
-	 * @par Usage    
-	 * @code    
-	 * RUI3 wisduo(Serial1, Serial);    
+	 *
+	 * ```cpp
+	 * RUI3(Stream &serial1, Stream &serial);
+	 * ```
+	 * @param serial1 Serial for communication with RUI3 module: WisDuo <==> host MCU
+	 * @param serial Serial for debug: host MCU <==> debug console
+	 *
+	 * @par Usage
+	 * @code
+	 * RUI3 wisduo(Serial1, Serial);
 	 * @endcode
 	 */
 	RUI3(Stream &serial1, Stream &serial);
