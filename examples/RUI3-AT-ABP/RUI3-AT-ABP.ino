@@ -47,10 +47,12 @@ char d_array[34] = "000102030405060708090A0B0C0D0E0F";
 
 void setup()
 {
-	pinMode(LED_GREEN, OUTPUT);
-	digitalWrite(LED_GREEN, HIGH);
-	pinMode(WB_IO2, OUTPUT);
-	digitalWrite(WB_IO2, LOW);
+	pinMode(LED_BUILTIN, OUTPUT);
+	digitalWrite(LED_BUILTIN, HIGH);
+
+	// Only required for WisBlock RAK11200 and RAK4631
+	// pinMode(WB_IO2, OUTPUT);
+	// digitalWrite(WB_IO2, LOW);
 
 	Serial.begin(115200);
 	Serial1.begin(115200);
@@ -64,21 +66,22 @@ void setup()
 		if ((millis() - serial_timeout) < 5000)
 		{
 			delay(100);
-			digitalWrite(LED_GREEN, !digitalRead(LED_GREEN));
+			digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 		}
 		else
 		{
 			break;
 		}
 	}
-	digitalWrite(LED_GREEN, LOW);
+	digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop()
 {
 	if (continuous_loop)
 	{
-		digitalWrite(WB_IO2, HIGH);
+		// Only required for WisBlock RAK11200 and RAK4631
+		// digitalWrite(WB_IO2, HIGH);
 
 		Serial.println("===========================================");
 		Serial.println("Starting loop-through - exit with 'ESC' key");
@@ -158,7 +161,7 @@ void loop()
 			Serial.printf("Response: %s\r\n", wisduo.ret);
 		}
 
-		if (!wisduo.getJoinStatus())
+		// if (!wisduo.getJoinStatus())
 		{
 			// Check current work mode
 			if (wisduo.getWorkingMode() == LoRaWAN)
@@ -380,7 +383,7 @@ void loop()
 			{
 				Serial.println("ABP mode set already");
 			}
-			else
+			// else
 			{
 				Serial.println("===========================================");
 				Serial.println("Set Join Mode");
@@ -481,10 +484,10 @@ void loop()
 				}
 			}
 		}
-		else
-		{
-			Serial.println("Network already joined");
-		}
+		// else
+		// {
+		// 	Serial.println("Network already joined");
+		// }
 
 		Serial.println("===========================================");
 		Serial.println("Set LPM");

@@ -1,5 +1,9 @@
 # Release Notes
 
+## V0.0.5 update examples
+- Remove references to RAKwireless WisBlock modules from the examples
+- add Adafruit ESP32 Feather to PIO examples
+
 ## V0.0.4 remove references to RAKwireless WisBlock modules
 - Remove LED control
 

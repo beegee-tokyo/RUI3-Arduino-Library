@@ -83,7 +83,7 @@ void usb_rx_cb(void)
 void periodic_wakeup(void)
 {
 	// Switch on LED to show we are awake
-	digitalWrite(LED_GREEN, HIGH);
+	digitalWrite(LED_BUILTIN, HIGH);
 	g_task_event_type |= STATUS;
 	if (g_task_sem != NULL)
 	{
@@ -100,10 +100,12 @@ void setup()
 	WiFi.disconnect();
 	WiFi.mode(WIFI_OFF);
 
-	pinMode(LED_GREEN, OUTPUT);
-	digitalWrite(LED_GREEN, HIGH);
-	pinMode(WB_IO2, OUTPUT);
-	digitalWrite(WB_IO2, HIGH);
+	pinMode(LED_BUILTIN, OUTPUT);
+	digitalWrite(LED_BUILTIN, HIGH);
+
+	// Only for WisBlock
+	// pinMode(WB_IO2, OUTPUT);
+	// digitalWrite(WB_IO2, HIGH);
 
 	Serial.begin(115200);
 	Serial1.begin(115200);
@@ -115,14 +117,14 @@ void setup()
 		if ((millis() - serial_timeout) < 5000)
 		{
 			delay(100);
-			digitalWrite(LED_GREEN, !digitalRead(LED_GREEN));
+			digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 		}
 		else
 		{
 			break;
 		}
 	}
-	digitalWrite(LED_GREEN, LOW);
+	digitalWrite(LED_BUILTIN, LOW);
 
 	// Create the task event semaphore
 	g_task_sem = xSemaphoreCreateBinary();
@@ -222,7 +224,7 @@ void loop()
 	// Wait until semaphore is released (FreeRTOS)
 	xSemaphoreTake(g_task_sem, portMAX_DELAY);
 	// Switch on green LED to show we are awake
-	digitalWrite(LED_GREEN, HIGH);
+	digitalWrite(LED_BUILTIN, HIGH);
 	do
 	{
 		// Serial1 input event
@@ -234,7 +236,7 @@ void loop()
 			if (strstr(wisduo.ret, "+EVT:RX") != NULL)
 			{
 				// Switch on blue LED to show we are receiving
-				digitalWrite(LED_BLUE, HIGH);
+				digitalWrite(LED_BUILTIN, HIGH);
 				int rx_rssi = 0;
 				int rx_snr = 0;
 				uint8_t rx_data[512] = {0};
@@ -296,7 +298,7 @@ void loop()
 					Serial.printf("%s\r\n", wisduo.ret);
 				}
 				// Switch off blue LED to show we are finished parsing RX data
-				digitalWrite(LED_BLUE, LOW);
+				digitalWrite(LED_BUILTIN, LOW);
 			}
 			else
 			{
@@ -362,10 +364,10 @@ void loop()
 		}
 
 
-		digitalWrite(LED_GREEN, !digitalRead(LED_GREEN));
+		digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 	} while (g_task_event_type != NO_EVENT);
 
 	// Switch off green LED to show we are sleeping
-	digitalWrite(LED_GREEN, LOW);
+	digitalWrite(LED_BUILTIN, LOW);
 	delay(100);
 }

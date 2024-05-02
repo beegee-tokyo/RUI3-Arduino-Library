@@ -351,7 +351,7 @@ uint8_t RUI3::getLPMLevel(void)
 	}
 	else if (strstr(ret, "AT+LPMLVL=2") != NULL)
 	{
-		return LPM_LVL_1;
+		return LPM_LVL_2;
 	}
 	return NO_RESPONSE;
 }
