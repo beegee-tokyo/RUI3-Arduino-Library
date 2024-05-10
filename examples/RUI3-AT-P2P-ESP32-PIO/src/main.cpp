@@ -22,7 +22,7 @@
 #define N_AT_CMD 0b1111111111111101
 
 /** Communication instance for RAK3172 */
-RUI3 wisduo(Serial1, Serial);
+RUI3 wisduo(Serial1);
 
 /** Semaphore used by events to wake up loop task */
 SemaphoreHandle_t g_task_sem = NULL;
@@ -103,9 +103,11 @@ void setup()
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, HIGH);
 
+#ifdef USE_WB_IO2
 	// Only for WisBlock
-	// pinMode(WB_IO2, OUTPUT);
-	// digitalWrite(WB_IO2, HIGH);
+	pinMode(WB_IO2, OUTPUT);
+	digitalWrite(WB_IO2, HIGH);
+#endif
 
 	Serial.begin(115200);
 	Serial1.begin(115200);
@@ -140,6 +142,7 @@ void setup()
 	if (wisduo.getWorkingMode() == LoRaP2P)
 	{
 		Serial.println("LoRa P2P mode set already");
+		Serial.printf(">> %s <<\r\n", wisduo.ret);
 	}
 	else
 	{
@@ -173,6 +176,7 @@ void setup()
 	else
 	{
 		Serial.printf("P2P setup done\r\n");
+		Serial.printf(">> %s <<\r\n", wisduo.ret);
 	}
 
 	Serial.println("===========================================");
@@ -323,6 +327,7 @@ void loop()
 				if (wisduo.recvResponse(60000))
 				{
 					Serial.printf("TX success\r\n");
+					Serial.printf("<< %s\r\n", wisduo.ret);
 					send_counter++;
 				}
 				else
@@ -336,33 +341,42 @@ void loop()
 				Serial.printf("Response: %s\r\n", wisduo.ret);
 			}
 
-			sprintf(com_buff, "AT+PRECV=0\r\n"); // Want to send AT command
+			// Check if we are in RX mode
+			sprintf(com_buff, "AT+PRECV=?\r\n"); // Want to send AT command
 			wisduo.sendRawCommand(com_buff);
 			wisduo.recvResponse(5000);
-			if (strstr(wisduo.ret, "OK") != NULL)
+			if (strstr(wisduo.ret, "P2P_RX_ON") != NULL)
 			{
-				Serial.printf("P2P RX stopped\r\n");
+				Serial.printf("P2P RX still active\r\n");
 			}
 			else
 			{
-				Serial.printf("Response:\r\n>>>\r\n%s\r\n<<<\r\n", wisduo.ret);
+				sprintf(com_buff, "AT+PRECV=0\r\n"); // Want to send AT command
+				wisduo.sendRawCommand(com_buff);
+				wisduo.recvResponse(5000);
+				if (strstr(wisduo.ret, "OK") != NULL)
+				{
+					Serial.printf("P2P RX stopped\r\n");
+				}
+				else
+				{
+					Serial.printf("Response:\r\n>>>\r\n%s\r\n<<<\r\n", wisduo.ret);
+				}
+				sprintf(com_buff, "AT+PRECV=65533\r\n"); // Want to send AT command
+				wisduo.sendRawCommand(com_buff);
+				wisduo.recvResponse(5000);
+				if (strstr(wisduo.ret, "OK") != NULL)
+				{
+					Serial.printf("P2P RX started\r\n");
+				}
+				else
+				{
+					Serial.printf("Response:\r\n>>>\r\n%s\r\n<<<\r\n", wisduo.ret);
+				}
 			}
-			sprintf(com_buff, "AT+PRECV=65533\r\n"); // Want to send AT command
-			wisduo.sendRawCommand(com_buff);
-			wisduo.recvResponse(5000);
-			if (strstr(wisduo.ret, "OK") != NULL)
-			{
-				Serial.printf("P2P RX started\r\n");
-			}
-			else
-			{
-				Serial.printf("Response:\r\n>>>\r\n%s\r\n<<<\r\n", wisduo.ret);
-			}
-
 			// Clear eventual events coming from the UART callback
 			g_task_event_type = NO_EVENT;
 		}
-
 
 		digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 	} while (g_task_event_type != NO_EVENT);

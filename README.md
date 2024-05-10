@@ -63,17 +63,18 @@ The library provides a RUI3 class, which allows communication with RUI3 based Wi
 ## Construct a new RUI3 object     
 A simplified constructor taking only a Stream ({Software/Hardware}Serial) object.     
 The serial port should already be initialised when initialising this library.
-    
+Serial is used for debug output: host MCU <==> debug console
+
 ```cpp     
-RUI3(Stream &serial1, Stream &serial);     
+RUI3(Stream &serial1, Stream &serial = Serial);     
 ```     
 ### Parameters:
 @param serial1 Serial for communication with RUI3 module: WisDuo <==> host MCU     
-@param serial Serial for debug: host MCU <==> debug console
+@param serial Serial for debug: host MCU <==> debug console -- Defaults to Serial
     
 ### Usage:     
 ```cpp     
-RUI3 wisduo(Serial1, Serial);     
+RUI3 wisduo(Serial1);     
 ```
 	 
      

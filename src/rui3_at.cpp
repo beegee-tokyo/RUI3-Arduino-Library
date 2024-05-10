@@ -40,9 +40,7 @@ bool RUI3::getJoinStatus(void)
 	snprintf(command, 1024, "at+njs=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("NJS", "<< %s", ret);
 	if (strstr(ret, "AT+NJS=1") != NULL)
 	{
 		return true;
@@ -55,9 +53,7 @@ String RUI3::getChannelList()
 	snprintf(command, 1024, "at+mask=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("MASK", "<< %s", ret);
 	String result = String(ret);
 	result.trim();
 	return result;
@@ -72,9 +68,7 @@ bool RUI3::setDataRate(int rate)
 	snprintf(command, 1024, "at+dr=%d\r\n", rate);
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("dr", "<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -90,9 +84,7 @@ uint8_t RUI3::getDataRate(void)
 	snprintf(command, 1024, "at+dr=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("dr?", "<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -119,15 +111,13 @@ bool RUI3::setClass(int classMode)
 		snprintf(command, 1024, "at+class=c\r\n");
 		break;
 	default:
-		_serial.println("Parameter error");
+		MYLOG("class", "Parameter error");
 		return false;
 		break;
 	}
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("class","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -143,9 +133,7 @@ uint8_t RUI3::getClass(void)
 	snprintf(command, 1024, "at+class=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("class?","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -172,7 +160,7 @@ bool RUI3::setRegion(int region)
 {
 	if (region > 12)
 	{
-		_serial.println("Parameter error");
+		MYLOG("band","Parameter error");
 		return false;
 	}
 #if defined DEBUG_MODE
@@ -219,14 +207,12 @@ bool RUI3::setRegion(int region)
 		REGION = "LA915";
 		break;
 	}
-	_serial.println("Requested work region: " + REGION);
+	Serial.println("Requested work region: " + REGION);
 #endif
 	snprintf(command, 1024, "at+band=%d\r\n", region);
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("band","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -242,9 +228,7 @@ uint8_t RUI3::getRegion(void)
 	snprintf(command, 1024, "at+band=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("band?","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -257,12 +241,12 @@ uint8_t RUI3::getRegion(void)
 	return NO_RESPONSE;
 }
 
-void RUI3::sleep(int mode)
+bool RUI3::sleep(int mode)
 {
 	if (mode < 0)
 	{
-		_serial.println("Parameter error");
-		return;
+		MYLOG("sleep","Parameter error");
+		return false;
 	}
 	if (mode == 0)
 	{
@@ -273,21 +257,20 @@ void RUI3::sleep(int mode)
 		snprintf(command, 1024, "at+sleep=%d\r\n", mode);
 	}
 	sendRawCommand(command);
+	return true;
 }
 
 bool RUI3::setLPM(int mode)
 {
 	if (mode > 1)
 	{
-		_serial.println("Parameter error");
+		MYLOG("lpm","Parameter error");
 		return false;
 	}
 	snprintf(command, 1024, "at+lpm=%d\r\n", mode);
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("lpm","<< %s", ret);
 	if ((strstr(ret, "Initialization OK") != NULL) || (strstr(ret, "OK") != NULL))
 	{
 		return true;
@@ -301,9 +284,7 @@ uint8_t RUI3::getLPM(void)
 	snprintf(command, 1024, "at+lpm=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("lpm?","<< %s", ret);
 	if (strstr(ret, "AT+LPM=1") != NULL)
 	{
 		return LPM_ON;
@@ -319,16 +300,14 @@ bool RUI3::setLPMLevel(int mode)
 {
 	if ((mode > 2) || mode == 0)
 	{
-		_serial.println("Parameter error");
+		MYLOG("lpmlvl","Parameter error");
 		return false;
 	}
 	snprintf(command, 1024, "at+lpmlvl=%d\r\n", mode);
 	sendRawCommand(command);
 
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("lpmlvl","<< %s", ret);
 	if ((strstr(ret, "Initialization OK") != NULL) || (strstr(ret, "OK") != NULL))
 	{
 		return true;
@@ -342,9 +321,7 @@ uint8_t RUI3::getLPMLevel(void)
 	snprintf(command, 1024, "at+lpmlvl=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("lpmlvl?","<< %s", ret);
 	if (strstr(ret, "AT+LPMLVL=1") != NULL)
 	{
 		return LPM_LVL_1;
@@ -379,9 +356,7 @@ bool RUI3::setWorkingMode(int mode)
 	}
 
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("nwm","<< %s", ret);
 	if ((strstr(ret, "Initialization OK") != NULL) || (strstr(ret, "OK") != NULL))
 	{
 		return true;
@@ -395,9 +370,7 @@ uint8_t RUI3::getWorkingMode(void)
 	snprintf(command, 1024, "at+nwm=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("nwm?","<< %s", ret);
 	if (strstr(ret, "AT+NWM=1") != NULL)
 	{
 		return LoRaWAN;
@@ -422,9 +395,7 @@ bool RUI3::setJoinMode(int mode)
 		return false;
 	}
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("njm","<< %s", ret);
 
 	if (strstr(ret, "OK") != NULL)
 	{
@@ -441,9 +412,7 @@ uint8_t RUI3::getJoinMode(void)
 	snprintf(command, 1024, "at+njm=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("njm?","<< %s", ret);
 	if (strstr(ret, "AT+NJM=1") != NULL)
 	{
 		return OTAA;
@@ -456,9 +425,7 @@ bool RUI3::joinLoRaNetwork(int timeout)
 	snprintf(command, 1024, "at+join\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("join","<< %s", ret);
 
 	if (strstr(ret, "OK") != NULL)
 	{
@@ -476,7 +443,7 @@ bool RUI3::initOTAA(String devEUI, String appEUI, String appKEY)
 	}
 	else
 	{
-		_serial.println("The parameter devEUI is set incorrectly!");
+		MYLOG("otaa","The parameter devEUI is set incorrectly!");
 		return false;
 	}
 	if (appEUI.length() == 16)
@@ -485,7 +452,7 @@ bool RUI3::initOTAA(String devEUI, String appEUI, String appKEY)
 	}
 	else
 	{
-		_serial.println("The parameter appEUI is set incorrectly!");
+		MYLOG("otaa", "The parameter appEUI is set incorrectly!");
 		return false;
 	}
 	if (appKEY.length() == 32)
@@ -494,34 +461,28 @@ bool RUI3::initOTAA(String devEUI, String appEUI, String appKEY)
 	}
 	else
 	{
-		_serial.println("The parameter appKEY is set incorrectly!");
+		MYLOG("otaa", "The parameter appKEY is set incorrectly!");
 		return false;
 	}
 
 	snprintf(command, 1024, "at+deveui=%s\r\n", _devEUI.c_str());
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("otaa","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		snprintf(command, 1024, "at+appeui=%s\r\n", _devEUI.c_str());
 		sendRawCommand(command);
 
 		recvResponse();
-#if defined DEBUG_MODE
-		_serial.printf(">> %s\r\n", ret);
-#endif
+		MYLOG("otaa","<< %s", ret);
 		if (strstr(ret, "OK") != NULL)
 		{
 			snprintf(command, 1024, "at+appkey=%s\r\n", _appKEY.c_str());
 			sendRawCommand(command);
 
 			recvResponse();
-#if defined DEBUG_MODE
-			_serial.printf(">> %s\r\n", ret);
-#endif
+			MYLOG("otaa","<< %s", ret);
 			if (strstr(ret, "OK") != NULL)
 			{
 				return true;
@@ -541,9 +502,7 @@ bool RUI3::getDevEUI(char *eui, uint16_t array_len)
 	snprintf(command, 1024, "at+deveui=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("deveui?","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -562,9 +521,7 @@ bool RUI3::getAppEUI(char *eui, uint16_t array_len)
 	snprintf(command, 1024, "at+appeui=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("appeui?","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -583,9 +540,7 @@ bool RUI3::getAppKey(char *key, uint16_t array_len)
 	snprintf(command, 1024, "at+appkey=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("appkey?","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -602,7 +557,7 @@ bool RUI3::initABP(String devADDR, String nwksKEY, String appsKEY)
 	}
 	else
 	{
-		_serial.println("The parameter devADDR is set incorrectly!");
+		MYLOG("abp","The parameter devADDR is set incorrectly!");
 		return false;
 	}
 	if (nwksKEY.length() == 32)
@@ -611,7 +566,7 @@ bool RUI3::initABP(String devADDR, String nwksKEY, String appsKEY)
 	}
 	else
 	{
-		_serial.println("The parameter nwksKEY is set incorrectly!");
+		MYLOG("abp","The parameter nwksKEY is set incorrectly!");
 		return false;
 	}
 	if (appsKEY.length() == 32)
@@ -620,31 +575,25 @@ bool RUI3::initABP(String devADDR, String nwksKEY, String appsKEY)
 	}
 	else
 	{
-		_serial.println("The parameter appsKEY is set incorrectly!");
+		MYLOG("abp","The parameter appsKEY is set incorrectly!");
 		return false;
 	}
 	snprintf(command, 1024, "at+devaddr=%s\r\n", _devADDR.c_str());
 	sendRawCommand(command);
 	recvResponse();
-#ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("abp","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		snprintf(command, 1024, "at+nwkskey=%s\r\n", _nwksKEY.c_str());
 		sendRawCommand(command);
 		recvResponse();
-#if defined DEBUG_MODE
-		_serial.printf(">> %s\r\n", ret);
-#endif
+		MYLOG("abp","<< %s", ret);
 		if (strstr(ret, "OK") != NULL)
 		{
 			snprintf(command, 1024, "at+appskey=%s\r\n", _appsKEY.c_str());
 			sendRawCommand(command);
 			recvResponse();
-#if defined DEBUG_MODE
-			_serial.printf(">> %s\r\n", ret);
-#endif
+			MYLOG("abp","<< %s", ret);
 			if (strstr(ret, "OK") != NULL)
 			{
 				return true;
@@ -659,9 +608,7 @@ uint32_t RUI3::getDevAddress(void)
 	snprintf(command, 1024, "at+devaddr=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("devaddr?","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -680,9 +627,7 @@ bool RUI3::getAppsKey(char *key, uint16_t array_len)
 	snprintf(command, 1024, "at+appskey=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("appskey?","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -700,9 +645,7 @@ bool RUI3::getNwsKey(char *key, uint16_t array_len)
 	snprintf(command, 1024, "at+nwkskey=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("nwkskey","<< %s", ret);
 	char *str_ptr = strstr(ret, "=");
 	if (str_ptr != NULL)
 	{
@@ -722,15 +665,12 @@ bool RUI3::setConfirmed(int type)
 	case 1:
 		snprintf(command, 1024, "at+cfm=1\r\n");
 		sendRawCommand(command);
-
 		break;
 	default:
 		return false;
 	}
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("cfm","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -746,9 +686,7 @@ uint8_t RUI3::getConfirmed(void)
 	snprintf(command, 1024, "at+cfm=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("cfm?","<< %s", ret);
 	if (strstr(ret, "AT+CFM=1") != NULL)
 	{
 		return CONF;
@@ -762,9 +700,7 @@ bool RUI3::sendData(int port, char *datahex)
 	sendRawCommand(command);
 
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("send","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -816,9 +752,7 @@ bool RUI3::recvResponse(uint32_t timeout)
 		}
 		delay(20);
 	}
-#ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("rcv+resp","<< %s", ret);
 
 	if (!rx_ok)
 	{
@@ -858,9 +792,7 @@ void RUI3::recvRX(uint32_t timeout)
 			ret_index++;
 			if (ret_index > 1024)
 			{
-#ifdef DEBUG_MODE
-				_serial.printf("Buffer overflow\r\n");
-#endif
+				MYLOG("recv_rx","Buffer overflow");
 				cont_while = false;
 			}
 			ret[ret_index] = 0x00;
@@ -869,18 +801,14 @@ void RUI3::recvRX(uint32_t timeout)
 			if ((strstr(ret, "+EVT:RX") != NULL) && !wait_eol)
 			{
 				// RX detected, wait for next \r\n
-#ifdef DEBUG_MODE
-				_serial.printf("RX found\r\n");
-#endif
+				MYLOG("recv_rx","RX found");
 				wait_eol = true;
 			}
 
 			if (strstr(ret, "+EVT:RXP2P_RECEIVE_TIMEOUT") != NULL)
 			{
 				// P2P RX timeout
-#ifdef DEBUG_MODE
-				_serial.printf("P2P RX timeout\r\n");
-#endif
+				MYLOG("recv_rx","P2P RX timeout");
 				cont_while = false;
 			}
 			delay(20);
@@ -907,9 +835,7 @@ void RUI3::recvRX(uint32_t timeout)
 			}
 		}
 	}
-#ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("recv_rx","<< %s", ret);
 
 	if (!rx_ok)
 	{
@@ -956,14 +882,9 @@ void RUI3::flushRX(uint32_t timeout)
 bool RUI3::initP2P(p2p_settings *p2p_settings)
 {
 	snprintf(command, 1024, "at+p2p=%ld:%d:%d:%d:%d:%d\r\n", p2p_settings->freq, p2p_settings->sf, p2p_settings->bw, p2p_settings->cr, p2p_settings->ppl, p2p_settings->txp);
-#ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", command);
-#endif
 	sendRawCommand(command);
 	recvResponse();
-#ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("p2p","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -981,9 +902,7 @@ bool RUI3::getP2P(p2p_settings *p2p_settings)
 	snprintf(command, 1024, "at+p2p=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("p2p?","<< %s", ret);
 	char *data_buff = strstr(ret, "AT+P2P=");
 	if (data_buff != NULL)
 	{
@@ -1036,14 +955,9 @@ bool RUI3::getP2P(p2p_settings *p2p_settings)
 bool RUI3::sendP2PData(char *datahex)
 {
 	snprintf(command, 1024, "at+psend=%s\r\n", datahex);
-	// #ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", command);
-	// #endif
 	sendRawCommand(command);
 	recvResponse();
-	// #ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-	// #endif
+	MYLOG("psend","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -1066,9 +980,7 @@ bool RUI3::setP2PCAD(bool enable)
 	}
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("cad","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
 		return true;
@@ -1084,9 +996,7 @@ bool RUI3::getP2PCAD(void)
 	snprintf(command, 1024, "at+cad=?\r\n");
 	sendRawCommand(command);
 	recvResponse();
-#if defined DEBUG_MODE
-	_serial.printf(">> %s\r\n", ret);
-#endif
+	MYLOG("cad?","<< %s", ret);
 	if (strstr(ret, "AT+CAD=1") != NULL)
 	{
 		return true;
@@ -1108,9 +1018,8 @@ bool RUI3::sendRawCommand(char *cmd)
 	_serial1.print("\r\n");
 	flushRX(1000);
 
-#ifdef DEBUG_MODE
-	_serial.printf(">> %s\r\n", cmd);
-#endif
+	MYLOG("raw",">> %s", cmd);
+
 	_serial1.print(cmd);
 	_serial1.flush();
 	delay(50);

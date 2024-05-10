@@ -17,7 +17,8 @@
 
 #include <rui3_at.h> // Click to install library: http://librarymanager/All#RUI3-Arduino-Library
 
-RUI3 wisduo(Serial1, Serial);
+// RUI3 wisduo(Serial1, Serial);
+RUI3 wisduo(Serial1);
 
 /** Device Address --- REPLACE WITH YOUR OWN DEVICE ADDRESS */
 String DevAddr = "01360085";

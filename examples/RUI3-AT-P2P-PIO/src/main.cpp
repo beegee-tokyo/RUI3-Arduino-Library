@@ -15,7 +15,7 @@
 
 #include <rui3_at.h> // Click to install library: http://librarymanager/All#RUI3-Arduino-Library
 
-RUI3 wisduo(Serial1, Serial);
+RUI3 wisduo(Serial1);
 
 /** P2P Frequency */
 #define P2P_FREQ 916100000

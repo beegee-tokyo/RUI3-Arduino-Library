@@ -17,7 +17,7 @@
 
 #include <rui3_at.h> // Click to install library: http://librarymanager/All#RUI3-Arduino-Library
 
-RUI3 wisduo(Serial1, Serial);
+RUI3 wisduo(Serial1);
 
 /** Device EUI --- REPLACE WITH YOUR OWN DEVICE EUI */
 String DevEUI = "AC1F09FFFE000000";
@@ -50,15 +50,14 @@ void setup()
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, HIGH);
 
+#ifdef USE_WB_IO2
 	// Only needed for WisBlock RAK11200 and RAK4631
-	// pinMode(WB_IO2, OUTPUT);
-	// digitalWrite(WB_IO2, LOW);
+	pinMode(WB_IO2, OUTPUT);
+	digitalWrite(WB_IO2, LOW);
+#endif
 
 	Serial.begin(115200);
 	Serial1.begin(115200);
-
-	// Serial.setTimeout(5000);
-	// Serial1.setTimeout(30000);
 
 	time_t serial_timeout = millis();
 	while (!Serial)
@@ -80,8 +79,10 @@ void loop()
 {
 	if (continuous_loop)
 	{
+#ifdef USE_WB_IO2
 		// Only needed for WisBlock RAK11200 and RAK4631
-		// digitalWrite(WB_IO2, HIGH);
+		digitalWrite(WB_IO2, HIGH);
+#endif
 
 		Serial.println("===========================================");
 		Serial.println("Starting loop-through - exit with 'ESC' key");
@@ -284,6 +285,18 @@ void loop()
 					Serial.printf("%02X", eui_key[idx]);
 				}
 				Serial.println("\r\n");
+
+				// Use device DevEUI to join
+				if (!wisduo.byteArrayToAscii(eui_key, buffer, 8, 16))
+				{
+					Serial.print("Error converting DevEUI to string");
+				}
+				else
+				{
+					DevEUI = String(buffer);
+					Serial.print("DevEUI as String: ");
+					Serial.println(DevEUI);
+				}
 			}
 			else
 			{
@@ -301,6 +314,18 @@ void loop()
 					Serial.printf("%02X", eui_key[idx]);
 				}
 				Serial.println("\r\n");
+
+				// Use device AppEUI to join
+				if (!wisduo.byteArrayToAscii(eui_key, buffer, 8, 16))
+				{
+					Serial.print("Error converting AppEUI to string");
+				}
+				else
+				{
+					AppEUI = String(buffer);
+					Serial.print("AppEUI as String: ");
+					Serial.println(AppEUI);
+				}
 			}
 			else
 			{
@@ -318,6 +343,18 @@ void loop()
 					Serial.printf("%02X", eui_key[idx]);
 				}
 				Serial.println("\r\n");
+
+				// Use device AppKey to join
+				if (!wisduo.byteArrayToAscii(eui_key, buffer, 16, 32))
+				{
+					Serial.print("Error converting AppKey to string");
+				}
+				else
+				{
+					AppKey = String(buffer);
+					Serial.print("AppKey as String: ");
+					Serial.println(AppKey);
+				}
 			}
 			else
 			{
@@ -393,14 +430,14 @@ void loop()
 					{
 						Serial.println("===========================================");
 						Serial.println("Set LoRaWAN credentials");
-						// if (wisduo.initOTAA(DevEUI, AppEUI, AppKey))
+						if (wisduo.initOTAA(DevEUI, AppEUI, AppKey))
 						{
 							Serial.println("RUI3 init OK!");
 						}
-						// else
-						// {
-						// 	init_success = false;
-						// }
+						else
+						{
+							init_success = false;
+						}
 					}
 					else
 					{

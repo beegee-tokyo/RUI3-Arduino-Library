@@ -71,6 +71,25 @@
 #define MAX_CMD_LEN (32)
 #define MAX_ARGUMENT 25
 
+// Debug output set to 0 to disable app debug output
+#ifndef DEBUG_MODE
+#define DEBUG_MODE 0
+#endif
+
+#if DEBUG_MODE > 0
+#define MYLOG(tag, ...)                  \
+	do                                   \
+	{                                    \
+		if (tag)                         \
+			Serial.printf("[%s] ", tag); \
+		Serial.printf(__VA_ARGS__);      \
+		Serial.printf("\n");             \
+		Serial.flush();                  \
+	} while (0)
+#else
+#define MYLOG(...)
+#endif
+
 /** Structure for parsed received string */
 typedef struct _stParam
 {
@@ -105,37 +124,38 @@ public:
 	 * @brief Construct a new RUI3 object
 	 * A simplified constructor taking only a Stream ({Software/Hardware}Serial) object.
 	 * The serial port should already be initialised when initialising this library.
+	 * Serial is used for debug output: host MCU <==> debug console
 	 *
 	 * ```cpp
 	 * RUI3(Stream &serial1, Stream &serial);
 	 * ```
 	 * @param serial1 Serial for communication with RUI3 module: WisDuo <==> host MCU
-	 * @param serial Serial for debug: host MCU <==> debug console
+	 * @param serial Serial for debug: host MCU <==> debug console -- Defaults to Serial
 	 *
 	 * @par Usage
 	 * @code
 	 * RUI3 wisduo(Serial1, Serial);
 	 * @endcode
 	 */
-	RUI3(Stream &serial1, Stream &serial);
+	RUI3(Stream &serial1, Stream &serial = Serial);
 
-	/**    
-	 * @brief Enable/Disable Low power mode    
+	/**
+	 * @brief Enable/Disable Low power mode
 	 * See [AT+LPM](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpm)
-	 *    
-	 * ```cpp    
-	 * bool setLPM(int mode);    
-	 * ```    
-	 * @param mode 0 = LPM off, 1 = LPM on    
-	 * @return true Success    
+	 *
+	 * ```cpp
+	 * bool setLPM(int mode);
+	 * ```
+	 * @param mode 0 = LPM off, 1 = LPM on
+	 * @return true Success
 	 * @return false No response or error response
-	 *    
-	 * @par Usage    
-	 * @code    
-	 * if (!wisduo.setLPM(LPM_ON)) // set device LPM on    
-	 * {    
-	 * 		Serial.println("Error setting LPM mode.");    
-	 * }    
+	 *
+	 * @par Usage
+	 * @code
+	 * if (!wisduo.setLPM(LPM_ON)) // set device LPM on
+	 * {
+	 * 		Serial.println("Error setting LPM mode.");
+	 * }
 	 * @endcode
 	 */
 	bool setLPM(int mode);
@@ -1108,23 +1128,25 @@ public:
 	 */
 	void flushRX(uint32_t timeout = 5000);
 
-	/**    
-	 * @brief Set the module in sleep mode. not required if low power mode is enabled)    
-	 * When the module is in sleep mode, the host can send any character to wake it up.    
-	 * When the module is awakened, the event response will automatically return through the serial information.    
+	/**
+	 * @brief Set the module in sleep mode. not required if low power mode is enabled)
+	 * When the module is in sleep mode, the host can send any character to wake it up.
+	 * When the module is awakened, the event response will automatically return through the serial information.
 	 * See [AT+SLEEP](https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-sleep)
-	 *    
-	 * ```cpp    
-	 * void sleep(int mode);    
-	 * ```    
+	 *
+	 * ```cpp
+	 * void sleep(int mode);
+	 * ```
 	 * @param mode 0 == sleep until new commands is received, > 1 sleep time in milliseconds
-	 *    
-	 * @par Usage    
-	 * @code    
-	 * wisduo.sleep(60000); // force sleep mode for 1 minute    
+	 * @return true Success
+	 * @return false No response or error response
+	 *
+	 * @par Usage
+	 * @code
+	 * wisduo.sleep(60000); // force sleep mode for 1 minute
 	 * @endcode
 	 */
-	void sleep(int mode);
+	bool sleep(int mode);
 
 	/**    
 	 * @brief Reset the RUI3 module    

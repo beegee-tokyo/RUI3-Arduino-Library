@@ -1,2 +1,3 @@
 **/.vscode
+**/build
 examples/RUI3-AT-P2P-ESP32-SLEEP-PIO

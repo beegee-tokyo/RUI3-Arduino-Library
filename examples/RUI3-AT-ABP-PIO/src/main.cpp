@@ -17,7 +17,7 @@
 
 #include <rui3_at.h> // Click to install library: http://librarymanager/All#RUI3-Arduino-Library
 
-RUI3 wisduo(Serial1, Serial);
+RUI3 wisduo(Serial1);
 
 /** Device Address --- REPLACE WITH YOUR OWN DEVICE ADDRESS */
 String DevAddr = "01360085";
@@ -50,9 +50,11 @@ void setup()
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, HIGH);
 
+#ifdef USE_WB_IO2
 	// Only required for WisBlock RAK11200 and RAK4631
-	// pinMode(WB_IO2, OUTPUT);
-	// digitalWrite(WB_IO2, LOW);
+	pinMode(WB_IO2, OUTPUT);
+	digitalWrite(WB_IO2, LOW);
+#endif
 
 	Serial.begin(115200);
 	Serial1.begin(115200);
@@ -80,9 +82,10 @@ void loop()
 {
 	if (continuous_loop)
 	{
+#ifdef USE_WB_IO2
 		// Only required for WisBlock RAK11200 and RAK4631
-		// digitalWrite(WB_IO2, HIGH);
-
+		digitalWrite(WB_IO2, HIGH);
+#endif
 		Serial.println("===========================================");
 		Serial.println("Starting loop-through - exit with 'ESC' key");
 		Serial.println("===========================================");
@@ -161,333 +164,366 @@ void loop()
 			Serial.printf("Response: %s\r\n", wisduo.ret);
 		}
 
-		// if (!wisduo.getJoinStatus())
+		// Check current work mode
+		if (wisduo.getWorkingMode() == LoRaWAN)
 		{
-			// Check current work mode
-			if (wisduo.getWorkingMode() == LoRaWAN)
+			Serial.println("LORAWAN mode set already");
+		}
+		else
+		{
+			Serial.println("Try to set work mode.");
+			if (!wisduo.setWorkingMode(LoRaWAN)) // set WisNode work_mode to LoRaWAN.
 			{
-				Serial.println("LORAWAN mode set already");
-			}
-			else
-			{
-				Serial.println("Try to set work mode.");
-				if (!wisduo.setWorkingMode(LoRaWAN)) // set WisNode work_mode to LoRaWAN.
+				Serial.println("set work_mode failed, please reset module.");
+				while (1)
 				{
-					Serial.println("set work_mode failed, please reset module.");
-					while (1)
-					{
-						delay(1000);
-					};
-				}
-				// Module might reset after changing network mode
-				// Flush RX buffer
-				wisduo.recvResponse(5000);
+					delay(1000);
+				};
 			}
+			// Module might reset after changing network mode
+			// Flush RX buffer
+			wisduo.recvResponse(5000);
+		}
 
-			Serial.println("===========================================");
-			Serial.println("Get LoRaWAN class");
-			uint8_t q_result = wisduo.getClass();
-			if (q_result != NO_RESPONSE)
+		Serial.println("===========================================");
+		Serial.println("Get LoRaWAN class");
+		uint8_t q_result = wisduo.getClass();
+		if (q_result != NO_RESPONSE)
+		{
+			Serial.printf("Class %d (0=A, 1=B, 2=C)\r\n", q_result);
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Get LoRaWAN region");
+		q_result = wisduo.getRegion();
+		if (q_result != NO_RESPONSE)
+		{
+
+			Serial.printf("Region %d\r\n", q_result);
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Get DR");
+		q_result = wisduo.getDataRate();
+		if (q_result != NO_RESPONSE)
+		{
+
+			Serial.printf("Datarate %d\r\n", q_result);
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Get confirmed/unconfirmed mode");
+		q_result = wisduo.getConfirmed();
+		if (q_result != NO_RESPONSE)
+		{
+
+			Serial.printf("Mode %d = %s\r\n", q_result, q_result == CONF ? "Confirmed" : "Unconfirmed");
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Get LPM");
+		q_result = wisduo.getLPM();
+		if (q_result != NO_RESPONSE)
+		{
+
+			Serial.printf("LPM %d = %s\r\n", q_result, q_result == 0 ? "off" : "on");
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Get LPM level");
+		q_result = wisduo.getLPMLevel();
+		if (q_result != NO_RESPONSE)
+		{
+
+			Serial.printf("LPM level %d\r\n", q_result);
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		wisduo.setJoinMode(ABP);
+
+		Serial.println("===========================================");
+		Serial.println("Get Join mode");
+		q_result = wisduo.getJoinMode();
+		if (q_result != NO_RESPONSE)
+		{
+
+			Serial.printf("Join mode %d = %s\r\n", q_result, q_result == OTAA ? "OTAA" : "ABP");
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		wisduo.setJoinMode(OTAA);
+
+		Serial.println("===========================================");
+		Serial.println("Get DevEUI");
+		if (wisduo.getDevEUI(eui_key, ARRAY_SIZE(eui_key)))
+		{
+			Serial.print("DevEUI: ");
+			for (int idx = 0; idx < 8; idx++)
 			{
-				Serial.printf("Class %d (0=A, 1=B, 2=C)\r\n", q_result);
+				Serial.printf("%02X", eui_key[idx]);
+			}
+			Serial.println("\r\n");
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Get AppEUI");
+		memset(eui_key, 0, 34);
+		if (wisduo.getAppEUI(eui_key, ARRAY_SIZE(eui_key)))
+		{
+			Serial.print("AppEUI: ");
+			for (int idx = 0; idx < 8; idx++)
+			{
+				Serial.printf("%02X", eui_key[idx]);
+			}
+			Serial.println("\r\n");
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Get AppKey");
+		memset(eui_key, 0, 34);
+		if (wisduo.getAppKey(eui_key, ARRAY_SIZE(eui_key)))
+		{
+			Serial.print("AppKey: ");
+			for (int idx = 0; idx < 16; idx++)
+			{
+				Serial.printf("%02X", eui_key[idx]);
+			}
+			Serial.println("\r\n");
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
+
+		wisduo.setJoinMode(ABP);
+
+		Serial.println("===========================================");
+		Serial.println("Get Device Address");
+		uint32_t dev_addr = wisduo.getDevAddress();
+		if (dev_addr != NO_RESPONSE)
+		{
+			Serial.printf("Device Address: %08X\r\n", dev_addr);
+
+			// Use device DeviceAddress Key to join
+			char dev_addr_array[4];
+			dev_addr_array[0] = (char)(dev_addr >> 24);
+			dev_addr_array[1] = (char)(dev_addr >> 16);
+			dev_addr_array[2] = (char)(dev_addr >> 8);
+			dev_addr_array[3] = (char)dev_addr;
+
+			if (!wisduo.byteArrayToAscii(dev_addr_array, buffer, ARRAY_SIZE(dev_addr_array), ARRAY_SIZE(buffer)))
+			{
+				Serial.print("Error converting NW Session Key to string");
 			}
 			else
 			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
+				DevAddr = String(buffer);
+				Serial.print("Device Address as String: ");
+				Serial.println(DevAddr);
 			}
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
 
-			Serial.println("===========================================");
-			Serial.println("Get LoRaWAN region");
-			q_result = wisduo.getRegion();
-			if (q_result != NO_RESPONSE)
+		Serial.println("===========================================");
+		Serial.println("Get App Session Key");
+		memset(eui_key, 0, 34);
+		if (wisduo.getAppsKey(eui_key, ARRAY_SIZE(eui_key)))
+		{
+			Serial.print("AppSKey: ");
+			for (int idx = 0; idx < 16; idx++)
 			{
+				Serial.printf("%02X", eui_key[idx]);
+			}
+			Serial.println("\r\n");
 
-				Serial.printf("Region %d\r\n", q_result);
+			// Use device App Session Key to join
+			if (!wisduo.byteArrayToAscii(eui_key, buffer, 16, 32))
+			{
+				Serial.print("Error converting App Session Key to string");
 			}
 			else
 			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
+				AppSKey = String(buffer);
+				Serial.print("App Session Key as String: ");
+				Serial.println(AppSKey);
 			}
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
 
-			Serial.println("===========================================");
-			Serial.println("Get DR");
-			q_result = wisduo.getDataRate();
-			if (q_result != NO_RESPONSE)
+		Serial.println("===========================================");
+		Serial.println("Get Network Session Key");
+		memset(eui_key, 0, 34);
+		if (wisduo.getNwsKey(eui_key, ARRAY_SIZE(eui_key)))
+		{
+			Serial.print("NwSKey: ");
+			for (int idx = 0; idx < 16; idx++)
 			{
+				Serial.printf("%02X", eui_key[idx]);
+			}
+			Serial.println("\r\n");
 
-				Serial.printf("Datarate %d\r\n", q_result);
+			// Use device NW Session Key to join
+			if (!wisduo.byteArrayToAscii(eui_key, buffer, 16, 32))
+			{
+				Serial.print("Error converting NW SessionKey to string");
 			}
 			else
 			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
+				NwSKey = String(buffer);
+				Serial.print("NW Session Key as String: ");
+				Serial.println(NwSKey);
 			}
+		}
+		else
+		{
+			Serial.printf("Response: %d\r\n", wisduo.ret);
+		}
 
+		bool init_success = true;
+
+		// Check current join mode
+		if (wisduo.getJoinMode() == ABP)
+		{
+			Serial.println("ABP mode set already");
+		}
+		Serial.println("===========================================");
+		Serial.println("Set Join Mode");
+		if (wisduo.setJoinMode(ABP)) // set join_mode:OTAA
+		{
 			Serial.println("===========================================");
-			Serial.println("Get confirmed/unconfirmed mode");
-			q_result = wisduo.getConfirmed();
-			if (q_result != NO_RESPONSE)
-			{
-
-				Serial.printf("Mode %d = %s\r\n", q_result, q_result == CONF ? "Confirmed" : "Unconfirmed");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			Serial.println("===========================================");
-			Serial.println("Get LPM");
-			q_result = wisduo.getLPM();
-			if (q_result != NO_RESPONSE)
-			{
-
-				Serial.printf("LPM %d = %s\r\n", q_result, q_result == 0 ? "off" : "on");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			Serial.println("===========================================");
-			Serial.println("Get LPM level");
-			q_result = wisduo.getLPMLevel();
-			if (q_result != NO_RESPONSE)
-			{
-
-				Serial.printf("LPM level %d\r\n", q_result);
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			wisduo.setJoinMode(ABP);
-
-			Serial.println("===========================================");
-			Serial.println("Get Join mode");
-			q_result = wisduo.getJoinMode();
-			if (q_result != NO_RESPONSE)
-			{
-
-				Serial.printf("Join mode %d = %s\r\n", q_result, q_result == OTAA ? "OTAA" : "ABP");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			wisduo.setJoinMode(OTAA);
-
-			Serial.println("===========================================");
-			Serial.println("Get DevEUI");
-			if (wisduo.getDevEUI(eui_key, ARRAY_SIZE(eui_key)))
-			{
-				Serial.print("DevEUI: ");
-				for (int idx = 0; idx < 8; idx++)
-				{
-					Serial.printf("%02X", eui_key[idx]);
-				}
-				Serial.println("\r\n");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			Serial.println("===========================================");
-			Serial.println("Get AppEUI");
-			memset(eui_key, 0, 34);
-			if (wisduo.getAppEUI(eui_key, ARRAY_SIZE(eui_key)))
-			{
-				Serial.print("AppEUI: ");
-				for (int idx = 0; idx < 8; idx++)
-				{
-					Serial.printf("%02X", eui_key[idx]);
-				}
-				Serial.println("\r\n");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			Serial.println("===========================================");
-			Serial.println("Get AppKey");
-			memset(eui_key, 0, 34);
-			if (wisduo.getAppKey(eui_key, ARRAY_SIZE(eui_key)))
-			{
-				Serial.print("AppKey: ");
-				for (int idx = 0; idx < 16; idx++)
-				{
-					Serial.printf("%02X", eui_key[idx]);
-				}
-				Serial.println("\r\n");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			wisduo.setJoinMode(ABP);
-
-			Serial.println("===========================================");
-			Serial.println("Get Device Address");
-			uint32_t dev_addr = wisduo.getDevAddress();
-			if (dev_addr != NO_RESPONSE)
-			{
-				Serial.printf("Device Address: %08X\r\n", dev_addr);
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			Serial.println("===========================================");
-			Serial.println("Get App Session Key");
-			memset(eui_key, 0, 34);
-			if (wisduo.getAppsKey(eui_key, ARRAY_SIZE(eui_key)))
-			{
-				Serial.print("AppSKey: ");
-				for (int idx = 0; idx < 16; idx++)
-				{
-					Serial.printf("%02X", eui_key[idx]);
-				}
-				Serial.println("\r\n");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			Serial.println("===========================================");
-			Serial.println("Get Network Session Key");
-			memset(eui_key, 0, 34);
-			if (wisduo.getNwsKey(eui_key, ARRAY_SIZE(eui_key)))
-			{
-				Serial.print("NwSKey: ");
-				for (int idx = 0; idx < 16; idx++)
-				{
-					Serial.printf("%02X", eui_key[idx]);
-				}
-				Serial.println("\r\n");
-			}
-			else
-			{
-				Serial.printf("Response: %d\r\n", wisduo.ret);
-			}
-
-			bool init_success = true;
-
-			// Check current join mode
-			if (wisduo.getJoinMode() == ABP)
-			{
-				Serial.println("ABP mode set already");
-			}
-			// else
+			Serial.println("Set LoRaWAN region");
+			if (wisduo.setRegion(AS923_3)) // set region AS923/3
 			{
 				Serial.println("===========================================");
-				Serial.println("Set Join Mode");
-				if (wisduo.setJoinMode(ABP)) // set join_mode:OTAA
+				Serial.println("Set LoRaWAN credentials");
+				if (wisduo.initABP(DevAddr, NwSKey, AppSKey))
 				{
-					Serial.println("===========================================");
-					Serial.println("Set LoRaWAN region");
-					if (wisduo.setRegion(AS923_3)) // set region AS923/3
-					{
-						Serial.println("===========================================");
-						Serial.println("Set LoRaWAN credentials");
-						if (wisduo.initABP(DevAddr, NwSKey, AppSKey))
-						{
-							Serial.println("RUI3 init OK!");
-						}
-						else
-						{
-							init_success = false;
-						}
-					}
-					else
-					{
-						Serial.println("at+band=10 failed");
-						init_success = false;
-					}
+					Serial.println("RUI3 init OK!");
 				}
 				else
 				{
-					Serial.println("at+njm=1 failed");
 					init_success = false;
 				}
 			}
-			if (!init_success) // init LoRaWAN
+			else
 			{
-				Serial.println("Init error, please reset module.");
-				Serial.flush();
-				while (1)
-				{
-					delay(10000);
-				};
+				Serial.println("at+band=10 failed");
+				init_success = false;
 			}
+		}
+		else
+		{
+			Serial.println("at+njm=1 failed");
+			init_success = false;
+		}
 
-			Serial.println("===========================================");
-			Serial.println("Start Join request");
-			if (!wisduo.joinLoRaNetwork(60))
+		if (!init_success) // init LoRaWAN
+		{
+			Serial.println("Init error, please reset module.");
+			Serial.flush();
+			while (1)
 			{
-				Serial.println("Join error, please make sure credentials are correct.");
-				while (1)
-					;
+				delay(10000);
+			};
+		}
+
+		Serial.println("===========================================");
+		Serial.println("Start Join request");
+		if (!wisduo.joinLoRaNetwork(60))
+		{
+			Serial.println("Join error, please make sure credentials are correct.");
+			while (1)
+				;
+		}
+		else
+		{
+			Serial.println("Network join requested");
+		}
+
+		time_t start_wait = millis();
+		bool join_success = false;
+
+		Serial.println("===========================================");
+		Serial.println("Wait for join");
+		uint8_t retry_join = 0;
+		while (1)
+		{
+			if (!wisduo.getJoinStatus())
+			{
+				Serial.println("Network not yet joined");
+				delay(5000);
 			}
 			else
 			{
-				Serial.println("Network join requested");
+				Serial.println("Network joined");
+				join_success = true;
+				break;
 			}
-
-			time_t start_wait = millis();
-			bool join_success = false;
-
-			Serial.println("===========================================");
-			Serial.println("Wait for join");
-			uint8_t retry_join = 0;
-			while (1)
+			if ((millis() - start_wait) > 30000)
 			{
-				if (!wisduo.getJoinStatus())
+				if (retry_join < 8)
 				{
-					Serial.println("Network not yet joined");
-					delay(5000);
+					retry_join++;
+					Serial.printf("No join success, retry %d\r\n", retry_join);
+					wisduo.joinLoRaNetwork();
 				}
 				else
 				{
-					Serial.println("Network joined");
-					join_success = true;
+					Serial.println("No join success for 8 retries");
 					break;
-				}
-				if ((millis() - start_wait) > 30000)
-				{
-					if (retry_join < 8)
-					{
-						retry_join++;
-						Serial.printf("No join success, retry %d\r\n", retry_join);
-						wisduo.joinLoRaNetwork();
-					}
-					else
-					{
-						Serial.println("No join success for 8 retries");
-						break;
-					}
-				}
-			}
-
-			if (!join_success)
-			{
-				Serial.println("Join failed, check your credentials");
-				while (1)
-				{
-					delay(5000);
-					Serial.print(".");
 				}
 			}
 		}
-		// else
-		// {
-		// 	Serial.println("Network already joined");
-		// }
+
+		if (!join_success)
+		{
+			Serial.println("Join failed, check your credentials");
+			while (1)
+			{
+				delay(5000);
+				Serial.print(".");
+			}
+		}
 
 		Serial.println("===========================================");
 		Serial.println("Set LPM");
