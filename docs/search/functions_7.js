@@ -13,5 +13,5 @@ var searchData=
   ['setregion_10',['setRegion',['../class_r_u_i3.html#a073fb5f2e8adc83de8b806e8dfda6fb5',1,'RUI3']]],
   ['setuartconfig_11',['setUARTConfig',['../class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657',1,'RUI3']]],
   ['setworkingmode_12',['setWorkingMode',['../class_r_u_i3.html#ac627738073661f4d8f2a9ef6b2e79b7d',1,'RUI3']]],
-  ['sleep_13',['sleep',['../class_r_u_i3.html#a59241e569d25b8ecff616ef4cd5a5d6b',1,'RUI3']]]
+  ['sleep_13',['sleep',['../class_r_u_i3.html#a4f8677d77e61e1fff8fc1208b3cb0a99',1,'RUI3']]]
 ];

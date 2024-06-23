@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['eu433_0',['EU433',['../rui3__at_8h.html#a8dea9d11de184009595db420d3015e44',1,'rui3_at.h']]],
-  ['eu868_1',['EU868',['../rui3__at_8h.html#aea0f54c3f5cc44ec2fd9dc532c27c8a0',1,'rui3_at.h']]]
+  ['debug_5fmode_0',['DEBUG_MODE',['../rui3__at_8h.html#ac80a3592e72fd96b772ee47a7d8e0d0a',1,'rui3_at.h']]]
 ];

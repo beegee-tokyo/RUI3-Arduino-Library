@@ -1,22 +1,5 @@
 var searchData=
 [
-  ['getappeui_0',['getAppEUI',['../class_r_u_i3.html#a17d7ef81465e42f5f5f5c83782af5589',1,'RUI3']]],
-  ['getappkey_1',['getAppKey',['../class_r_u_i3.html#aeb28c9d54cf8535682fb51919f2e5ce8',1,'RUI3']]],
-  ['getappskey_2',['getAppsKey',['../class_r_u_i3.html#a6b928308b90eaf711621d049d09d3991',1,'RUI3']]],
-  ['getchannellist_3',['getChannelList',['../class_r_u_i3.html#af4bc8d5c9b040f097c5c91dde1969be6',1,'RUI3']]],
-  ['getclass_4',['getClass',['../class_r_u_i3.html#aa7ec3646cbe5467b74c98bee172ce6b4',1,'RUI3']]],
-  ['getconfirmed_5',['getConfirmed',['../class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a',1,'RUI3']]],
-  ['getdatarate_6',['getDataRate',['../class_r_u_i3.html#adc9427f8b0cf5df0d96645b22f3a306d',1,'RUI3']]],
-  ['getdevaddress_7',['getDevAddress',['../class_r_u_i3.html#a080e48be8f4bc6cc46cfc20109b8a0a8',1,'RUI3']]],
-  ['getdeveui_8',['getDevEUI',['../class_r_u_i3.html#a39f21ca902bf0cfbe837b0057625fc38',1,'RUI3']]],
-  ['getjoinmode_9',['getJoinMode',['../class_r_u_i3.html#a5d0f9a12537315ec198137fd765fa996',1,'RUI3']]],
-  ['getjoinstatus_10',['getJoinStatus',['../class_r_u_i3.html#aae9c3e0fdd8b8bbd27282fbc299beb30',1,'RUI3']]],
-  ['getlpm_11',['getLPM',['../class_r_u_i3.html#a15c500001d8a861dcebdabd0cebf4d1a',1,'RUI3']]],
-  ['getlpmlevel_12',['getLPMLevel',['../class_r_u_i3.html#a927396cb14f87032f7ed3e674d2b226b',1,'RUI3']]],
-  ['getnwskey_13',['getNwsKey',['../class_r_u_i3.html#a68e37672215716ec784067836e18e8df',1,'RUI3']]],
-  ['getp2p_14',['getP2P',['../class_r_u_i3.html#a0fe5423de200e60b5c2f808b7711b753',1,'RUI3']]],
-  ['getp2pcad_15',['getP2PCAD',['../class_r_u_i3.html#a2f5ad0bf6e5821cc80f531b0d7854f3d',1,'RUI3']]],
-  ['getregion_16',['getRegion',['../class_r_u_i3.html#aaa775f087adefcb1dec7b5e59c3204e8',1,'RUI3']]],
-  ['getversion_17',['getVersion',['../class_r_u_i3.html#aaff5595e0cb63fd8cacefe1170497240',1,'RUI3']]],
-  ['getworkingmode_18',['getWorkingMode',['../class_r_u_i3.html#a33739851bbc3374cfd2670c0adea90e0',1,'RUI3']]]
+  ['flushrx_0',['flushRX',['../class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba',1,'RUI3']]],
+  ['freq_1',['freq',['../struct__p2p__settings.html#af48c6a469e6de58d4234fca1397469b7',1,'_p2p_settings']]]
 ];

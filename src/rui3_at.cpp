@@ -471,7 +471,7 @@ bool RUI3::initOTAA(String devEUI, String appEUI, String appKEY)
 	MYLOG("otaa","<< %s", ret);
 	if (strstr(ret, "OK") != NULL)
 	{
-		snprintf(command, 1024, "at+appeui=%s\r\n", _devEUI.c_str());
+		snprintf(command, 1024, "at+appeui=%s\r\n", _appEUI.c_str());
 		sendRawCommand(command);
 
 		recvResponse();

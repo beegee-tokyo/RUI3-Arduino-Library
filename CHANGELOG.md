@@ -1,5 +1,8 @@
 # Release Notes
 
+## V1.0.2 bug fix
+ - Fix wrong appEUI setting in initOTAA()
+ 
 ## V1.0.1 official release
 - Feeling confident it will work
 - Updated examples

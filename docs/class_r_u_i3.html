@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="RAK-Whirls.png"/></td>
   <td id="projectalign">
-   <div id="projectname">RUI3-Arduino-Library<span id="projectnumber">&#160;V1.0</span>
+   <div id="projectname">RUI3-Arduino-Library<span id="projectnumber">&#160;V1.0.1</span>
    </div>
    <div id="projectbrief">RAKWireless library for communication over UART with RUI3 based WisDuo modules.</div>
   </td>
@@ -103,14 +103,11 @@ $(document).ready(function(){initNavTree('class_r_u_i3.html',''); initResizable(
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4f62f64d335005699f9134fce8da8e56" id="r_a4f62f64d335005699f9134fce8da8e56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#a4f62f64d335005699f9134fce8da8e56">RUI3</a> (Stream &amp;serial1, Stream &amp;serial)</td></tr>
-<tr class="memdesc:a4f62f64d335005699f9134fce8da8e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_r_u_i3.html">RUI3</a> object <br  />
- A simplified constructor taking only a Stream ({Software/Hardware}Serial) object. <br  />
- The serial port should already be initialised when initialising this library.  <br /></td></tr>
-<tr class="separator:a4f62f64d335005699f9134fce8da8e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec8577db88e820c1fc81aa248f6ca192" id="r_aec8577db88e820c1fc81aa248f6ca192"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#aec8577db88e820c1fc81aa248f6ca192">RUI3</a> (Stream &amp;serial1, Stream &amp;serial=Serial)</td></tr>
+<tr class="memdesc:aec8577db88e820c1fc81aa248f6ca192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_r_u_i3.html">RUI3</a> object A simplified constructor taking only a Stream ({Software/Hardware}Serial) object. The serial port should already be initialised when initialising this library. Serial is used for debug output: host MCU &lt;==&gt; debug console.  <br /></td></tr>
+<tr class="separator:aec8577db88e820c1fc81aa248f6ca192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abea6971995336b4a510cac6e4e75d2e0" id="r_abea6971995336b4a510cac6e4e75d2e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#abea6971995336b4a510cac6e4e75d2e0">setLPM</a> (int mode)</td></tr>
-<tr class="memdesc:abea6971995336b4a510cac6e4e75d2e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/Disable Low power mode <br  />
- See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpm">AT+LPM</a>  <br /></td></tr>
+<tr class="memdesc:abea6971995336b4a510cac6e4e75d2e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/Disable Low power mode See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpm">AT+LPM</a>  <br /></td></tr>
 <tr class="separator:abea6971995336b4a510cac6e4e75d2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15c500001d8a861dcebdabd0cebf4d1a" id="r_a15c500001d8a861dcebdabd0cebf4d1a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#a15c500001d8a861dcebdabd0cebf4d1a">getLPM</a> (void)</td></tr>
 <tr class="memdesc:a15c500001d8a861dcebdabd0cebf4d1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Low power mode status <br  />
@@ -262,12 +259,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8462fda0a7618a74da3504652820e1ba" id="r_a8462fda0a7618a74da3504652820e1ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba">flushRX</a> (uint32_t timeout=5000)</td></tr>
 <tr class="memdesc:a8462fda0a7618a74da3504652820e1ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the RX buffer in case there is something left.  <br /></td></tr>
 <tr class="separator:a8462fda0a7618a74da3504652820e1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59241e569d25b8ecff616ef4cd5a5d6b" id="r_a59241e569d25b8ecff616ef4cd5a5d6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#a59241e569d25b8ecff616ef4cd5a5d6b">sleep</a> (int mode)</td></tr>
-<tr class="memdesc:a59241e569d25b8ecff616ef4cd5a5d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the module in sleep mode. not required if low power mode is enabled) <br  />
- When the module is in sleep mode, the host can send any character to wake it up. <br  />
- When the module is awakened, the event response will automatically return through the serial information. <br  />
- See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-sleep">AT+SLEEP</a>  <br /></td></tr>
-<tr class="separator:a59241e569d25b8ecff616ef4cd5a5d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8677d77e61e1fff8fc1208b3cb0a99" id="r_a4f8677d77e61e1fff8fc1208b3cb0a99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#a4f8677d77e61e1fff8fc1208b3cb0a99">sleep</a> (int mode)</td></tr>
+<tr class="memdesc:a4f8677d77e61e1fff8fc1208b3cb0a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the module in sleep mode. not required if low power mode is enabled) When the module is in sleep mode, the host can send any character to wake it up. When the module is awakened, the event response will automatically return through the serial information. See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-sleep">AT+SLEEP</a>  <br /></td></tr>
+<tr class="separator:a4f8677d77e61e1fff8fc1208b3cb0a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c5604e428b119533b65cb7feeb0a168" id="r_a9c5604e428b119533b65cb7feeb0a168"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_u_i3.html#a9c5604e428b119533b65cb7feeb0a168">reset</a> (void)</td></tr>
 <tr class="memdesc:a9c5604e428b119533b65cb7feeb0a168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the <a class="el" href="class_r_u_i3.html">RUI3</a> module <br  />
  Communication with the module will be lost <br  />
@@ -297,8 +291,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab6f465a95ecfed10fc719928cd29a128"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4f62f64d335005699f9134fce8da8e56" name="a4f62f64d335005699f9134fce8da8e56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f62f64d335005699f9134fce8da8e56">&#9670;&#160;</a></span>RUI3()</h2>
+<a id="aec8577db88e820c1fc81aa248f6ca192" name="aec8577db88e820c1fc81aa248f6ca192"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec8577db88e820c1fc81aa248f6ca192">&#9670;&#160;</a></span>RUI3()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +307,7 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Stream &amp;&#160;</td>
-          <td class="paramname"><em>serial</em>&#160;</td>
+          <td class="paramname"><em>serial</em> = <code>Serial</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -323,20 +317,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="class_r_u_i3.html">RUI3</a> object <br  />
- A simplified constructor taking only a Stream ({Software/Hardware}Serial) object. <br  />
- The serial port should already be initialised when initialising this library. </p>
-<div class="fragment"><div class="line"><a class="code hl_class" href="class_r_u_i3.html">RUI3</a>(Stream &amp;serial1, Stream &amp;serial);    </div>
-<div class="ttc" id="aclass_r_u_i3_html"><div class="ttname"><a href="class_r_u_i3.html">RUI3</a></div><div class="ttdef"><b>Definition</b> rui3_at.h:102</div></div>
+<p>Construct a new <a class="el" href="class_r_u_i3.html">RUI3</a> object A simplified constructor taking only a Stream ({Software/Hardware}Serial) object. The serial port should already be initialised when initialising this library. Serial is used for debug output: host MCU &lt;==&gt; debug console. </p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="class_r_u_i3.html">RUI3</a>(Stream &amp;serial1, Stream &amp;serial);</div>
+<div class="ttc" id="aclass_r_u_i3_html"><div class="ttname"><a href="class_r_u_i3.html">RUI3</a></div><div class="ttdef"><b>Definition</b> rui3_at.h:121</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">serial1</td><td>Serial for communication with <a class="el" href="class_r_u_i3.html">RUI3</a> module: WisDuo &lt;==&gt; host MCU <br  />
- </td></tr>
-    <tr><td class="paramname">serial</td><td>Serial for debug: host MCU &lt;==&gt; debug console</td></tr>
+    <tr><td class="paramname">serial1</td><td>Serial for communication with <a class="el" href="class_r_u_i3.html">RUI3</a> module: WisDuo &lt;==&gt; host MCU </td></tr>
+    <tr><td class="paramname">serial</td><td>Serial for debug: host MCU &lt;==&gt; debug console &ndash; Defaults to Serial</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line"><a class="code hl_class" href="class_r_u_i3.html">RUI3</a> wisduo(Serial1, Serial);    </div>
+<dl class="section user"><dt>Usage</dt><dd><div class="fragment"><div class="line"><a class="code hl_class" href="class_r_u_i3.html">RUI3</a> wisduo(Serial1, Serial);</div>
 </div><!-- fragment --> </dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>test if no need to set the timeouts </dd></dl>
 
@@ -383,7 +374,7 @@ Public Attributes</h2></td></tr>
 
 <p>Convert a ASCII HEX string array into a byte array. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a161b11bb9910f588e570b1a7ba973a8a">asciiArrayToByte</a>(<span class="keywordtype">char</span> *b_array, <span class="keywordtype">char</span> *a_array, uint16_t b_array_len, uint16_t a_array_len);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a161b11bb9910f588e570b1a7ba973a8a"><div class="ttname"><a href="class_r_u_i3.html#a161b11bb9910f588e570b1a7ba973a8a">RUI3::asciiArrayToByte</a></div><div class="ttdeci">bool asciiArrayToByte(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a ASCII HEX string array into a byte array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1137</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a161b11bb9910f588e570b1a7ba973a8a"><div class="ttname"><a href="class_r_u_i3.html#a161b11bb9910f588e570b1a7ba973a8a">RUI3::asciiArrayToByte</a></div><div class="ttdeci">bool asciiArrayToByte(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a ASCII HEX string array into a byte array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1043</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">b_array</td><td>byte array to be filled with values <br  />
@@ -461,7 +452,7 @@ false if length of char array is odd or the buffer sizes do not match</dd></dl>
 
 <p>Convert a byte array into a ASCII HEX string array. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a5083c1edd195d1d31ba7e70813d4180c">byteArrayToAscii</a>(<span class="keywordtype">char</span> *b_array, <span class="keywordtype">char</span> *a_array, uint16_t b_array_len, uint16_t a_array_len);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a5083c1edd195d1d31ba7e70813d4180c"><div class="ttname"><a href="class_r_u_i3.html#a5083c1edd195d1d31ba7e70813d4180c">RUI3::byteArrayToAscii</a></div><div class="ttdeci">bool byteArrayToAscii(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a byte array into a ASCII HEX string array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1123</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a5083c1edd195d1d31ba7e70813d4180c"><div class="ttname"><a href="class_r_u_i3.html#a5083c1edd195d1d31ba7e70813d4180c">RUI3::byteArrayToAscii</a></div><div class="ttdeci">bool byteArrayToAscii(char *b_array, char *a_array, uint16_t b_array_len, uint16_t a_array_len)</div><div class="ttdoc">Convert a byte array into a ASCII HEX string array.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1029</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">b_array</td><td>byte array to be converted <br  />
@@ -511,7 +502,7 @@ false if buffer sizes do not match</dd></dl>
 
 <p>Flush the RX buffer in case there is something left. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba">flushRX</a>(uint32_t timeout = 5000);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a8462fda0a7618a74da3504652820e1ba"><div class="ttname"><a href="class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba">RUI3::flushRX</a></div><div class="ttdeci">void flushRX(uint32_t timeout=5000)</div><div class="ttdoc">Flush the RX buffer in case there is something left.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:924</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a8462fda0a7618a74da3504652820e1ba"><div class="ttname"><a href="class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba">RUI3::flushRX</a></div><div class="ttdeci">void flushRX(uint32_t timeout=5000)</div><div class="ttdoc">Flush the RX buffer in case there is something left.</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:847</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout</td><td>time to wait for a response </td></tr>
@@ -550,7 +541,7 @@ false if buffer sizes do not match</dd></dl>
 <p>Get the App EUI <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appeui">AT+APPEUI</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a17d7ef81465e42f5f5f5c83782af5589">getAppEUI</a>(<span class="keywordtype">char</span> *eui, uint16_t array_len);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a17d7ef81465e42f5f5f5c83782af5589"><div class="ttname"><a href="class_r_u_i3.html#a17d7ef81465e42f5f5f5c83782af5589">RUI3::getAppEUI</a></div><div class="ttdeci">bool getAppEUI(char *eui, uint16_t array_len)</div><div class="ttdoc">Get the App EUI   See AT+APPEUI</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:556</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a17d7ef81465e42f5f5f5c83782af5589"><div class="ttname"><a href="class_r_u_i3.html#a17d7ef81465e42f5f5f5c83782af5589">RUI3::getAppEUI</a></div><div class="ttdeci">bool getAppEUI(char *eui, uint16_t array_len)</div><div class="ttdoc">Get the App EUI   See AT+APPEUI</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:515</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">eui</td><td>byte array for AppEUI <br  />
@@ -611,7 +602,7 @@ false No response or error response</dd></dl>
 <p>Get the AppKey <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appkey">AT+APPKEY</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#aeb28c9d54cf8535682fb51919f2e5ce8">getAppKey</a>(<span class="keywordtype">char</span> *key, uint16_t array_len);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_aeb28c9d54cf8535682fb51919f2e5ce8"><div class="ttname"><a href="class_r_u_i3.html#aeb28c9d54cf8535682fb51919f2e5ce8">RUI3::getAppKey</a></div><div class="ttdeci">bool getAppKey(char *key, uint16_t array_len)</div><div class="ttdoc">Get the AppKey   See AT+APPKEY</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:577</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_aeb28c9d54cf8535682fb51919f2e5ce8"><div class="ttname"><a href="class_r_u_i3.html#aeb28c9d54cf8535682fb51919f2e5ce8">RUI3::getAppKey</a></div><div class="ttdeci">bool getAppKey(char *key, uint16_t array_len)</div><div class="ttdoc">Get the AppKey   See AT+APPKEY</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:534</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>byte array for AppKey <br  />
@@ -672,7 +663,7 @@ false No response or error response</dd></dl>
 <p>Get the AppsKey <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-appskey">AT+APPSKEY</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a6b928308b90eaf711621d049d09d3991">getAppsKey</a>(<span class="keywordtype">char</span> *key, uint16_t array_len);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a6b928308b90eaf711621d049d09d3991"><div class="ttname"><a href="class_r_u_i3.html#a6b928308b90eaf711621d049d09d3991">RUI3::getAppsKey</a></div><div class="ttdeci">bool getAppsKey(char *key, uint16_t array_len)</div><div class="ttdoc">Get the AppsKey   See AT+APPSKEY</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:674</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a6b928308b90eaf711621d049d09d3991"><div class="ttname"><a href="class_r_u_i3.html#a6b928308b90eaf711621d049d09d3991">RUI3::getAppsKey</a></div><div class="ttdeci">bool getAppsKey(char *key, uint16_t array_len)</div><div class="ttdoc">Get the AppsKey   See AT+APPSKEY</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:621</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>byte array for AppsKey <br  />
@@ -724,7 +715,7 @@ false No response or error response</dd></dl>
  This feature works only in Regions US915, AU915 or CN470 <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-mask">AT+MASK</a> </p>
 <div class="fragment"><div class="line">String <a class="code hl_function" href="class_r_u_i3.html#af4bc8d5c9b040f097c5c91dde1969be6">getChannelList</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_af4bc8d5c9b040f097c5c91dde1969be6"><div class="ttname"><a href="class_r_u_i3.html#af4bc8d5c9b040f097c5c91dde1969be6">RUI3::getChannelList</a></div><div class="ttdeci">String getChannelList(void)</div><div class="ttdoc">Get the current channel list settings   This feature works only in Regions US915, AU915 or CN470   Se...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:53</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_af4bc8d5c9b040f097c5c91dde1969be6"><div class="ttname"><a href="class_r_u_i3.html#af4bc8d5c9b040f097c5c91dde1969be6">RUI3::getChannelList</a></div><div class="ttdeci">String getChannelList(void)</div><div class="ttdoc">Get the current channel list settings   This feature works only in Regions US915, AU915 or CN470   Se...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:51</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>String List of enabled channels </dd></dl>
 
 </div>
@@ -748,7 +739,7 @@ false No response or error response</dd></dl>
 <p>Get the class <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-class">AT+CLASS</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="class_r_u_i3.html#aa7ec3646cbe5467b74c98bee172ce6b4">getClass</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_aa7ec3646cbe5467b74c98bee172ce6b4"><div class="ttname"><a href="class_r_u_i3.html#aa7ec3646cbe5467b74c98bee172ce6b4">RUI3::getClass</a></div><div class="ttdeci">uint8_t getClass(void)</div><div class="ttdoc">Get the class   See AT+CLASS</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:141</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_aa7ec3646cbe5467b74c98bee172ce6b4"><div class="ttname"><a href="class_r_u_i3.html#aa7ec3646cbe5467b74c98bee172ce6b4">RUI3::getClass</a></div><div class="ttdeci">uint8_t getClass(void)</div><div class="ttdoc">Get the class   See AT+CLASS</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:131</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t class 0 -&gt; Class A, 1 -&gt; Class B, 2 -&gt; Class C, 255 = no response from WisDuo</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getClass();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -784,7 +775,7 @@ false No response or error response</dd></dl>
  In confirmed mode, the LNS will acknowledge the packet, in unconfirmed mode is no acknowledgement <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cfm">AT+CFM</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">getConfirmed</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_ad981bc2048fa8b0098690604c547250a"><div class="ttname"><a href="class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">RUI3::getConfirmed</a></div><div class="ttdeci">uint8_t getConfirmed(void)</div><div class="ttdoc">Get the Confirmed/Unconfirmed packet status   In confirmed mode, the LNS will acknowledge the packet,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:744</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_ad981bc2048fa8b0098690604c547250a"><div class="ttname"><a href="class_r_u_i3.html#ad981bc2048fa8b0098690604c547250a">RUI3::getConfirmed</a></div><div class="ttdeci">uint8_t getConfirmed(void)</div><div class="ttdoc">Get the Confirmed/Unconfirmed packet status   In confirmed mode, the LNS will acknowledge the packet,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:684</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t type 0-&gt;unconfirm, 1-&gt;confirm</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getConfirmed();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -819,7 +810,7 @@ false No response or error response</dd></dl>
 <p>Get the data rate <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-dr">AT+DR</a> </p>
 <div class="fragment"><div class="line">int8_t <a class="code hl_function" href="class_r_u_i3.html#adc9427f8b0cf5df0d96645b22f3a306d">getDataRate</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_adc9427f8b0cf5df0d96645b22f3a306d"><div class="ttname"><a href="class_r_u_i3.html#adc9427f8b0cf5df0d96645b22f3a306d">RUI3::getDataRate</a></div><div class="ttdeci">uint8_t getDataRate(void)</div><div class="ttdoc">Get the data rate   See AT+DR</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:88</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_adc9427f8b0cf5df0d96645b22f3a306d"><div class="ttname"><a href="class_r_u_i3.html#adc9427f8b0cf5df0d96645b22f3a306d">RUI3::getDataRate</a></div><div class="ttdeci">uint8_t getDataRate(void)</div><div class="ttdoc">Get the data rate   See AT+DR</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:82</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t datarate 0 - 15, 255 = no response from WisDuo</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getDataRate();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -853,7 +844,7 @@ false No response or error response</dd></dl>
 <p>Get the DevAddr <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-devaddr">AT+DEVADDR</a> </p>
 <div class="fragment"><div class="line">uint32_t <a class="code hl_function" href="class_r_u_i3.html#a080e48be8f4bc6cc46cfc20109b8a0a8">getDevAddress</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a080e48be8f4bc6cc46cfc20109b8a0a8"><div class="ttname"><a href="class_r_u_i3.html#a080e48be8f4bc6cc46cfc20109b8a0a8">RUI3::getDevAddress</a></div><div class="ttdeci">uint32_t getDevAddress(void)</div><div class="ttdoc">Get the DevAddr   See AT+DEVADDR</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:657</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a080e48be8f4bc6cc46cfc20109b8a0a8"><div class="ttname"><a href="class_r_u_i3.html#a080e48be8f4bc6cc46cfc20109b8a0a8">RUI3::getDevAddress</a></div><div class="ttdeci">uint32_t getDevAddress(void)</div><div class="ttdoc">Get the DevAddr   See AT+DEVADDR</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:606</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint32_t device address, NO_RESPONSE if device address could not be obtained</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint32_t dev_addr = wisduo.getDevAddress();    </div>
 <div class="line">{    </div>
@@ -896,7 +887,7 @@ false No response or error response</dd></dl>
 <p>Get the DevEUI <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-deveui">AT+DEVEUI</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a39f21ca902bf0cfbe837b0057625fc38">getDevEUI</a>(<span class="keywordtype">char</span> *eui, uint16_t array_len);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a39f21ca902bf0cfbe837b0057625fc38"><div class="ttname"><a href="class_r_u_i3.html#a39f21ca902bf0cfbe837b0057625fc38">RUI3::getDevEUI</a></div><div class="ttdeci">bool getDevEUI(char *eui, uint16_t array_len)</div><div class="ttdoc">Get the DevEUI   See AT+DEVEUI</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:535</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a39f21ca902bf0cfbe837b0057625fc38"><div class="ttname"><a href="class_r_u_i3.html#a39f21ca902bf0cfbe837b0057625fc38">RUI3::getDevEUI</a></div><div class="ttdeci">bool getDevEUI(char *eui, uint16_t array_len)</div><div class="ttdoc">Get the DevEUI   See AT+DEVEUI</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:496</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">eui</td><td>byte array for DevEUI <br  />
@@ -947,7 +938,7 @@ false No response or error response</dd></dl>
 <p>Get the network join mode <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-njm">AT+NJM</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="class_r_u_i3.html#a5d0f9a12537315ec198137fd765fa996">getJoinMode</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a5d0f9a12537315ec198137fd765fa996"><div class="ttname"><a href="class_r_u_i3.html#a5d0f9a12537315ec198137fd765fa996">RUI3::getJoinMode</a></div><div class="ttdeci">uint8_t getJoinMode(void)</div><div class="ttdoc">Get the network join mode   See AT+NJM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:439</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a5d0f9a12537315ec198137fd765fa996"><div class="ttname"><a href="class_r_u_i3.html#a5d0f9a12537315ec198137fd765fa996">RUI3::getJoinMode</a></div><div class="ttdeci">uint8_t getJoinMode(void)</div><div class="ttdoc">Get the network join mode   See AT+NJM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:410</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t mode 0: join a network using over the air activation, 1: join a network using personalization, 255 = no response from WisDuo</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getJoinMode();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -1021,7 +1012,7 @@ false if device has not joined LoRaWAN network</dd></dl>
 <p>Get Low power mode status <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpm">AT+LPM</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="class_r_u_i3.html#a15c500001d8a861dcebdabd0cebf4d1a">getLPM</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a15c500001d8a861dcebdabd0cebf4d1a"><div class="ttname"><a href="class_r_u_i3.html#a15c500001d8a861dcebdabd0cebf4d1a">RUI3::getLPM</a></div><div class="ttdeci">uint8_t getLPM(void)</div><div class="ttdoc">Get Low power mode status   See AT+LPM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:299</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a15c500001d8a861dcebdabd0cebf4d1a"><div class="ttname"><a href="class_r_u_i3.html#a15c500001d8a861dcebdabd0cebf4d1a">RUI3::getLPM</a></div><div class="ttdeci">uint8_t getLPM(void)</div><div class="ttdoc">Get Low power mode status   See AT+LPM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:282</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>0 - LPM off, 1 = LPM on, 255 no response from WisDuo</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getLPM();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -1055,7 +1046,7 @@ false if device has not joined LoRaWAN network</dd></dl>
 <p>Get the current LPM level <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpmlvl">AT+LPMLVL</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="class_r_u_i3.html#a927396cb14f87032f7ed3e674d2b226b">getLPMLevel</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a927396cb14f87032f7ed3e674d2b226b"><div class="ttname"><a href="class_r_u_i3.html#a927396cb14f87032f7ed3e674d2b226b">RUI3::getLPMLevel</a></div><div class="ttdeci">uint8_t getLPMLevel(void)</div><div class="ttdoc">Get the current LPM level   See AT+LPMLVL</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:340</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a927396cb14f87032f7ed3e674d2b226b"><div class="ttname"><a href="class_r_u_i3.html#a927396cb14f87032f7ed3e674d2b226b">RUI3::getLPMLevel</a></div><div class="ttdeci">uint8_t getLPMLevel(void)</div><div class="ttdoc">Get the current LPM level   See AT+LPMLVL</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:319</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t 1 = LPM level 1, 2 = LPM level 2, 255 no response from WisDuo</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getLPMLevel();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -1099,7 +1090,7 @@ false if device has not joined LoRaWAN network</dd></dl>
 <p>Get the NwsKey <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-nwkskey">AT+NWKSKEY</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a68e37672215716ec784067836e18e8df">getNwsKey</a>(<span class="keywordtype">char</span> *key, uint16_t array_len);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a68e37672215716ec784067836e18e8df"><div class="ttname"><a href="class_r_u_i3.html#a68e37672215716ec784067836e18e8df">RUI3::getNwsKey</a></div><div class="ttdeci">bool getNwsKey(char *key, uint16_t array_len)</div><div class="ttdoc">Get the NwsKey   See AT+NWKSKEY</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:694</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a68e37672215716ec784067836e18e8df"><div class="ttname"><a href="class_r_u_i3.html#a68e37672215716ec784067836e18e8df">RUI3::getNwsKey</a></div><div class="ttdeci">bool getNwsKey(char *key, uint16_t array_len)</div><div class="ttdoc">Get the NwsKey   See AT+NWKSKEY</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:639</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>byte array for AppsKey <br  />
@@ -1160,7 +1151,7 @@ false No response or error response</dd></dl>
 <div class="line">    uint16_t txp;  <span class="comment">// TX power 5 - 22    </span></div>
 <div class="line">} <a class="code hl_typedef" href="rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a>;    </div>
 <div class="ttc" id="arui3__at_8h_html_a2db711d8bb7f9ecffd3f641421729412"><div class="ttname"><a href="rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a></div><div class="ttdeci">struct _p2p_settings p2p_settings</div></div>
-<div class="ttc" id="astruct__p2p__settings_html"><div class="ttname"><a href="struct__p2p__settings.html">_p2p_settings</a></div><div class="ttdef"><b>Definition</b> rui3_at.h:83</div></div>
+<div class="ttc" id="astruct__p2p__settings_html"><div class="ttname"><a href="struct__p2p__settings.html">_p2p_settings</a></div><div class="ttdef"><b>Definition</b> rui3_at.h:102</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p2p_settings</td><td>pointer to settings for P2P configuration <br  />
@@ -1191,12 +1182,12 @@ false No response or error response</dd></dl>
 <div class="line">{    </div>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;Error while trying to send a packet&quot;</span>);    </div>
 <div class="line">}    </div>
-<div class="ttc" id="astruct__p2p__settings_html_a14b253c46cd68f2677525f92858eaf94"><div class="ttname"><a href="struct__p2p__settings.html#a14b253c46cd68f2677525f92858eaf94">_p2p_settings::bw</a></div><div class="ttdeci">uint16_t bw</div><div class="ttdef"><b>Definition</b> rui3_at.h:86</div></div>
-<div class="ttc" id="astruct__p2p__settings_html_a239a9eff6291cb5ef6129606416b8d32"><div class="ttname"><a href="struct__p2p__settings.html#a239a9eff6291cb5ef6129606416b8d32">_p2p_settings::cr</a></div><div class="ttdeci">uint16_t cr</div><div class="ttdef"><b>Definition</b> rui3_at.h:87</div></div>
-<div class="ttc" id="astruct__p2p__settings_html_a695533a80407b8fa8b5b34285f64094e"><div class="ttname"><a href="struct__p2p__settings.html#a695533a80407b8fa8b5b34285f64094e">_p2p_settings::txp</a></div><div class="ttdeci">uint16_t txp</div><div class="ttdef"><b>Definition</b> rui3_at.h:89</div></div>
-<div class="ttc" id="astruct__p2p__settings_html_a79dd6af4e11770a443aa1701b15e1e8e"><div class="ttname"><a href="struct__p2p__settings.html#a79dd6af4e11770a443aa1701b15e1e8e">_p2p_settings::ppl</a></div><div class="ttdeci">uint16_t ppl</div><div class="ttdef"><b>Definition</b> rui3_at.h:88</div></div>
-<div class="ttc" id="astruct__p2p__settings_html_af13284de3f688b86ceafd66b9aca9076"><div class="ttname"><a href="struct__p2p__settings.html#af13284de3f688b86ceafd66b9aca9076">_p2p_settings::sf</a></div><div class="ttdeci">uint16_t sf</div><div class="ttdef"><b>Definition</b> rui3_at.h:85</div></div>
-<div class="ttc" id="astruct__p2p__settings_html_af48c6a469e6de58d4234fca1397469b7"><div class="ttname"><a href="struct__p2p__settings.html#af48c6a469e6de58d4234fca1397469b7">_p2p_settings::freq</a></div><div class="ttdeci">uint32_t freq</div><div class="ttdef"><b>Definition</b> rui3_at.h:84</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_a14b253c46cd68f2677525f92858eaf94"><div class="ttname"><a href="struct__p2p__settings.html#a14b253c46cd68f2677525f92858eaf94">_p2p_settings::bw</a></div><div class="ttdeci">uint16_t bw</div><div class="ttdef"><b>Definition</b> rui3_at.h:105</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_a239a9eff6291cb5ef6129606416b8d32"><div class="ttname"><a href="struct__p2p__settings.html#a239a9eff6291cb5ef6129606416b8d32">_p2p_settings::cr</a></div><div class="ttdeci">uint16_t cr</div><div class="ttdef"><b>Definition</b> rui3_at.h:106</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_a695533a80407b8fa8b5b34285f64094e"><div class="ttname"><a href="struct__p2p__settings.html#a695533a80407b8fa8b5b34285f64094e">_p2p_settings::txp</a></div><div class="ttdeci">uint16_t txp</div><div class="ttdef"><b>Definition</b> rui3_at.h:108</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_a79dd6af4e11770a443aa1701b15e1e8e"><div class="ttname"><a href="struct__p2p__settings.html#a79dd6af4e11770a443aa1701b15e1e8e">_p2p_settings::ppl</a></div><div class="ttdeci">uint16_t ppl</div><div class="ttdef"><b>Definition</b> rui3_at.h:107</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_af13284de3f688b86ceafd66b9aca9076"><div class="ttname"><a href="struct__p2p__settings.html#af13284de3f688b86ceafd66b9aca9076">_p2p_settings::sf</a></div><div class="ttdeci">uint16_t sf</div><div class="ttdef"><b>Definition</b> rui3_at.h:104</div></div>
+<div class="ttc" id="astruct__p2p__settings_html_af48c6a469e6de58d4234fca1397469b7"><div class="ttname"><a href="struct__p2p__settings.html#af48c6a469e6de58d4234fca1397469b7">_p2p_settings::freq</a></div><div class="ttdeci">uint32_t freq</div><div class="ttdef"><b>Definition</b> rui3_at.h:103</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
@@ -1253,7 +1244,7 @@ false CAD disabled</dd></dl>
 <p>Get the Region <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-band">AT+BAND</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="class_r_u_i3.html#aaa775f087adefcb1dec7b5e59c3204e8">getRegion</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_aaa775f087adefcb1dec7b5e59c3204e8"><div class="ttname"><a href="class_r_u_i3.html#aaa775f087adefcb1dec7b5e59c3204e8">RUI3::getRegion</a></div><div class="ttdeci">uint8_t getRegion(void)</div><div class="ttdoc">Get the Region   See AT+BAND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:240</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_aaa775f087adefcb1dec7b5e59c3204e8"><div class="ttname"><a href="class_r_u_i3.html#aaa775f087adefcb1dec7b5e59c3204e8">RUI3::getRegion</a></div><div class="ttdeci">uint8_t getRegion(void)</div><div class="ttdoc">Get the Region   See AT+BAND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:226</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t Region 0 to 12, 255 = no response from WisDuo</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getRegion();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -1326,7 +1317,7 @@ false No response or error response</dd></dl>
 <p>Get the Working Mode status <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-nwm">AT+NWM</a> </p>
 <div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="class_r_u_i3.html#a33739851bbc3374cfd2670c0adea90e0">getWorkingMode</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a33739851bbc3374cfd2670c0adea90e0"><div class="ttname"><a href="class_r_u_i3.html#a33739851bbc3374cfd2670c0adea90e0">RUI3::getWorkingMode</a></div><div class="ttdeci">uint8_t getWorkingMode(void)</div><div class="ttdoc">Get the Working Mode status   See AT+NWM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:393</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a33739851bbc3374cfd2670c0adea90e0"><div class="ttname"><a href="class_r_u_i3.html#a33739851bbc3374cfd2670c0adea90e0">RUI3::getWorkingMode</a></div><div class="ttdeci">uint8_t getWorkingMode(void)</div><div class="ttdoc">Get the Working Mode status   See AT+NWM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:368</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>uint8_t 0 = LoRa P2P, 1 = LoRaWAN mode 255 = no response from WisDuo</dd></dl>
 <dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">uint8_t q_result = wisduo.getWorkingMode();    </div>
 <div class="line"><span class="keywordflow">if</span> (q_result != <a class="code hl_define" href="rui3__at_8h.html#a5f137187c6a892935c5acd036f609b22">NO_RESPONSE</a>)    </div>
@@ -1376,7 +1367,7 @@ false No response or error response</dd></dl>
 <p>Set credentials for ABP join mode <br  />
  Before using this command, you must call setJoinMode(1) </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a0d43db6f04785e2519c856a802e6e062">initABP</a>(String devADDR, String nwksKEY, String appsKEY);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a0d43db6f04785e2519c856a802e6e062"><div class="ttname"><a href="class_r_u_i3.html#a0d43db6f04785e2519c856a802e6e062">RUI3::initABP</a></div><div class="ttdeci">bool initABP(String devADDR, String nwksKEY, String appsKEY)</div><div class="ttdoc">Set credentials for ABP join mode   Before using this command, you must call setJoinMode(1)</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:597</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a0d43db6f04785e2519c856a802e6e062"><div class="ttname"><a href="class_r_u_i3.html#a0d43db6f04785e2519c856a802e6e062">RUI3::initABP</a></div><div class="ttdeci">bool initABP(String devADDR, String nwksKEY, String appsKEY)</div><div class="ttdoc">Set credentials for ABP join mode   Before using this command, you must call setJoinMode(1)</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:552</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">devADDR</td><td>device address as HEX string see <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-devaddr">AT+DEVADDR</a> <br  />
@@ -1438,7 +1429,7 @@ false No response or error response</dd></dl>
 <p>Set LoRaWAN credentials for OTAA join mode <br  />
  Before using this command, you must call setJoinMode(0) </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a15d6925f150158dce908ebf6040a35fd">initOTAA</a>(String devEUI, String appEUI, String appKEY);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a15d6925f150158dce908ebf6040a35fd"><div class="ttname"><a href="class_r_u_i3.html#a15d6925f150158dce908ebf6040a35fd">RUI3::initOTAA</a></div><div class="ttdeci">bool initOTAA(String devEUI, String appEUI, String appKEY)</div><div class="ttdoc">Set LoRaWAN credentials for OTAA join mode   Before using this command, you must call setJoinMode(0)</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:471</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a15d6925f150158dce908ebf6040a35fd"><div class="ttname"><a href="class_r_u_i3.html#a15d6925f150158dce908ebf6040a35fd">RUI3::initOTAA</a></div><div class="ttdeci">bool initOTAA(String devEUI, String appEUI, String appKEY)</div><div class="ttdoc">Set LoRaWAN credentials for OTAA join mode   Before using this command, you must call setJoinMode(0)</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:438</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">devEUI</td><td>device EUI as string see <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-deveui">AT+DEVEUI</a> <br  />
@@ -1494,7 +1485,7 @@ false No response or error response</dd></dl>
 <div class="line">    uint16_t txp;  <span class="comment">// TX power 5 - 22    </span></div>
 <div class="line">} <a class="code hl_typedef" href="rui3__at_8h.html#a2db711d8bb7f9ecffd3f641421729412">p2p_settings</a>;    </div>
 </div><!-- fragment --> <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#aa8fb2364278d16fa99dd265589aa8e95">initP2P</a>(<a class="code hl_struct" href="struct__p2p__settings.html">p2p_settings</a> *<a class="code hl_struct" href="struct__p2p__settings.html">p2p_settings</a>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_aa8fb2364278d16fa99dd265589aa8e95"><div class="ttname"><a href="class_r_u_i3.html#aa8fb2364278d16fa99dd265589aa8e95">RUI3::initP2P</a></div><div class="ttdeci">bool initP2P(p2p_settings *p2p_settings)</div><div class="ttdoc">Initialize LoRa P2P mode   See AT+P2P</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:959</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_aa8fb2364278d16fa99dd265589aa8e95"><div class="ttname"><a href="class_r_u_i3.html#aa8fb2364278d16fa99dd265589aa8e95">RUI3::initP2P</a></div><div class="ttdeci">bool initP2P(p2p_settings *p2p_settings)</div><div class="ttdoc">Initialize LoRa P2P mode   See AT+P2P</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:882</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p2p_settings</td><td>Pointer to the structure with the P2P settings <br  />
@@ -1544,7 +1535,7 @@ false No response or error response</dd></dl>
 <p>Join the network <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-join">AT+JOIN</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a7f839a1e56f928020ff28f3709973fb7">joinLoRaNetwork</a>(<span class="keywordtype">int</span> timeout = 15);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a7f839a1e56f928020ff28f3709973fb7"><div class="ttname"><a href="class_r_u_i3.html#a7f839a1e56f928020ff28f3709973fb7">RUI3::joinLoRaNetwork</a></div><div class="ttdeci">bool joinLoRaNetwork(int timeout=15)</div><div class="ttdoc">Join the network   See AT+JOIN</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:454</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a7f839a1e56f928020ff28f3709973fb7"><div class="ttname"><a href="class_r_u_i3.html#a7f839a1e56f928020ff28f3709973fb7">RUI3::joinLoRaNetwork</a></div><div class="ttdeci">bool joinLoRaNetwork(int timeout=15)</div><div class="ttdoc">Join the network   See AT+JOIN</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:423</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout</td><td>in seconds <br  />
@@ -1587,7 +1578,7 @@ false No response or error response</dd></dl>
 <p>Get response to an AT command from the device <br  />
  The last response to an AT command is stored in <em>**<code><a class="el" href="class_r_u_i3.html#a226083cbf25f80400eb249d4659e0047" title="Char array with the last response from the WisDuo module.">RUI3::ret</a></code>**</em> for further parsing. See the example codes for detailed usage. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a56d8ee53f5f1237433a6a2f442b1b447">recvResponse</a>(uint32_t timeout = 10000);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a56d8ee53f5f1237433a6a2f442b1b447"><div class="ttname"><a href="class_r_u_i3.html#a56d8ee53f5f1237433a6a2f442b1b447">RUI3::recvResponse</a></div><div class="ttdeci">bool recvResponse(uint32_t timeout=10000)</div><div class="ttdoc">Get response to an AT command from the device   The last response to an AT command is stored in **RUI...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:778</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a56d8ee53f5f1237433a6a2f442b1b447"><div class="ttname"><a href="class_r_u_i3.html#a56d8ee53f5f1237433a6a2f442b1b447">RUI3::recvResponse</a></div><div class="ttdeci">bool recvResponse(uint32_t timeout=10000)</div><div class="ttdoc">Get response to an AT command from the device   The last response to an AT command is stored in **RUI...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:714</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout</td><td>time to wait for a response <br  />
@@ -1637,7 +1628,7 @@ false No response or error response</dd></dl>
  LoRaWAN Class B and C RX is not implemented, but would work similar to LoRa P2P <br  />
  </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_r_u_i3.html#a83d31f74530834ddd798c98788c67338">recvRX</a>(uint32_t timeout);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a83d31f74530834ddd798c98788c67338"><div class="ttname"><a href="class_r_u_i3.html#a83d31f74530834ddd798c98788c67338">RUI3::recvRX</a></div><div class="ttdeci">void recvRX(uint32_t timeout)</div><div class="ttdoc">Get RX packet after LoRaWAN TX or LoRa P2P receive command   The last received RX packet is stored in...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:830</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a83d31f74530834ddd798c98788c67338"><div class="ttname"><a href="class_r_u_i3.html#a83d31f74530834ddd798c98788c67338">RUI3::recvRX</a></div><div class="ttdeci">void recvRX(uint32_t timeout)</div><div class="ttdoc">Get RX packet after LoRaWAN TX or LoRa P2P receive command   The last received RX packet is stored in...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:764</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeout</td><td>max wait time for the RX packet</td></tr>
@@ -1697,7 +1688,7 @@ LoRaWAN Class A</h4>
  Communication with the module will be lost <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#atz">ATZ</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_r_u_i3.html#a9c5604e428b119533b65cb7feeb0a168">reset</a>(<span class="keywordtype">void</span>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a9c5604e428b119533b65cb7feeb0a168"><div class="ttname"><a href="class_r_u_i3.html#a9c5604e428b119533b65cb7feeb0a168">RUI3::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdoc">Reset the RUI3 module   Communication with the module will be lost   See ATZ</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:359</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a9c5604e428b119533b65cb7feeb0a168"><div class="ttname"><a href="class_r_u_i3.html#a9c5604e428b119533b65cb7feeb0a168">RUI3::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdoc">Reset the RUI3 module   Communication with the module will be lost   See ATZ</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:336</div></div>
 </div><!-- fragment --><dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line"><span class="keywordtype">bool</span> wait_for_response(uint32_t timeout)    </div>
 <div class="line">{    </div>
 <div class="line">    uint32_t start_time = millis();    </div>
@@ -1760,7 +1751,7 @@ LoRaWAN Class A</h4>
 <p>Send data in LoRaWAN mode <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-send">AT+SEND</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a5fe9203acd1a182c4984ae8af92dc84d">sendData</a>(<span class="keywordtype">int</span> port, <span class="keywordtype">char</span> *datahex);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a5fe9203acd1a182c4984ae8af92dc84d"><div class="ttname"><a href="class_r_u_i3.html#a5fe9203acd1a182c4984ae8af92dc84d">RUI3::sendData</a></div><div class="ttdeci">bool sendData(int port, char *datahex)</div><div class="ttdoc">Send data in LoRaWAN mode   See AT+SEND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:759</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a5fe9203acd1a182c4984ae8af92dc84d"><div class="ttname"><a href="class_r_u_i3.html#a5fe9203acd1a182c4984ae8af92dc84d">RUI3::sendData</a></div><div class="ttdeci">bool sendData(int port, char *datahex)</div><div class="ttdoc">Send data in LoRaWAN mode   See AT+SEND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:697</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">port</td><td>fPort number.(1-223) <br  />
@@ -1814,7 +1805,7 @@ false No response or error response</dd></dl>
 <p>Send a data packet over LoRa P2P <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-psend">AT+PSEND</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a8a50d76028e6b2e204b8edba817c317a">sendP2PData</a>(<span class="keywordtype">char</span> *datahex);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a8a50d76028e6b2e204b8edba817c317a"><div class="ttname"><a href="class_r_u_i3.html#a8a50d76028e6b2e204b8edba817c317a">RUI3::sendP2PData</a></div><div class="ttdeci">bool sendP2PData(char *datahex)</div><div class="ttdoc">Send a data packet over LoRa P2P   See AT+PSEND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1039</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a8a50d76028e6b2e204b8edba817c317a"><div class="ttname"><a href="class_r_u_i3.html#a8a50d76028e6b2e204b8edba817c317a">RUI3::sendP2PData</a></div><div class="ttdeci">bool sendP2PData(char *datahex)</div><div class="ttdoc">Send a data packet over LoRa P2P   See AT+PSEND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:955</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">datahex</td><td>payload in byte array <br  />
@@ -1867,7 +1858,7 @@ false No response or error response <br  />
 <p>Send a raw command to the <a class="el" href="class_r_u_i3.html">RUI3</a> module. <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual">RUI3 AT command manual</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a7ea0a4afc56d0e25ede7e748b2c68995">sendRawCommand</a>(<span class="keywordtype">char</span> *<a class="code hl_variable" href="rui3__at_8cpp.html#a09b945691015281174f3851d8470ec7f">command</a>);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a7ea0a4afc56d0e25ede7e748b2c68995"><div class="ttname"><a href="class_r_u_i3.html#a7ea0a4afc56d0e25ede7e748b2c68995">RUI3::sendRawCommand</a></div><div class="ttdeci">bool sendRawCommand(char *command)</div><div class="ttdoc">Send a raw command to the RUI3 module.   See RUI3 AT command manual</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1108</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a7ea0a4afc56d0e25ede7e748b2c68995"><div class="ttname"><a href="class_r_u_i3.html#a7ea0a4afc56d0e25ede7e748b2c68995">RUI3::sendRawCommand</a></div><div class="ttdeci">bool sendRawCommand(char *command)</div><div class="ttdoc">Send a raw command to the RUI3 module.   See RUI3 AT command manual</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1015</div></div>
 <div class="ttc" id="arui3__at_8cpp_html_a09b945691015281174f3851d8470ec7f"><div class="ttname"><a href="rui3__at_8cpp.html#a09b945691015281174f3851d8470ec7f">command</a></div><div class="ttdeci">char command[1024]</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:20</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1915,7 +1906,7 @@ false No response or error response</dd></dl>
 <p>Set the LoRaWAN device Class <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-class">AT+CLASS</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a2727126fdcebfa4c9f3332bcbe134c84">setClass</a>(<span class="keywordtype">int</span> classMode);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a2727126fdcebfa4c9f3332bcbe134c84"><div class="ttname"><a href="class_r_u_i3.html#a2727126fdcebfa4c9f3332bcbe134c84">RUI3::setClass</a></div><div class="ttdeci">bool setClass(int classMode)</div><div class="ttdoc">Set the LoRaWAN device Class   See AT+CLASS</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:108</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a2727126fdcebfa4c9f3332bcbe134c84"><div class="ttname"><a href="class_r_u_i3.html#a2727126fdcebfa4c9f3332bcbe134c84">RUI3::setClass</a></div><div class="ttdeci">bool setClass(int classMode)</div><div class="ttdoc">Set the LoRaWAN device Class   See AT+CLASS</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:100</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">classMode</td><td>0 -&gt; Class A, 1 -&gt; Class B, 2 -&gt; Class C <br  />
@@ -1956,7 +1947,7 @@ false No response or error response</dd></dl>
  In confirmed mode, the LNS will acknowledge the packet, in unconfirmed mode is no acknowledgement <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-cfm">AT+CFM</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a3ed62baf954bd13c863c7f638e346998">setConfirmed</a>(<span class="keywordtype">int</span> type);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a3ed62baf954bd13c863c7f638e346998"><div class="ttname"><a href="class_r_u_i3.html#a3ed62baf954bd13c863c7f638e346998">RUI3::setConfirmed</a></div><div class="ttdeci">bool setConfirmed(int type)</div><div class="ttdoc">Set package transmission mode   In confirmed mode, the LNS will acknowledge the packet,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:714</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a3ed62baf954bd13c863c7f638e346998"><div class="ttname"><a href="class_r_u_i3.html#a3ed62baf954bd13c863c7f638e346998">RUI3::setConfirmed</a></div><div class="ttdeci">bool setConfirmed(int type)</div><div class="ttdoc">Set package transmission mode   In confirmed mode, the LNS will acknowledge the packet,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:657</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>0-&gt;unconfirm, 1-&gt;confirm <br  />
@@ -1995,7 +1986,7 @@ false No response or error response</dd></dl>
 <p>Set the Data Rate <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-dr">AT+DR</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a433f4046bb7ca9596718f67d318bc88b">setDataRate</a>(<span class="keywordtype">int</span> rate);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a433f4046bb7ca9596718f67d318bc88b"><div class="ttname"><a href="class_r_u_i3.html#a433f4046bb7ca9596718f67d318bc88b">RUI3::setDataRate</a></div><div class="ttdeci">bool setDataRate(int rate)</div><div class="ttdoc">Set the Data Rate   See AT+DR</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:66</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a433f4046bb7ca9596718f67d318bc88b"><div class="ttname"><a href="class_r_u_i3.html#a433f4046bb7ca9596718f67d318bc88b">RUI3::setDataRate</a></div><div class="ttdeci">bool setDataRate(int rate)</div><div class="ttdoc">Set the Data Rate   See AT+DR</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:62</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rate</td><td>datarate between 0 and 15 see <a href="https://docs.rakwireless.com/RUI3/Appendix/#data-rate-by-region">Data Rate by Region</a> for available data rates per LoRaWAN region <br  />
@@ -2034,7 +2025,7 @@ false No response or error response</dd></dl>
 <p>Set network join mode OTAA or ABP <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-njm">AT+NJM</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a47948e4a085c35c575c6fab33f16c929">setJoinMode</a>(<span class="keywordtype">int</span> mode);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a47948e4a085c35c575c6fab33f16c929"><div class="ttname"><a href="class_r_u_i3.html#a47948e4a085c35c575c6fab33f16c929">RUI3::setJoinMode</a></div><div class="ttdeci">bool setJoinMode(int mode)</div><div class="ttdoc">Set network join mode OTAA or ABP   See AT+NJM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:408</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a47948e4a085c35c575c6fab33f16c929"><div class="ttname"><a href="class_r_u_i3.html#a47948e4a085c35c575c6fab33f16c929">RUI3::setJoinMode</a></div><div class="ttdeci">bool setJoinMode(int mode)</div><div class="ttdoc">Set network join mode OTAA or ABP   See AT+NJM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:381</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mode</td><td>0: join a network using over the air activation, 1: join a network using personalization <br  />
@@ -2070,25 +2061,22 @@ false No response or error response</dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Enable/Disable Low power mode <br  />
- See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpm">AT+LPM</a> </p>
-<div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#abea6971995336b4a510cac6e4e75d2e0">setLPM</a>(<span class="keywordtype">int</span> mode);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_abea6971995336b4a510cac6e4e75d2e0"><div class="ttname"><a href="class_r_u_i3.html#abea6971995336b4a510cac6e4e75d2e0">RUI3::setLPM</a></div><div class="ttdeci">bool setLPM(int mode)</div><div class="ttdoc">Enable/Disable Low power mode   See AT+LPM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:278</div></div>
+<p>Enable/Disable Low power mode See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpm">AT+LPM</a> </p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#abea6971995336b4a510cac6e4e75d2e0">setLPM</a>(<span class="keywordtype">int</span> mode);</div>
+<div class="ttc" id="aclass_r_u_i3_html_abea6971995336b4a510cac6e4e75d2e0"><div class="ttname"><a href="class_r_u_i3.html#abea6971995336b4a510cac6e4e75d2e0">RUI3::setLPM</a></div><div class="ttdeci">bool setLPM(int mode)</div><div class="ttdoc">Enable/Disable Low power mode See AT+LPM</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:263</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mode</td><td>0 = LPM off, 1 = LPM on <br  />
- </td></tr>
+    <tr><td class="paramname">mode</td><td>0 = LPM off, 1 = LPM on </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true Success <br  />
- </dd>
+<dl class="section return"><dt>Returns</dt><dd>true Success </dd>
 <dd>
 false No response or error response</dd></dl>
-<dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line"><span class="keywordflow">if</span> (!wisduo.setLPM(<a class="code hl_define" href="rui3__at_8h.html#a38eca721416840b7a6ce26536d3aa116">LPM_ON</a>)) <span class="comment">// set device LPM on    </span></div>
-<div class="line">{    </div>
-<div class="line">        Serial.println(<span class="stringliteral">&quot;Error setting LPM mode.&quot;</span>);    </div>
-<div class="line">}    </div>
+<dl class="section user"><dt>Usage</dt><dd><div class="fragment"><div class="line"><span class="keywordflow">if</span> (!wisduo.setLPM(<a class="code hl_define" href="rui3__at_8h.html#a38eca721416840b7a6ce26536d3aa116">LPM_ON</a>)) <span class="comment">// set device LPM on</span></div>
+<div class="line">{</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;Error setting LPM mode.&quot;</span>);</div>
+<div class="line">}</div>
 <div class="ttc" id="arui3__at_8h_html_a38eca721416840b7a6ce26536d3aa116"><div class="ttname"><a href="rui3__at_8h.html#a38eca721416840b7a6ce26536d3aa116">LPM_ON</a></div><div class="ttdeci">#define LPM_ON</div><div class="ttdef"><b>Definition</b> rui3_at.h:69</div></div>
 </div><!-- fragment --> </dd></dl>
 
@@ -2113,7 +2101,7 @@ false No response or error response</dd></dl>
 <p>Set the LPM level <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-lpmlvl">AT+LPMLVL</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a82cdf3e93f8825375150647fb3a32d08">setLPMLevel</a>(<span class="keywordtype">int</span> mode);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a82cdf3e93f8825375150647fb3a32d08"><div class="ttname"><a href="class_r_u_i3.html#a82cdf3e93f8825375150647fb3a32d08">RUI3::setLPMLevel</a></div><div class="ttdeci">bool setLPMLevel(int mode)</div><div class="ttdoc">Set the LPM level   See AT+LPMLVL</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:318</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a82cdf3e93f8825375150647fb3a32d08"><div class="ttname"><a href="class_r_u_i3.html#a82cdf3e93f8825375150647fb3a32d08">RUI3::setLPMLevel</a></div><div class="ttdeci">bool setLPMLevel(int mode)</div><div class="ttdoc">Set the LPM level   See AT+LPMLVL</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:299</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mode</td><td>1 = STOP1 mode, 2 = STOP2 mode (lowest power consumption) <br  />
@@ -2194,7 +2182,7 @@ false No response or error response</dd></dl>
 <p>Set the LoRaWAN Region <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-band">AT+BAND</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a073fb5f2e8adc83de8b806e8dfda6fb5">setRegion</a>(<span class="keywordtype">int</span> region);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a073fb5f2e8adc83de8b806e8dfda6fb5"><div class="ttname"><a href="class_r_u_i3.html#a073fb5f2e8adc83de8b806e8dfda6fb5">RUI3::setRegion</a></div><div class="ttdeci">bool setRegion(int region)</div><div class="ttdoc">Set the LoRaWAN Region   See AT+BAND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:171</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a073fb5f2e8adc83de8b806e8dfda6fb5"><div class="ttname"><a href="class_r_u_i3.html#a073fb5f2e8adc83de8b806e8dfda6fb5">RUI3::setRegion</a></div><div class="ttdeci">bool setRegion(int region)</div><div class="ttdoc">Set the LoRaWAN Region   See AT+BAND</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:159</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">region</td><td><br  />
@@ -2264,7 +2252,7 @@ false No response or error response</dd></dl>
 <p>Change <a class="el" href="class_r_u_i3.html">RUI3</a> communication baud rate <br  />
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-baud">AT+BAUD</a> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657">setUARTConfig</a>(<span class="keywordtype">int</span> Baud);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a68de628dd5ac6b2938c93e23710e1657"><div class="ttname"><a href="class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657">RUI3::setUARTConfig</a></div><div class="ttdeci">bool setUARTConfig(int Baud)</div><div class="ttdoc">Change RUI3 communication baud rate   See AT+BAUD</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1100</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_a68de628dd5ac6b2938c93e23710e1657"><div class="ttname"><a href="class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657">RUI3::setUARTConfig</a></div><div class="ttdeci">bool setUARTConfig(int Baud)</div><div class="ttdoc">Change RUI3 communication baud rate   See AT+BAUD</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:1007</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Baud</td><td>Serial baud rate.Supports baud rate: 9600 19200 38400 57600 115200 230400 460800 921600. <br  />
@@ -2299,7 +2287,7 @@ false No response or error response </dd></dl>
  See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-nwm">AT+NWM</a> <br  />
  When switching the device mode, the device will perform a reset. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_function" href="class_r_u_i3.html#ac627738073661f4d8f2a9ef6b2e79b7d">setWorkingMode</a>(<span class="keywordtype">int</span> mode);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_ac627738073661f4d8f2a9ef6b2e79b7d"><div class="ttname"><a href="class_r_u_i3.html#ac627738073661f4d8f2a9ef6b2e79b7d">RUI3::setWorkingMode</a></div><div class="ttdeci">bool setWorkingMode(int mode)</div><div class="ttdoc">Set the device to LoRaWAN mode or LoRa P2P mode   See AT+NWM   When switching the device mode,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:365</div></div>
+<div class="ttc" id="aclass_r_u_i3_html_ac627738073661f4d8f2a9ef6b2e79b7d"><div class="ttname"><a href="class_r_u_i3.html#ac627738073661f4d8f2a9ef6b2e79b7d">RUI3::setWorkingMode</a></div><div class="ttdeci">bool setWorkingMode(int mode)</div><div class="ttdoc">Set the device to LoRaWAN mode or LoRa P2P mode   See AT+NWM   When switching the device mode,...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:342</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mode</td><td>0 = LoRa P2P, 1 = LoRaWAN mode <br  />
@@ -2320,14 +2308,14 @@ false No response or error response</dd></dl>
 
 </div>
 </div>
-<a id="a59241e569d25b8ecff616ef4cd5a5d6b" name="a59241e569d25b8ecff616ef4cd5a5d6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59241e569d25b8ecff616ef4cd5a5d6b">&#9670;&#160;</a></span>sleep()</h2>
+<a id="a4f8677d77e61e1fff8fc1208b3cb0a99" name="a4f8677d77e61e1fff8fc1208b3cb0a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f8677d77e61e1fff8fc1208b3cb0a99">&#9670;&#160;</a></span>sleep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void RUI3::sleep </td>
+          <td class="memname">bool RUI3::sleep </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>mode</em></td><td>)</td>
@@ -2336,19 +2324,19 @@ false No response or error response</dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Set the module in sleep mode. not required if low power mode is enabled) <br  />
- When the module is in sleep mode, the host can send any character to wake it up. <br  />
- When the module is awakened, the event response will automatically return through the serial information. <br  />
- See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-sleep">AT+SLEEP</a> </p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_r_u_i3.html#a59241e569d25b8ecff616ef4cd5a5d6b">sleep</a>(<span class="keywordtype">int</span> mode);    </div>
-<div class="ttc" id="aclass_r_u_i3_html_a59241e569d25b8ecff616ef4cd5a5d6b"><div class="ttname"><a href="class_r_u_i3.html#a59241e569d25b8ecff616ef4cd5a5d6b">RUI3::sleep</a></div><div class="ttdeci">void sleep(int mode)</div><div class="ttdoc">Set the module in sleep mode. not required if low power mode is enabled)   When the module is in slee...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:260</div></div>
+<p>Set the module in sleep mode. not required if low power mode is enabled) When the module is in sleep mode, the host can send any character to wake it up. When the module is awakened, the event response will automatically return through the serial information. See <a href="https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#at-sleep">AT+SLEEP</a> </p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_r_u_i3.html#a4f8677d77e61e1fff8fc1208b3cb0a99">sleep</a>(<span class="keywordtype">int</span> mode);</div>
+<div class="ttc" id="aclass_r_u_i3_html_a4f8677d77e61e1fff8fc1208b3cb0a99"><div class="ttname"><a href="class_r_u_i3.html#a4f8677d77e61e1fff8fc1208b3cb0a99">RUI3::sleep</a></div><div class="ttdeci">bool sleep(int mode)</div><div class="ttdoc">Set the module in sleep mode. not required if low power mode is enabled) When the module is in sleep ...</div><div class="ttdef"><b>Definition</b> rui3_at.cpp:244</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mode</td><td>0 == sleep until new commands is received, &gt; 1 sleep time in milliseconds</td></tr>
+    <tr><td class="paramname">mode</td><td>0 == sleep until new commands is received, &gt; 1 sleep time in milliseconds </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Usage </dt><dd><div class="fragment"><div class="line">wisduo.sleep(60000); <span class="comment">// force sleep mode for 1 minute    </span></div>
+<dl class="section return"><dt>Returns</dt><dd>true Success </dd>
+<dd>
+false No response or error response</dd></dl>
+<dl class="section user"><dt>Usage</dt><dd><div class="fragment"><div class="line">wisduo.sleep(60000); <span class="comment">// force sleep mode for 1 minute</span></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>

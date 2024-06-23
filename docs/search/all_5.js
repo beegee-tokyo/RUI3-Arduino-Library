@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['flushrx_0',['flushRX',['../class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba',1,'RUI3']]],
-  ['freq_1',['freq',['../struct__p2p__settings.html#af48c6a469e6de58d4234fca1397469b7',1,'_p2p_settings']]]
+  ['eu433_0',['EU433',['../rui3__at_8h.html#a8dea9d11de184009595db420d3015e44',1,'rui3_at.h']]],
+  ['eu868_1',['EU868',['../rui3__at_8h.html#aea0f54c3f5cc44ec2fd9dc532c27c8a0',1,'rui3_at.h']]]
 ];

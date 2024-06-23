@@ -1,6 +1,6 @@
 var class_r_u_i3 =
 [
-    [ "RUI3", "class_r_u_i3.html#a4f62f64d335005699f9134fce8da8e56", null ],
+    [ "RUI3", "class_r_u_i3.html#aec8577db88e820c1fc81aa248f6ca192", null ],
     [ "asciiArrayToByte", "class_r_u_i3.html#a161b11bb9910f588e570b1a7ba973a8a", null ],
     [ "byteArrayToAscii", "class_r_u_i3.html#a5083c1edd195d1d31ba7e70813d4180c", null ],
     [ "flushRX", "class_r_u_i3.html#a8462fda0a7618a74da3504652820e1ba", null ],
@@ -43,7 +43,7 @@ var class_r_u_i3 =
     [ "setRegion", "class_r_u_i3.html#a073fb5f2e8adc83de8b806e8dfda6fb5", null ],
     [ "setUARTConfig", "class_r_u_i3.html#a68de628dd5ac6b2938c93e23710e1657", null ],
     [ "setWorkingMode", "class_r_u_i3.html#ac627738073661f4d8f2a9ef6b2e79b7d", null ],
-    [ "sleep", "class_r_u_i3.html#a59241e569d25b8ecff616ef4cd5a5d6b", null ],
+    [ "sleep", "class_r_u_i3.html#a4f8677d77e61e1fff8fc1208b3cb0a99", null ],
     [ "param", "class_r_u_i3.html#ab6f465a95ecfed10fc719928cd29a128", null ],
     [ "ret", "class_r_u_i3.html#a226083cbf25f80400eb249d4659e0047", null ]
 ];
